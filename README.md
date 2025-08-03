@@ -1,7 +1,6 @@
-## Author
-PANA ROBERT IONUT
+# CLI Image Editor
 
-# Image Editor
+**Author:** PANA ROBERT IONUT
 
 A C-based image editor that supports manipulation of PGM (grayscale) and PPM (color) images.
 
@@ -90,5 +89,3 @@ make test      # Run with test input
 make memcheck  # Check for memory leaks with valgrind
 make checker   # Run automated tests
 ```
-
-
