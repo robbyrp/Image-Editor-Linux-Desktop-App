@@ -1,0 +1,70 @@
+The image_t structure holds the values for the parameters of the image,
+as well as, the color_image array and the greyscale_image array. 
+The greyscale_array is of type unsigned char** (holding values from 0 to 255),
+while the color_array is of type pixel_t, with each of the r, g, b, components
+of type unsigned char. 
+The selection_t struct holds the values for the int parameters of the selection, 
+and a boolean for when the selection is the entire image.
+The input from stdin is parsed using fgets() and strtok(). The first call
+of strtok is the text that is compared using strcmp() to the valid inputs.
+The next calls of strtok, are made inside of functions. They parse the 
+parameters, and assure if there are too many or and insufficient number 
+of parameters, while also checking their validity.
+The image->color_array and image->greyscale_array are never NULL or 
+!NULL at the same time, except the case when no image was loaded.
+
+The load() functions store the information within the inputted file
+in the image_t *image variable. The data is read and stored in memory with 
+fscanf/fread. 
+The alloc() and free() functions allocate and free either the
+greyscale_array or the color_array;
+
+There are some defines/undefs along the way to keep the col length <80.
+
+The save() functions print the data stored in the image_t *image variable
+in the new_filename file, with fprintf/fwrite. If the initial file is ascii
+and the saved file is binary (or viceversa), the format is changed.
+
+The histogram() functions parse the input and check for valid parameters, and
+a greyscasle image.
+An array of frequencies is created, and then it is split into sums
+of "bin" terms. The maximum frequency is then calculated, in order to
+calculate the number of stars to be printed.
+
+The equalize() functions check for the image to be greyscale. An array of
+frequencies is created, in order to calculate the new values of the pixels
+by applying the formula.
+
+The select() functions carefully check for valid parameters, that they pass
+to the other functions that need selection arguments.If they are valid, the
+char *parsed with strtok are converted to integers using atoi(). A temp_select
+was created. In the case that the selection is invalid, the old selection 
+(if valid) is kept. If the data is valid, the temp_select data is stored
+in the *select variable.
+
+The crop() functions create a shallow copy of the image_t *image, which
+stores that values of the elements of the array between the selections.
+After assigning values, the image becomes cropped by copying all fields 
+at once, and the selection becomes the new image.
+
+The rotate() functions check whether the selection is square or rectangular.
+If the selection is square, the image is flipped 90 degrees by transposing
+the matrix and swapping the first half of the cols with the second half.
+For multiples of 90 degrees, we rotate multiple times to 90 degrees to match
+the value trigonometrically(for example, -270 degrees is equivalent to 90 degrees,
+and 270 degrees is equivalent to 3 90degrees rotations).
+
+The apply() functions initialize each kernel, and type. Then, we make a shallow
+copy of image and copy the values from the original image. After copying the pixels,
+it iterates through the selection and assigns to each pixel the value returned by
+the apply_kernel() function, which takes the image, ker, the i and j coordinates and
+the type of apply(1, 2, 3 or 4) as parameters and is of type pixel_t. This function
+calculates a sum, which becomes the new value of pixel[i][j] by multiplying,
+element by element, the 3x3 kernel matrix with the 3x3 2d array of pixels centered
+in the pixel[i][j];
+
+The clamp() functions are auxiliary functions in order to keep the value of the pixel 
+between 0 and 255.
+
+Finally, the exit_program checks for a loaded image and frees everything. It then
+breaks the while(1) loop and the program ends.

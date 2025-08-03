@@ -1,0 +1,42 @@
+# Compiled binaries
+image_editor
+
+# Object files
+*.o
+*.obj
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Test files
+input.txt
+output.txt
+errput.txt
+valgrind.txt
+checker.txt
+
+# VS Code settings (optional - remove if you want to share them)
+.vscode/
+
+# Temporary files
+*~
+*.tmp
+*.temp
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Archives (uncomment if you don't want to track zip files)
+# *.zip
+
+# Assignment files (contains homework details)
+*.pdf
