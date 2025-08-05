@@ -87,5 +87,4 @@ The Makefile includes several testing targets:
 ```bash
 make test      # Run with test input
 make memcheck  # Check for memory leaks with valgrind
-make checker   # Run automated tests
 ```
