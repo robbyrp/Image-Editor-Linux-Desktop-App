@@ -228,31 +228,3 @@ void rotate_all(image_t *image, selection_t *select, int degrees)
 
 }
 
-void rotate_region(image_t *image, selection_t *select)
-{
-	if (!image->greyscale_matrix && !image->color_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-
-	char *aux = strtok(NULL, "\n ");
-	int degrees = atoi(aux);
-
-	if (degrees % 90 != 0) {
-		printf("Unsupported rotation angle\n");
-		return;
-	}
-
-	if (degrees % 360 == 0) {
-		printf("Rotated %d\n", degrees);
-		return;
-	}
-
-	if (!select->all) {
-		rotate_square(image, select, degrees);
-	}
-	if (select->all) {
-		rotate_all(image, select, degrees);
-	}
-
-}

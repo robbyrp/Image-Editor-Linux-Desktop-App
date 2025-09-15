@@ -53,5 +53,4 @@ void equalize_greyscale(image_t *image)
 		}
 	}
 	#undef GREY
-	printf("Equalize done\n");
 }

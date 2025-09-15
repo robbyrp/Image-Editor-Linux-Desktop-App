@@ -3,19 +3,16 @@
 
 #include "def.h"
 
-void load(image_t *image, selection_t *select)
-{
-	// READ FILE NAME
-	char *filename = strtok(NULL, "\n ");
+// Big load function handles both ascii and binary, greyscale or color
+// By calling the necessary functions
+// It also allocates memory for the images by calling the alloc functions
 
-	if (!filename) {
-		printf("Invalid command\n");
-		return;
-	}
+void load_gui(image_t *image, selection_t *select, const char *filename)
+{
 	// OPEN FILE
 	FILE *in = fopen(filename, "rt");
 	if (!in) {
-		printf("Failed to load %s\n", filename);
+		printf("Could not load %s\n", filename);
 		// CLEAR CURRENT IMAGE
 		if (image->greyscale_matrix) {
 			free_greyscale(image);
@@ -77,13 +74,13 @@ void load(image_t *image, selection_t *select)
 	}
 
 }
-
-void load_ascii(image_t *image, char *filename)
+// --------------------- CLI AND GUI FUNCTIONS ---------------------
+void load_ascii(image_t *image, const char *filename)
 {
 	// OPEN FILE
 	FILE *in = fopen(filename, "rt");
 	if (!in) {
-		printf("Failed to load %s\n", filename);
+		printf("Failed to load the text file  %s\n", filename);
 		return;
 	}
 
@@ -137,12 +134,12 @@ void load_ascii(image_t *image, char *filename)
 	fclose(in);
 }
 
-void load_binary(image_t *image, char *filename)
+void load_binary(image_t *image, const char *filename)
 {
 	// OPEN FILE
 	FILE *in = fopen(filename, "rb");
 	if (!in) {
-		printf("Failed to load %s\n", filename);
+		printf("Failed to load the binary file %s\n", filename);
 		return;
 	}
 

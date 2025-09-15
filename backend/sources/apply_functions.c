@@ -2,38 +2,6 @@
 
 #include "def.h"
 
-void apply(image_t *image, selection_t *select)
-{
-	if (!image->color_matrix && !image->greyscale_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-	char *apply_type = strtok(NULL, "\n ");
-	if (!apply_type) {
-		printf("Invalid command\n");
-		return;
-	}
-
-	// CHECK FOR VALID PARAMETERS
-	if (image->greyscale_matrix) {
-		printf("Easy, Charlie Chaplin\n");
-		return;
-	}
-	if (strcmp(apply_type, "SHARPEN") == 0) {
-		apply_sharpen(image, select);
-	} else if (strcmp(apply_type, "EDGE") == 0) {
-		apply_edge(image, select);
-	} else if (strcmp(apply_type, "BLUR") == 0) {
-		apply_blur(image, select);
-	} else if (strcmp(apply_type, "GAUSSIAN_BLUR") == 0) {
-		apply_gaussian_blur(image, select);
-	} else {
-		printf("APPLY parameter invalid\n");
-		return;
-	}
-
-}
-
 void apply_sharpen(image_t *image, selection_t *select)
 {
 	int type = 2;
@@ -66,7 +34,6 @@ void apply_sharpen(image_t *image, selection_t *select)
 	free_color(image);
 	// IMAGE BECOMES NEW IMAGE BY COPYING ALL FIELDS AT ONCE
 	*image = new_image;
-	printf("APPLY SHARPEN done\n");
 }
 
 void apply_edge(image_t *image, selection_t *select)
@@ -101,7 +68,6 @@ void apply_edge(image_t *image, selection_t *select)
 	// IMAGE BECOMES NEW IMAGE BY COPYING ALL FIELDS AT ONCE
 	*image = new_image;
 
-	printf("APPLY EDGE done\n");
 }
 
 void apply_blur(image_t *image, selection_t *select)
@@ -140,7 +106,6 @@ void apply_blur(image_t *image, selection_t *select)
 		printf("Failed to allocate memory for new image\n");
 		return;
 	}
-	printf("APPLY BLUR done\n");
 }
 
 void apply_gaussian_blur(image_t *image, selection_t *select)
@@ -178,7 +143,6 @@ void apply_gaussian_blur(image_t *image, selection_t *select)
 		printf("Failed to allocate memory for new image\n");
 		return;
 	}
-	printf("APPLY GAUSSIAN_BLUR done\n");
 }
 
 pixel_t apply_kernel(image_t *image,

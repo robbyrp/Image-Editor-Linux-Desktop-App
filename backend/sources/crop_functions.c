@@ -24,97 +24,14 @@ int check_selection(image_t *image, selection_t *select)
 	return 0;
 }
 
-bool has_letters(char *aux)
+void select_all(image_t *image, selection_t *select) 
 {
-	while (*aux) {
-		if (((int)*aux >= 'A' && (int)*aux <= 'Z') ||
-			((int)*aux >= 'a' && (int)*aux <= 'z')) {
-			return true;
-		}
-		aux++;
-	}
-	return false;
-}
-
-void select_region(image_t *image, selection_t *select)
-{
-	if (!image->color_matrix && !image->greyscale_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-	char *aux = strtok(NULL, "\n ");
-	if (!aux) {
-		printf("Invalid command\n");
-		return;
-	}
-
-	// SELECT ALL
-	if (strcmp(aux, "ALL") == 0) {
 		select->all = true;
 		select->x_start = 0;
 		select->y_start = 0;
 		select->x_end = image->cols;
 		select->y_end = image->rows;
-		printf("Selected ALL\n");
 		return;
-	}
-
-	// IF SELECTION IS NOT GOOD, KEEP THE PREVIOUS ONE
-	selection_t temp_select;
-	temp_select.all = false;
-
-	//COORDINATES
-	char *x_start_tok = aux;
-	char *y_start_tok = strtok(NULL, "\n ");
-	if (!y_start_tok) {
-		printf("Invalid command\n");
-		return;
-	}
-	char *x_end_tok = strtok(NULL, "\n ");
-	if (!x_end_tok) {
-		printf("Invalid command\n");
-		return;
-	}
-	char *y_end_tok = strtok(NULL, "\n ");
-	// does not function properly
-	if (has_letters(y_end_tok) || has_letters(x_end_tok) ||
-		has_letters(y_start_tok) || has_letters(x_start_tok)) {
-		printf("Invalid command\n");
-		return;
-	}
-	if (!y_end_tok) {
-		printf("Invalid command\n");
-		return;
-	}
-
-	aux = strtok(NULL, "\n ");
-	if (aux) {
-		// 5th ARGUMENT
-		printf("Invalid command\n");
-		return;
-	}
-
-	// CONVERT TO INTEGERS
-	temp_select.x_start = atoi(x_start_tok);
-	temp_select.y_start = atoi(y_start_tok);
-	temp_select.x_end = atoi(x_end_tok);
-	temp_select.y_end = atoi(y_end_tok);
-
-	// KEEP OLD COORDINATES IF UNVALID
-	if (check_selection(image, &temp_select) == 1) {
-		printf("Invalid set of coordinates\n");
-		return;
-	}
-	// SELECTION IS VALID
-	*select = temp_select;
-	// IF SELECTED COORDS COVER THE ENTIRE IMAGE
-	if (select->x_start == 0 && select->y_start == 0 &&
-		select->y_end == image->rows && select->x_end == image->cols) {
-		select->all = true;
-	}
-	printf("Selected %d %d %d %d\n", select->x_start, select->y_start,
-		   select->x_end, select->y_end);
-
 }
 
 void alloc_cropped_greyscale(image_t *cropped)
@@ -220,6 +137,5 @@ void crop_region(image_t *image, selection_t *select)
 	select->x_end = cropped.cols;
 	select->y_end = cropped.rows;
 	select->all = true;
-	printf("Image cropped\n");
 }
 

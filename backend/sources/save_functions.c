@@ -2,48 +2,7 @@
 
 #include "def.h"
 
-void save(image_t *image)
-{
-	if (!image->color_matrix && !image->greyscale_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-
-	char *new_filename = strtok(NULL, "\n ");
-	if (!new_filename) {
-		printf("Failed to save new file\n");
-		return;
-	}
-
-	// SECOND CALL CHECKS IF TYPE IS ASCII
-	char *new_filename_type = strtok(NULL, "\n ");
-
-	// DEFAULT SAVE IS BINARY
-	if (!new_filename_type) {
-		// CHANGE FORMAT WHEN SAVING FROM ASCII TO BINARY
-		if (strcmp(image->format, "P2") == 0) {
-			strcpy(image->format, "P5");
-		} else if (strcmp(image->format, "P3") == 0) {
-			strcpy(image->format, "P6");
-		}
-		save_binary(image, new_filename);
-
-	} else if (strcmp(new_filename_type, "ascii") == 0) {
-		if (strcmp(image->format, "P5") == 0) {
-			strcpy(image->format, "P2");
-		} else if (strcmp(image->format, "P6") == 0) {
-			strcpy(image->format, "P3");
-		}
-		save_ascii(image, new_filename);
-	}
-	if (!image->color_matrix && !image->greyscale_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-	printf("Saved %s\n", new_filename);
-}
-
-void save_ascii(image_t *image, char *new_filename)
+void save_ascii_gui(image_t *image, const char *new_filename)
 {
 	// OPEN THE FILE
 	FILE *file = fopen(new_filename, "wt");
@@ -77,7 +36,7 @@ void save_ascii(image_t *image, char *new_filename)
 	fclose(file);
 }
 
-void save_binary(image_t *image, char *new_filename)
+void save_binary_gui(image_t *image, const char *new_filename)
 {
 	// OPEN THE FILE
 	FILE *file = fopen(new_filename, "wb");
@@ -120,4 +79,12 @@ void save_binary(image_t *image, char *new_filename)
 	}
 	// CLOSE THE FILE
 	fclose(file);
+}
+
+bool is_binary(image_t *image)
+{
+    if (strcmp(image->format, "P6") == 0 || strcmp(image->format, "P5") == 0) {
+		return true;
+	}
+	return false;
 }

@@ -1,5 +1,29 @@
+# Exclude ImGui example and build files from endfront/imgui
+endfront/imgui/*.o
+endfront/imgui/imgui_demo.cpp
+endfront/imgui/imgui_demo.o
+endfront/imgui/imgui_draw.cpp
+endfront/imgui/imgui_draw.o
+endfront/imgui/imgui_tables.cpp
+endfront/imgui/imgui_tables.o
+endfront/imgui/imgui_widgets.cpp
+endfront/imgui/imgui_widgets.o
+endfront/imgui/imgui.cpp
+endfront/imgui/imgui.o
+endfront/imgui/backends/*.o
+endfront/imgui/backends/imgui_impl_glfw.cpp
+endfront/imgui/backends/imgui_impl_glfw.o
+endfront/imgui/backends/imgui_impl_opengl3.cpp
+endfront/imgui/backends/imgui_impl_opengl3.o
+
 # Compiled binaries
 image_editor
+image_editor_gui
+
+# Checker files
+**/PCLP1-check-tema3-*
+.checker/
+.checker-backup/
 
 # Prerequisites
 *.d
@@ -80,9 +104,3 @@ checker.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Archives (uncomment if you don't want to track zip files)
-# *.zip
-
-# Assignment files (contains homework details)
-*.pdf
