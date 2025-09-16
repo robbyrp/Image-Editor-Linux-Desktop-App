@@ -1,8 +1,0 @@
-APPLY
-LOAD input/dummy
-APPLY
-LOAD input/s.pgm
-APPLY
-LOAD input/s_a.pgm
-APPLY
-EXIT

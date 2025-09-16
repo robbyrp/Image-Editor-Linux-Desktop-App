@@ -16,3 +16,4 @@ editor
 .vscode/
 .DS_Store
 Thumbs.db
+.*
