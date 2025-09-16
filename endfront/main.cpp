@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
-#include "backend/def.h"
+#include "../backend/def.h"
 #include "funcs.h" // Functions for image display
 
 
