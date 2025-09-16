@@ -1,5 +1,5 @@
 #pragma once
-#include "../backend/sources/def.h"
+#include "../backend/def.h"
 
 
 unsigned char* convert_to_display_format(image_t *image);

@@ -1,5 +1,5 @@
 #include "funcs.h"
-#include "../backend/sources/def.h"
+#include "../backend/def.h"
 
 
 // Function to convert image to RGBA for opengl display
