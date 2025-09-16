@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
-#include "../backend/sources/def.h"
+#include "backend/def.h"
 #include "funcs.h" // Functions for image display
 
 
@@ -102,8 +102,8 @@ int main(int, char**)
 
         {
             // Top toolbar
-            static char input_file_path[512] = "../backend/input/";  // Default input path
-            static char output_file_path[512] = "../backend/output/";  // Default output path
+            static char input_file_path[512] = "../backend/";  // Default input path
+            static char output_file_path[512] = "../backend/";  // Default output path
             
 
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20)); // Main menu bar
