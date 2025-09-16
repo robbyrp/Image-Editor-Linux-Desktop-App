@@ -1,0 +1,50 @@
+Loaded input/b.ppm
+Selected 100 100 400 400
+APPLY SHARPEN done
+Selected 600 100 900 400
+APPLY BLUR done
+Selected 150 150 300 300
+APPLY GAUSSIAN_BLUR done
+Saved output/ci_4_1a.ppm
+Saved output/ci_4_1.ppm
+APPLY BLUR done
+APPLY SHARPEN done
+Saved output/ci_4_2.ppm
+Loaded input/b_a.ppm
+Selected 100 100 400 400
+APPLY BLUR done
+Selected 600 100 900 400
+Selected 150 150 300 300
+APPLY GAUSSIAN_BLUR done
+APPLY SHARPEN done
+APPLY BLUR done
+Saved output/ci_4_3a.ppm
+Saved output/ci_4_3.ppm
+Saved output/ci_4_4.ppm
+Loaded output/ci_4_4.ppm
+Selected 0 0 500 500
+Invalid set of coordinates
+APPLY GAUSSIAN_BLUR done
+Selected 500 500 1920 1080
+Invalid set of coordinates
+APPLY BLUR done
+Selected ALL
+Saved output/ci_4_5.ppm
+Failed to load input/dummy
+No image loaded
+No image loaded
+Loaded input/b.pgm
+Easy, Charlie Chaplin
+Selected 0 0 100 100
+Image cropped
+Easy, Charlie Chaplin
+Invalid set of coordinates
+Easy, Charlie Chaplin
+Saved output/ci_4_6.pgm
+Loaded input/b_a.pgm
+Easy, Charlie Chaplin
+Easy, Charlie Chaplin
+Selected 0 0 100 100
+Image cropped
+Invalid set of coordinates
+Saved output/ci_4_7.pgm

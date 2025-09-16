@@ -49,8 +49,8 @@ int main(int, char**)
 
     // Setup scaling
     ImGuiStyle& style = ImGui::GetStyle();
-    style.ScaleAllSizes(main_scale);        // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
-    style.FontScaleDpi = main_scale;        // Set initial font scale. (using io.ConfigDpiScaleFonts=true makes this unnecessary. We leave both here for documentation purpose)
+    style.ScaleAllSizes(main_scale);
+    style.FontScaleDpi = main_scale;
 
     // Setup Platform/Renderer backends
     ImGui_ImplGlfw_InitForOpenGL(window, true);
@@ -63,11 +63,11 @@ int main(int, char**)
     ImVec4 clear_color =  ImVec4(0.9647f, 0.9098f, 0.9686f, 0.7f);
     
     // Button color
-    ImVec4 button_color = ImVec4(0.9647f, 0.9098f, 0.9686f, 0.05f); // roz transparent
+    ImVec4 button_color = ImVec4(0.9647f, 0.9098f, 0.9686f, 0.05f);
     ImGuiStyle& button_style = ImGui::GetStyle();
     button_style.Colors[ImGuiCol_Button] = button_color;
-    button_style.Colors[ImGuiCol_ButtonHovered] = ImVec4(button_color.x, button_color.y, button_color.z, 0.12f); // puțin mai vizibil la hover
-    button_style.Colors[ImGuiCol_ButtonActive] = ImVec4(button_color.x, button_color.y, button_color.z, 0.18f); // puțin mai vizibil la click
+    button_style.Colors[ImGuiCol_ButtonHovered] = ImVec4(button_color.x, button_color.y, button_color.z, 0.12f);
+    button_style.Colors[ImGuiCol_ButtonActive] = ImVec4(button_color.x, button_color.y, button_color.z, 0.18f);
     // Combo button color
     style.Colors[ImGuiCol_FrameBg] = button_color;
     style.Colors[ImGuiCol_FrameBgHovered] = ImVec4(button_color.x, button_color.y, button_color.z, 0.12f);
@@ -86,7 +86,6 @@ int main(int, char**)
     static unsigned char *display_buffer = nullptr;
     static GLuint texture_id = 0;
 
-    // Save the file
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();

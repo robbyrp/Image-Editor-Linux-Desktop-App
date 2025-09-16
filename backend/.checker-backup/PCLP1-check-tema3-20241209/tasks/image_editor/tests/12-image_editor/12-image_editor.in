@@ -1,0 +1,24 @@
+CROP
+LOAD input/s.pgm
+LOAD input/dummy
+CROP
+LOAD input/s.ppm
+SELECT ALL
+CROP
+SELECT 0 0 500 750
+CROP
+SAVE output/i_c_1.pgm
+LOAD input/dummy
+CROP
+LOAD input/s_a.pgm
+LOAD input/dummy
+CROP
+LOAD input/s_a.ppm
+SELECT ALL
+CROP
+SELECT 0 0 500 750
+CROP
+SAVE output/i_c_1a.pgm
+LOAD input/dummy
+CROP
+EXIT

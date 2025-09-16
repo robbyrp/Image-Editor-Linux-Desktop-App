@@ -1,0 +1,37 @@
+LOAD input/s_a.pgm
+SELECT 200 200 400 400
+ROTATE 0
+SAVE output/ss_r0_ab_1.pgm
+SELECT 0 0 199 199
+ROTATE 0
+SAVE output/ss_r0_ab_2.pgm
+SELECT 521 401 600 480
+ROTATE 0
+SAVE output/ss_r0_ab_3.pgm
+LOAD input/s_a.pgm
+SELECT ALL
+ROTATE 0
+SAVE output/ss_r0_ab_4.pgm
+LOAD input/s_a.pgm
+SELECT 0 0 600 480
+ROTATE 0
+SAVE output/ss_r0_ab_5.pgm
+LOAD input/s_a.ppm
+SELECT 200 200 400 400
+ROTATE 0
+SAVE output/ss_r0_ab_1.ppm
+SELECT 0 0 199 199
+ROTATE 0
+SAVE output/ss_r0_ab_2.ppm
+SELECT 521 401 600 480
+ROTATE 0
+SAVE output/ss_r0_ab_3.ppm
+LOAD input/s_a.ppm
+SELECT ALL
+ROTATE 0
+SAVE output/ss_r0_ab_4.ppm
+LOAD input/s_a.ppm
+SELECT 0 0 600 480
+ROTATE 0
+SAVE output/ss_r0_ab_5.ppm
+EXIT

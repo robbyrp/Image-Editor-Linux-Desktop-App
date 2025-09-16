@@ -1,0 +1,36 @@
+Loaded input/s_a.pgm
+Selected 200 200 400 400
+Rotated -270
+Saved output/ss_r-270_ab_1.pgm
+Selected 0 0 199 199
+Rotated -270
+Saved output/ss_r-270_ab_2.pgm
+Selected 521 401 600 480
+Rotated -270
+Saved output/ss_r-270_ab_3.pgm
+Loaded input/s_a.pgm
+Selected ALL
+Rotated -270
+Saved output/ss_r-270_ab_4.pgm
+Loaded input/s_a.pgm
+Selected 0 0 600 480
+Rotated -270
+Saved output/ss_r-270_ab_5.pgm
+Loaded input/s_a.ppm
+Selected 200 200 400 400
+Rotated -270
+Saved output/ss_r-270_ab_1.ppm
+Selected 0 0 199 199
+Rotated -270
+Saved output/ss_r-270_ab_2.ppm
+Selected 521 401 600 480
+Rotated -270
+Saved output/ss_r-270_ab_3.ppm
+Loaded input/s_a.ppm
+Selected ALL
+Rotated -270
+Saved output/ss_r-270_ab_4.ppm
+Loaded input/s_a.ppm
+Selected 0 0 600 480
+Rotated -270
+Saved output/ss_r-270_ab_5.ppm

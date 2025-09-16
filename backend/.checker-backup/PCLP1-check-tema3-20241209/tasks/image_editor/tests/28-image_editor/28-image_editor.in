@@ -1,0 +1,12 @@
+LOAD input/eq.pgm
+EQUALIZE
+SAVE output/s_e_1.pgm
+SELECT 100 200 600 600
+EQUALIZE
+SAVE output/s_e_2.pgm
+LOAD input/eq.pgm
+SELECT 100 200 600 600
+CROP
+EQUALIZE
+SAVE output/s_e_3.pgm
+EXIT

@@ -1,0 +1,2879 @@
+{
+    "00-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_c_aa_1a.pgm",
+                "ref": "ref/ss_c_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_aa_2a.pgm",
+                "ref": "ref/ss_c_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_aa_3a.pgm",
+                "ref": "ref/ss_c_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_aa_1a.ppm",
+                "ref": "ref/ss_c_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_aa_2a.ppm",
+                "ref": "ref/ss_c_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_aa_3a.ppm",
+                "ref": "ref/ss_c_aa_3a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_crop_aa"
+    },
+    "01-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_c_ab_1.pgm",
+                "ref": "ref/ss_c_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_ab_2.pgm",
+                "ref": "ref/ss_c_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_ab_3.pgm",
+                "ref": "ref/ss_c_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_ab_1.ppm",
+                "ref": "ref/ss_c_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_ab_2.ppm",
+                "ref": "ref/ss_c_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_ab_3.ppm",
+                "ref": "ref/ss_c_ab_3.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_crop_ab"
+    },
+    "02-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_c_ba_1a.pgm",
+                "ref": "ref/ss_c_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_ba_2a.pgm",
+                "ref": "ref/ss_c_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_ba_3a.pgm",
+                "ref": "ref/ss_c_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_ba_1a.ppm",
+                "ref": "ref/ss_c_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_ba_2a.ppm",
+                "ref": "ref/ss_c_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_c_ba_3a.ppm",
+                "ref": "ref/ss_c_ba_3a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_crop_ba"
+    },
+    "03-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_c_bb_1.pgm",
+                "ref": "ref/ss_c_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_bb_2.pgm",
+                "ref": "ref/ss_c_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_bb_3.pgm",
+                "ref": "ref/ss_c_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_bb_1.ppm",
+                "ref": "ref/ss_c_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_bb_2.ppm",
+                "ref": "ref/ss_c_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_c_bb_3.ppm",
+                "ref": "ref/ss_c_bb_3.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_crop_bb"
+    },
+    "04-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_g_aa_1a.ppm",
+                "ref": "ref/ss_g_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_aa_2a.ppm",
+                "ref": "ref/ss_g_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_aa_3a.ppm",
+                "ref": "ref/ss_g_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_aa_4a.ppm",
+                "ref": "ref/ss_g_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_aa_5a.ppm",
+                "ref": "ref/ss_g_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_apply_sharpen_aa"
+    },
+    "05-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_g_ab_1.ppm",
+                "ref": "ref/ss_g_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_ab_2.ppm",
+                "ref": "ref/ss_g_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_ab_3.ppm",
+                "ref": "ref/ss_g_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_ab_4.ppm",
+                "ref": "ref/ss_g_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_ab_5.ppm",
+                "ref": "ref/ss_g_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_apply_sharpen_ab"
+    },
+    "06-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_g_ba_1a.ppm",
+                "ref": "ref/ss_g_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_ba_2a.ppm",
+                "ref": "ref/ss_g_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_ba_3a.ppm",
+                "ref": "ref/ss_g_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_ba_4a.ppm",
+                "ref": "ref/ss_g_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_g_ba_5a.ppm",
+                "ref": "ref/ss_g_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_apply_edge_ba"
+    },
+    "07-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_g_bb_1.ppm",
+                "ref": "ref/ss_g_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_bb_2.ppm",
+                "ref": "ref/ss_g_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_bb_3.ppm",
+                "ref": "ref/ss_g_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_bb_4.ppm",
+                "ref": "ref/ss_g_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_g_bb_5.ppm",
+                "ref": "ref/ss_g_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_apply_edge_bb"
+    },
+    "08-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_s_aa_1a.ppm",
+                "ref": "ref/ss_s_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_aa_2a.ppm",
+                "ref": "ref/ss_s_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_aa_3a.ppm",
+                "ref": "ref/ss_s_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_aa_4a.ppm",
+                "ref": "ref/ss_s_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_aa_5a.ppm",
+                "ref": "ref/ss_s_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_apply_blur_aa"
+    },
+    "09-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_s_ab_1.ppm",
+                "ref": "ref/ss_s_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_ab_2.ppm",
+                "ref": "ref/ss_s_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_ab_3.ppm",
+                "ref": "ref/ss_s_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_ab_4.ppm",
+                "ref": "ref/ss_s_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_ab_5.ppm",
+                "ref": "ref/ss_s_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_apply_blur_ab"
+    },
+    "10-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_s_ba_1a.ppm",
+                "ref": "ref/ss_s_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_ba_2a.ppm",
+                "ref": "ref/ss_s_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_ba_3a.ppm",
+                "ref": "ref/ss_s_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_ba_4a.ppm",
+                "ref": "ref/ss_s_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_s_ba_5a.ppm",
+                "ref": "ref/ss_s_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_apply_gaussianblur_ba"
+    },
+    "11-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_s_bb_1.ppm",
+                "ref": "ref/ss_s_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_bb_2.ppm",
+                "ref": "ref/ss_s_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_bb_3.ppm",
+                "ref": "ref/ss_s_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_bb_4.ppm",
+                "ref": "ref/ss_s_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_s_bb_5.ppm",
+                "ref": "ref/ss_s_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_apply_gaussianblur_bb"
+    },
+    "12-image_editor": {
+        "files": [
+            {
+                "output": "output/i_c_1.pgm",
+                "ref": "ref/i_c_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/i_c_1a.pgm",
+                "ref": "ref/i_c_1a.pgm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "invalid_crop"
+    },
+    "13-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_apply"
+    },
+    "14-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_load"
+    },
+    "15-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_equalize"
+    },
+    "16-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_save"
+    },
+    "17-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_select"
+    },
+    "18-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_apply2"
+    },
+    "19-image_editor": {
+        "files": [
+            {
+                "output": "output/c_1_1.ppm",
+                "ref": "ref/c_1_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_2.ppm",
+                "ref": "ref/c_1_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_3.ppm",
+                "ref": "ref/c_1_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_4.ppm",
+                "ref": "ref/c_1_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_4a.ppm",
+                "ref": "ref/c_1_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/c_1_5.pgm",
+                "ref": "ref/c_1_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_6.pgm",
+                "ref": "ref/c_1_6.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_7.pgm",
+                "ref": "ref/c_1_7.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_1_7a.pgm",
+                "ref": "ref/c_1_7a.pgm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "complex_1"
+    },
+    "20-image_editor": {
+        "files": [
+            {
+                "output": "output/c_2_1.ppm",
+                "ref": "ref/c_2_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_2_2.ppm",
+                "ref": "ref/c_2_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_2_2a.ppm",
+                "ref": "ref/c_2_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/c_2_3.ppm",
+                "ref": "ref/c_2_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_2_4.ppm",
+                "ref": "ref/c_2_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_2_5.ppm",
+                "ref": "ref/c_2_5.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_2_5a.ppm",
+                "ref": "ref/c_2_5a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/c_2_6.ppm",
+                "ref": "ref/c_2_6.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "complex_2"
+    },
+    "21-image_editor": {
+        "files": [
+            {
+                "output": "output/c_3_1.ppm",
+                "ref": "ref/c_3_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_2.ppm",
+                "ref": "ref/c_3_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_3.ppm",
+                "ref": "ref/c_3_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_3a.ppm",
+                "ref": "ref/c_3_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/c_3_4.ppm",
+                "ref": "ref/c_3_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_5.ppm",
+                "ref": "ref/c_3_5.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_6.ppm",
+                "ref": "ref/c_3_6.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_3_6a.ppm",
+                "ref": "ref/c_3_6a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "complex_3"
+    },
+    "22-image_editor": {
+        "files": [
+            {
+                "output": "output/ci_1_1.pgm",
+                "ref": "ref/ci_1_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_2.pgm",
+                "ref": "ref/ci_1_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_3.pgm",
+                "ref": "ref/ci_1_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_4.pgm",
+                "ref": "ref/ci_1_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_5.pgm",
+                "ref": "ref/ci_1_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_5a.pgm",
+                "ref": "ref/ci_1_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_1_6.ppm",
+                "ref": "ref/ci_1_6.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_7.ppm",
+                "ref": "ref/ci_1_7.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_8.ppm",
+                "ref": "ref/ci_1_8.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_9.ppm",
+                "ref": "ref/ci_1_9.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_10.ppm",
+                "ref": "ref/ci_1_10.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_11.ppm",
+                "ref": "ref/ci_1_11.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_12.ppm",
+                "ref": "ref/ci_1_12.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_1_12a.ppm",
+                "ref": "ref/ci_1_12a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "complex_invalids_1"
+    },
+    "23-image_editor": {
+        "files": [
+            {
+                "output": "output/ci_2_1.pgm",
+                "ref": "ref/ci_2_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_2_1a.pgm",
+                "ref": "ref/ci_2_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_2_2.pgm",
+                "ref": "ref/ci_2_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_2_2a.pgm",
+                "ref": "ref/ci_2_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_2_3.ppm",
+                "ref": "ref/ci_2_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_2_3a.ppm",
+                "ref": "ref/ci_2_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_2_4.ppm",
+                "ref": "ref/ci_2_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_2_4a.ppm",
+                "ref": "ref/ci_2_4a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "complex_invalids_2"
+    },
+    "24-image_editor": {
+        "files": [
+            {
+                "output": "output/ci_4_1.ppm",
+                "ref": "ref/ci_4_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_1a.ppm",
+                "ref": "ref/ci_4_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_4_2.ppm",
+                "ref": "ref/ci_4_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_3.ppm",
+                "ref": "ref/ci_4_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_3a.ppm",
+                "ref": "ref/ci_4_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_4_4.ppm",
+                "ref": "ref/ci_4_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_5.ppm",
+                "ref": "ref/ci_4_5.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_6.pgm",
+                "ref": "ref/ci_4_6.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_4_7.pgm",
+                "ref": "ref/ci_4_7.pgm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "complex_invalids_4"
+    },
+    "25-image_editor": {
+        "files": [
+            {
+                "output": "output/ci_s_2.ppm",
+                "ref": "ref/ci_s_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_s_3.ppm",
+                "ref": "ref/ci_s_3.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "complex_invalids_supreme"
+    },
+    "26-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_histogram"
+    },
+    "27-image_editor": {
+        "files": [
+            {
+                "output": "output/s_h_1.pgm",
+                "ref": "ref/s_h_1.pgm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_histogram"
+    },
+    "28-image_editor": {
+        "files": [
+            {
+                "output": "output/s_e_1.pgm",
+                "ref": "ref/s_e_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/s_e_2.pgm",
+                "ref": "ref/s_e_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/s_e_3.pgm",
+                "ref": "ref/s_e_3.pgm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_equalize"
+    },
+    "29-image_editor": {
+        "files": [
+            {
+                "output": "output/ch_1.pgm",
+                "ref": "ref/ch_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ch_2.pgm",
+                "ref": "ref/ch_2.pgm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "complex_histogram"
+    },
+    "30-image_editor": {
+        "files": [
+            {
+                "output": "output/c_e_1.pgm",
+                "ref": "ref/c_e_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_e_2.pgm",
+                "ref": "ref/c_e_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_e_3.pgm",
+                "ref": "ref/c_e_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_e_4.pgm",
+                "ref": "ref/c_e_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_e_5.pgm",
+                "ref": "ref/c_e_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/c_e_6.pgm",
+                "ref": "ref/c_e_6.pgm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "complex_equalize"
+    },
+    "31-image_editor": {
+        "files": [],
+        "verbose_name": "invalid_rotate"
+    },
+    "32-image_editor": {
+        "files": [
+            {
+                "output": "output/ci_3_1.pgm",
+                "ref": "ref/ci_3_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_2.pgm",
+                "ref": "ref/ci_3_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_3.pgm",
+                "ref": "ref/ci_3_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_3a.pgm",
+                "ref": "ref/ci_3_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_3_4.pgm",
+                "ref": "ref/ci_3_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_4a.pgm",
+                "ref": "ref/ci_3_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_3_5.pgm",
+                "ref": "ref/ci_3_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_6.pgm",
+                "ref": "ref/ci_3_6.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_7.pgm",
+                "ref": "ref/ci_3_7.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_7a.pgm",
+                "ref": "ref/ci_3_7a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ci_3_8.pgm",
+                "ref": "ref/ci_3_8.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ci_3_8a.pgm",
+                "ref": "ref/ci_3_8a.pgm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "complex_invalids_bonus"
+    },
+    "33-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-90_aa_1a.pgm",
+                "ref": "ref/ss_r-90_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_2a.pgm",
+                "ref": "ref/ss_r-90_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_3a.pgm",
+                "ref": "ref/ss_r-90_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_4a.pgm",
+                "ref": "ref/ss_r-90_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_5a.pgm",
+                "ref": "ref/ss_r-90_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_1a.ppm",
+                "ref": "ref/ss_r-90_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_2a.ppm",
+                "ref": "ref/ss_r-90_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_3a.ppm",
+                "ref": "ref/ss_r-90_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_4a.ppm",
+                "ref": "ref/ss_r-90_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_aa_5a.ppm",
+                "ref": "ref/ss_r-90_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-90_aa"
+    },
+    "34-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-90_ab_1.pgm",
+                "ref": "ref/ss_r-90_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_2.pgm",
+                "ref": "ref/ss_r-90_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_3.pgm",
+                "ref": "ref/ss_r-90_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_4.pgm",
+                "ref": "ref/ss_r-90_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_5.pgm",
+                "ref": "ref/ss_r-90_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_1.ppm",
+                "ref": "ref/ss_r-90_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_2.ppm",
+                "ref": "ref/ss_r-90_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_3.ppm",
+                "ref": "ref/ss_r-90_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_4.ppm",
+                "ref": "ref/ss_r-90_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_ab_5.ppm",
+                "ref": "ref/ss_r-90_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-90_ab"
+    },
+    "35-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-90_ba_1a.pgm",
+                "ref": "ref/ss_r-90_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_2a.pgm",
+                "ref": "ref/ss_r-90_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_3a.pgm",
+                "ref": "ref/ss_r-90_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_4a.pgm",
+                "ref": "ref/ss_r-90_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_5a.pgm",
+                "ref": "ref/ss_r-90_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_1a.ppm",
+                "ref": "ref/ss_r-90_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_2a.ppm",
+                "ref": "ref/ss_r-90_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_3a.ppm",
+                "ref": "ref/ss_r-90_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_4a.ppm",
+                "ref": "ref/ss_r-90_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-90_ba_5a.ppm",
+                "ref": "ref/ss_r-90_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-90_ba"
+    },
+    "36-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-90_bb_1.pgm",
+                "ref": "ref/ss_r-90_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_2.pgm",
+                "ref": "ref/ss_r-90_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_3.pgm",
+                "ref": "ref/ss_r-90_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_4.pgm",
+                "ref": "ref/ss_r-90_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_5.pgm",
+                "ref": "ref/ss_r-90_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_1.ppm",
+                "ref": "ref/ss_r-90_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_2.ppm",
+                "ref": "ref/ss_r-90_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_3.ppm",
+                "ref": "ref/ss_r-90_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_4.ppm",
+                "ref": "ref/ss_r-90_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-90_bb_5.ppm",
+                "ref": "ref/ss_r-90_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-90_bb"
+    },
+    "37-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-180_aa_1a.pgm",
+                "ref": "ref/ss_r-180_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_2a.pgm",
+                "ref": "ref/ss_r-180_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_3a.pgm",
+                "ref": "ref/ss_r-180_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_4a.pgm",
+                "ref": "ref/ss_r-180_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_5a.pgm",
+                "ref": "ref/ss_r-180_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_1a.ppm",
+                "ref": "ref/ss_r-180_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_2a.ppm",
+                "ref": "ref/ss_r-180_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_3a.ppm",
+                "ref": "ref/ss_r-180_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_4a.ppm",
+                "ref": "ref/ss_r-180_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_aa_5a.ppm",
+                "ref": "ref/ss_r-180_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-180_aa"
+    },
+    "38-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-180_ab_1.pgm",
+                "ref": "ref/ss_r-180_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_2.pgm",
+                "ref": "ref/ss_r-180_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_3.pgm",
+                "ref": "ref/ss_r-180_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_4.pgm",
+                "ref": "ref/ss_r-180_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_5.pgm",
+                "ref": "ref/ss_r-180_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_1.ppm",
+                "ref": "ref/ss_r-180_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_2.ppm",
+                "ref": "ref/ss_r-180_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_3.ppm",
+                "ref": "ref/ss_r-180_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_4.ppm",
+                "ref": "ref/ss_r-180_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_ab_5.ppm",
+                "ref": "ref/ss_r-180_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-180_ab"
+    },
+    "39-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-180_ba_1a.pgm",
+                "ref": "ref/ss_r-180_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_2a.pgm",
+                "ref": "ref/ss_r-180_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_3a.pgm",
+                "ref": "ref/ss_r-180_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_4a.pgm",
+                "ref": "ref/ss_r-180_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_5a.pgm",
+                "ref": "ref/ss_r-180_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_1a.ppm",
+                "ref": "ref/ss_r-180_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_2a.ppm",
+                "ref": "ref/ss_r-180_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_3a.ppm",
+                "ref": "ref/ss_r-180_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_4a.ppm",
+                "ref": "ref/ss_r-180_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-180_ba_5a.ppm",
+                "ref": "ref/ss_r-180_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-180_ba"
+    },
+    "40-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-180_bb_1.pgm",
+                "ref": "ref/ss_r-180_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_2.pgm",
+                "ref": "ref/ss_r-180_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_3.pgm",
+                "ref": "ref/ss_r-180_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_4.pgm",
+                "ref": "ref/ss_r-180_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_5.pgm",
+                "ref": "ref/ss_r-180_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_1.ppm",
+                "ref": "ref/ss_r-180_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_2.ppm",
+                "ref": "ref/ss_r-180_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_3.ppm",
+                "ref": "ref/ss_r-180_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_4.ppm",
+                "ref": "ref/ss_r-180_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-180_bb_5.ppm",
+                "ref": "ref/ss_r-180_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-180_bb"
+    },
+    "41-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-270_aa_1a.pgm",
+                "ref": "ref/ss_r-270_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_2a.pgm",
+                "ref": "ref/ss_r-270_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_3a.pgm",
+                "ref": "ref/ss_r-270_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_4a.pgm",
+                "ref": "ref/ss_r-270_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_5a.pgm",
+                "ref": "ref/ss_r-270_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_1a.ppm",
+                "ref": "ref/ss_r-270_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_2a.ppm",
+                "ref": "ref/ss_r-270_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_3a.ppm",
+                "ref": "ref/ss_r-270_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_4a.ppm",
+                "ref": "ref/ss_r-270_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_aa_5a.ppm",
+                "ref": "ref/ss_r-270_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-270_aa"
+    },
+    "42-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-270_ab_1.pgm",
+                "ref": "ref/ss_r-270_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_2.pgm",
+                "ref": "ref/ss_r-270_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_3.pgm",
+                "ref": "ref/ss_r-270_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_4.pgm",
+                "ref": "ref/ss_r-270_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_5.pgm",
+                "ref": "ref/ss_r-270_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_1.ppm",
+                "ref": "ref/ss_r-270_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_2.ppm",
+                "ref": "ref/ss_r-270_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_3.ppm",
+                "ref": "ref/ss_r-270_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_4.ppm",
+                "ref": "ref/ss_r-270_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_ab_5.ppm",
+                "ref": "ref/ss_r-270_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-270_ab"
+    },
+    "43-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-270_ba_1a.pgm",
+                "ref": "ref/ss_r-270_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_2a.pgm",
+                "ref": "ref/ss_r-270_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_3a.pgm",
+                "ref": "ref/ss_r-270_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_4a.pgm",
+                "ref": "ref/ss_r-270_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_5a.pgm",
+                "ref": "ref/ss_r-270_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_1a.ppm",
+                "ref": "ref/ss_r-270_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_2a.ppm",
+                "ref": "ref/ss_r-270_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_3a.ppm",
+                "ref": "ref/ss_r-270_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_4a.ppm",
+                "ref": "ref/ss_r-270_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-270_ba_5a.ppm",
+                "ref": "ref/ss_r-270_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-270_ba"
+    },
+    "44-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-270_bb_1.pgm",
+                "ref": "ref/ss_r-270_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_2.pgm",
+                "ref": "ref/ss_r-270_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_3.pgm",
+                "ref": "ref/ss_r-270_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_4.pgm",
+                "ref": "ref/ss_r-270_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_5.pgm",
+                "ref": "ref/ss_r-270_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_1.ppm",
+                "ref": "ref/ss_r-270_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_2.ppm",
+                "ref": "ref/ss_r-270_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_3.ppm",
+                "ref": "ref/ss_r-270_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_4.ppm",
+                "ref": "ref/ss_r-270_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-270_bb_5.ppm",
+                "ref": "ref/ss_r-270_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-270_bb"
+    },
+    "45-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-360_aa_1a.pgm",
+                "ref": "ref/ss_r-360_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_2a.pgm",
+                "ref": "ref/ss_r-360_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_3a.pgm",
+                "ref": "ref/ss_r-360_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_4a.pgm",
+                "ref": "ref/ss_r-360_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_5a.pgm",
+                "ref": "ref/ss_r-360_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_1a.ppm",
+                "ref": "ref/ss_r-360_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_2a.ppm",
+                "ref": "ref/ss_r-360_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_3a.ppm",
+                "ref": "ref/ss_r-360_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_4a.ppm",
+                "ref": "ref/ss_r-360_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_aa_5a.ppm",
+                "ref": "ref/ss_r-360_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-360_aa"
+    },
+    "46-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-360_ab_1.pgm",
+                "ref": "ref/ss_r-360_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_2.pgm",
+                "ref": "ref/ss_r-360_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_3.pgm",
+                "ref": "ref/ss_r-360_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_4.pgm",
+                "ref": "ref/ss_r-360_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_5.pgm",
+                "ref": "ref/ss_r-360_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_1.ppm",
+                "ref": "ref/ss_r-360_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_2.ppm",
+                "ref": "ref/ss_r-360_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_3.ppm",
+                "ref": "ref/ss_r-360_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_4.ppm",
+                "ref": "ref/ss_r-360_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_ab_5.ppm",
+                "ref": "ref/ss_r-360_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-360_ab"
+    },
+    "47-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-360_ba_1a.pgm",
+                "ref": "ref/ss_r-360_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_2a.pgm",
+                "ref": "ref/ss_r-360_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_3a.pgm",
+                "ref": "ref/ss_r-360_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_4a.pgm",
+                "ref": "ref/ss_r-360_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_5a.pgm",
+                "ref": "ref/ss_r-360_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_1a.ppm",
+                "ref": "ref/ss_r-360_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_2a.ppm",
+                "ref": "ref/ss_r-360_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_3a.ppm",
+                "ref": "ref/ss_r-360_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_4a.ppm",
+                "ref": "ref/ss_r-360_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r-360_ba_5a.ppm",
+                "ref": "ref/ss_r-360_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-360_ba"
+    },
+    "48-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r-360_bb_1.pgm",
+                "ref": "ref/ss_r-360_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_2.pgm",
+                "ref": "ref/ss_r-360_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_3.pgm",
+                "ref": "ref/ss_r-360_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_4.pgm",
+                "ref": "ref/ss_r-360_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_5.pgm",
+                "ref": "ref/ss_r-360_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_1.ppm",
+                "ref": "ref/ss_r-360_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_2.ppm",
+                "ref": "ref/ss_r-360_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_3.ppm",
+                "ref": "ref/ss_r-360_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_4.ppm",
+                "ref": "ref/ss_r-360_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r-360_bb_5.ppm",
+                "ref": "ref/ss_r-360_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate-360_bb"
+    },
+    "49-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r0_aa_1a.pgm",
+                "ref": "ref/ss_r0_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_2a.pgm",
+                "ref": "ref/ss_r0_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_3a.pgm",
+                "ref": "ref/ss_r0_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_4a.pgm",
+                "ref": "ref/ss_r0_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_5a.pgm",
+                "ref": "ref/ss_r0_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_1a.ppm",
+                "ref": "ref/ss_r0_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_2a.ppm",
+                "ref": "ref/ss_r0_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_3a.ppm",
+                "ref": "ref/ss_r0_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_4a.ppm",
+                "ref": "ref/ss_r0_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_aa_5a.ppm",
+                "ref": "ref/ss_r0_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate0_aa"
+    },
+    "50-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r0_ab_1.pgm",
+                "ref": "ref/ss_r0_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_2.pgm",
+                "ref": "ref/ss_r0_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_3.pgm",
+                "ref": "ref/ss_r0_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_4.pgm",
+                "ref": "ref/ss_r0_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_5.pgm",
+                "ref": "ref/ss_r0_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_1.ppm",
+                "ref": "ref/ss_r0_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_2.ppm",
+                "ref": "ref/ss_r0_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_3.ppm",
+                "ref": "ref/ss_r0_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_4.ppm",
+                "ref": "ref/ss_r0_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_ab_5.ppm",
+                "ref": "ref/ss_r0_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate0_ab"
+    },
+    "51-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r0_ba_1a.pgm",
+                "ref": "ref/ss_r0_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_2a.pgm",
+                "ref": "ref/ss_r0_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_3a.pgm",
+                "ref": "ref/ss_r0_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_4a.pgm",
+                "ref": "ref/ss_r0_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_5a.pgm",
+                "ref": "ref/ss_r0_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_1a.ppm",
+                "ref": "ref/ss_r0_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_2a.ppm",
+                "ref": "ref/ss_r0_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_3a.ppm",
+                "ref": "ref/ss_r0_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_4a.ppm",
+                "ref": "ref/ss_r0_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r0_ba_5a.ppm",
+                "ref": "ref/ss_r0_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate0_ba"
+    },
+    "52-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r0_bb_1.pgm",
+                "ref": "ref/ss_r0_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_2.pgm",
+                "ref": "ref/ss_r0_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_3.pgm",
+                "ref": "ref/ss_r0_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_4.pgm",
+                "ref": "ref/ss_r0_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_5.pgm",
+                "ref": "ref/ss_r0_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_1.ppm",
+                "ref": "ref/ss_r0_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_2.ppm",
+                "ref": "ref/ss_r0_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_3.ppm",
+                "ref": "ref/ss_r0_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_4.ppm",
+                "ref": "ref/ss_r0_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r0_bb_5.ppm",
+                "ref": "ref/ss_r0_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate0_bb"
+    },
+    "53-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r90_aa_1a.pgm",
+                "ref": "ref/ss_r90_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_2a.pgm",
+                "ref": "ref/ss_r90_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_3a.pgm",
+                "ref": "ref/ss_r90_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_4a.pgm",
+                "ref": "ref/ss_r90_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_5a.pgm",
+                "ref": "ref/ss_r90_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_1a.ppm",
+                "ref": "ref/ss_r90_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_2a.ppm",
+                "ref": "ref/ss_r90_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_3a.ppm",
+                "ref": "ref/ss_r90_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_4a.ppm",
+                "ref": "ref/ss_r90_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_aa_5a.ppm",
+                "ref": "ref/ss_r90_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate90_aa"
+    },
+    "54-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r90_ab_1.pgm",
+                "ref": "ref/ss_r90_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_2.pgm",
+                "ref": "ref/ss_r90_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_3.pgm",
+                "ref": "ref/ss_r90_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_4.pgm",
+                "ref": "ref/ss_r90_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_5.pgm",
+                "ref": "ref/ss_r90_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_1.ppm",
+                "ref": "ref/ss_r90_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_2.ppm",
+                "ref": "ref/ss_r90_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_3.ppm",
+                "ref": "ref/ss_r90_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_4.ppm",
+                "ref": "ref/ss_r90_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_ab_5.ppm",
+                "ref": "ref/ss_r90_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate90_ab"
+    },
+    "55-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r90_ba_1a.pgm",
+                "ref": "ref/ss_r90_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_2a.pgm",
+                "ref": "ref/ss_r90_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_3a.pgm",
+                "ref": "ref/ss_r90_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_4a.pgm",
+                "ref": "ref/ss_r90_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_5a.pgm",
+                "ref": "ref/ss_r90_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_1a.ppm",
+                "ref": "ref/ss_r90_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_2a.ppm",
+                "ref": "ref/ss_r90_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_3a.ppm",
+                "ref": "ref/ss_r90_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_4a.ppm",
+                "ref": "ref/ss_r90_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r90_ba_5a.ppm",
+                "ref": "ref/ss_r90_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate90_ba"
+    },
+    "56-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r90_bb_1.pgm",
+                "ref": "ref/ss_r90_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_2.pgm",
+                "ref": "ref/ss_r90_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_3.pgm",
+                "ref": "ref/ss_r90_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_4.pgm",
+                "ref": "ref/ss_r90_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_5.pgm",
+                "ref": "ref/ss_r90_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_1.ppm",
+                "ref": "ref/ss_r90_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_2.ppm",
+                "ref": "ref/ss_r90_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_3.ppm",
+                "ref": "ref/ss_r90_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_4.ppm",
+                "ref": "ref/ss_r90_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r90_bb_5.ppm",
+                "ref": "ref/ss_r90_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate90_bb"
+    },
+    "57-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r180_aa_1a.pgm",
+                "ref": "ref/ss_r180_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_2a.pgm",
+                "ref": "ref/ss_r180_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_3a.pgm",
+                "ref": "ref/ss_r180_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_4a.pgm",
+                "ref": "ref/ss_r180_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_5a.pgm",
+                "ref": "ref/ss_r180_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_1a.ppm",
+                "ref": "ref/ss_r180_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_2a.ppm",
+                "ref": "ref/ss_r180_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_3a.ppm",
+                "ref": "ref/ss_r180_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_4a.ppm",
+                "ref": "ref/ss_r180_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_aa_5a.ppm",
+                "ref": "ref/ss_r180_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate180_aa"
+    },
+    "58-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r180_ab_1.pgm",
+                "ref": "ref/ss_r180_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_2.pgm",
+                "ref": "ref/ss_r180_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_3.pgm",
+                "ref": "ref/ss_r180_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_4.pgm",
+                "ref": "ref/ss_r180_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_5.pgm",
+                "ref": "ref/ss_r180_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_1.ppm",
+                "ref": "ref/ss_r180_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_2.ppm",
+                "ref": "ref/ss_r180_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_3.ppm",
+                "ref": "ref/ss_r180_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_4.ppm",
+                "ref": "ref/ss_r180_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_ab_5.ppm",
+                "ref": "ref/ss_r180_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate180_ab"
+    },
+    "59-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r180_ba_1a.pgm",
+                "ref": "ref/ss_r180_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_2a.pgm",
+                "ref": "ref/ss_r180_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_3a.pgm",
+                "ref": "ref/ss_r180_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_4a.pgm",
+                "ref": "ref/ss_r180_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_5a.pgm",
+                "ref": "ref/ss_r180_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_1a.ppm",
+                "ref": "ref/ss_r180_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_2a.ppm",
+                "ref": "ref/ss_r180_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_3a.ppm",
+                "ref": "ref/ss_r180_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_4a.ppm",
+                "ref": "ref/ss_r180_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r180_ba_5a.ppm",
+                "ref": "ref/ss_r180_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate180_ba"
+    },
+    "60-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r180_bb_1.pgm",
+                "ref": "ref/ss_r180_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_2.pgm",
+                "ref": "ref/ss_r180_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_3.pgm",
+                "ref": "ref/ss_r180_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_4.pgm",
+                "ref": "ref/ss_r180_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_5.pgm",
+                "ref": "ref/ss_r180_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_1.ppm",
+                "ref": "ref/ss_r180_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_2.ppm",
+                "ref": "ref/ss_r180_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_3.ppm",
+                "ref": "ref/ss_r180_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_4.ppm",
+                "ref": "ref/ss_r180_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r180_bb_5.ppm",
+                "ref": "ref/ss_r180_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate180_bb"
+    },
+    "61-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r270_aa_1a.pgm",
+                "ref": "ref/ss_r270_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_2a.pgm",
+                "ref": "ref/ss_r270_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_3a.pgm",
+                "ref": "ref/ss_r270_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_4a.pgm",
+                "ref": "ref/ss_r270_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_5a.pgm",
+                "ref": "ref/ss_r270_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_1a.ppm",
+                "ref": "ref/ss_r270_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_2a.ppm",
+                "ref": "ref/ss_r270_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_3a.ppm",
+                "ref": "ref/ss_r270_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_4a.ppm",
+                "ref": "ref/ss_r270_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_aa_5a.ppm",
+                "ref": "ref/ss_r270_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate270_aa"
+    },
+    "62-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r270_ab_1.pgm",
+                "ref": "ref/ss_r270_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_2.pgm",
+                "ref": "ref/ss_r270_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_3.pgm",
+                "ref": "ref/ss_r270_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_4.pgm",
+                "ref": "ref/ss_r270_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_5.pgm",
+                "ref": "ref/ss_r270_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_1.ppm",
+                "ref": "ref/ss_r270_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_2.ppm",
+                "ref": "ref/ss_r270_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_3.ppm",
+                "ref": "ref/ss_r270_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_4.ppm",
+                "ref": "ref/ss_r270_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_ab_5.ppm",
+                "ref": "ref/ss_r270_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate270_ab"
+    },
+    "63-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r270_ba_1a.pgm",
+                "ref": "ref/ss_r270_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_2a.pgm",
+                "ref": "ref/ss_r270_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_3a.pgm",
+                "ref": "ref/ss_r270_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_4a.pgm",
+                "ref": "ref/ss_r270_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_5a.pgm",
+                "ref": "ref/ss_r270_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_1a.ppm",
+                "ref": "ref/ss_r270_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_2a.ppm",
+                "ref": "ref/ss_r270_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_3a.ppm",
+                "ref": "ref/ss_r270_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_4a.ppm",
+                "ref": "ref/ss_r270_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r270_ba_5a.ppm",
+                "ref": "ref/ss_r270_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate270_ba"
+    },
+    "64-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r270_bb_1.pgm",
+                "ref": "ref/ss_r270_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_2.pgm",
+                "ref": "ref/ss_r270_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_3.pgm",
+                "ref": "ref/ss_r270_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_4.pgm",
+                "ref": "ref/ss_r270_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_5.pgm",
+                "ref": "ref/ss_r270_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_1.ppm",
+                "ref": "ref/ss_r270_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_2.ppm",
+                "ref": "ref/ss_r270_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_3.ppm",
+                "ref": "ref/ss_r270_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_4.ppm",
+                "ref": "ref/ss_r270_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r270_bb_5.ppm",
+                "ref": "ref/ss_r270_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate270_bb"
+    },
+    "65-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r360_aa_1a.pgm",
+                "ref": "ref/ss_r360_aa_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_2a.pgm",
+                "ref": "ref/ss_r360_aa_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_3a.pgm",
+                "ref": "ref/ss_r360_aa_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_4a.pgm",
+                "ref": "ref/ss_r360_aa_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_5a.pgm",
+                "ref": "ref/ss_r360_aa_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_1a.ppm",
+                "ref": "ref/ss_r360_aa_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_2a.ppm",
+                "ref": "ref/ss_r360_aa_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_3a.ppm",
+                "ref": "ref/ss_r360_aa_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_4a.ppm",
+                "ref": "ref/ss_r360_aa_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_aa_5a.ppm",
+                "ref": "ref/ss_r360_aa_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate360_aa"
+    },
+    "66-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r360_ab_1.pgm",
+                "ref": "ref/ss_r360_ab_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_2.pgm",
+                "ref": "ref/ss_r360_ab_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_3.pgm",
+                "ref": "ref/ss_r360_ab_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_4.pgm",
+                "ref": "ref/ss_r360_ab_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_5.pgm",
+                "ref": "ref/ss_r360_ab_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_1.ppm",
+                "ref": "ref/ss_r360_ab_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_2.ppm",
+                "ref": "ref/ss_r360_ab_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_3.ppm",
+                "ref": "ref/ss_r360_ab_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_4.ppm",
+                "ref": "ref/ss_r360_ab_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_ab_5.ppm",
+                "ref": "ref/ss_r360_ab_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate360_ab"
+    },
+    "67-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r360_ba_1a.pgm",
+                "ref": "ref/ss_r360_ba_1a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_2a.pgm",
+                "ref": "ref/ss_r360_ba_2a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_3a.pgm",
+                "ref": "ref/ss_r360_ba_3a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_4a.pgm",
+                "ref": "ref/ss_r360_ba_4a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_5a.pgm",
+                "ref": "ref/ss_r360_ba_5a.pgm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_1a.ppm",
+                "ref": "ref/ss_r360_ba_1a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_2a.ppm",
+                "ref": "ref/ss_r360_ba_2a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_3a.ppm",
+                "ref": "ref/ss_r360_ba_3a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_4a.ppm",
+                "ref": "ref/ss_r360_ba_4a.ppm",
+                "type": "ascii"
+            },
+            {
+                "output": "output/ss_r360_ba_5a.ppm",
+                "ref": "ref/ss_r360_ba_5a.ppm",
+                "type": "ascii"
+            }
+        ],
+        "verbose_name": "simple_select_rotate360_ba"
+    },
+    "68-image_editor": {
+        "files": [
+            {
+                "output": "output/ss_r360_bb_1.pgm",
+                "ref": "ref/ss_r360_bb_1.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_2.pgm",
+                "ref": "ref/ss_r360_bb_2.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_3.pgm",
+                "ref": "ref/ss_r360_bb_3.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_4.pgm",
+                "ref": "ref/ss_r360_bb_4.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_5.pgm",
+                "ref": "ref/ss_r360_bb_5.pgm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_1.ppm",
+                "ref": "ref/ss_r360_bb_1.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_2.ppm",
+                "ref": "ref/ss_r360_bb_2.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_3.ppm",
+                "ref": "ref/ss_r360_bb_3.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_4.ppm",
+                "ref": "ref/ss_r360_bb_4.ppm",
+                "type": "binary"
+            },
+            {
+                "output": "output/ss_r360_bb_5.ppm",
+                "ref": "ref/ss_r360_bb_5.ppm",
+                "type": "binary"
+            }
+        ],
+        "verbose_name": "simple_select_rotate360_bb"
+    }
+}

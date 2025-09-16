@@ -1,0 +1,58 @@
+diff --git a/cs/checkpatch.pl b/cs/checkpatch.pl
+index 6a1a739..968a9f9 100755
+--- a/cs/checkpatch.pl
++++ b/cs/checkpatch.pl
+@@ -58,6 +58,7 @@ my @ignore = ();
+ my $help = 0;
+ my $configuration_file = ".checkpatch.conf";
+ my $max_line_length = 80;
++my $max_function_length = 80;
+ my $ignore_perl_version = 0;
+ my $minimum_perl_version = 5.10.0;
+ my $min_conf_desc_length = 4;
+@@ -2676,6 +2677,7 @@ sub process {
+ 	my $realcnt = 0;
+ 	my $here = '';
+ 	my $context_function;		#undef'd unless there's a known function
++	my $context_function_linenum;
+ 	my $in_comment = 0;
+ 	my $comment_edge = 0;
+ 	my $first_line = 0;
+@@ -2823,8 +2825,10 @@ sub process {
+ 			$suppress_statement = 0;
+ 			if ($context =~ /\b(\w+)\s*\(/) {
+ 				$context_function = $1;
++				$context_function_linenum = $realline;
+ 			} else {
+ 				undef $context_function;
++				undef $context_function_linenum;
+ 			}
+ 			next;
+ 
+@@ -4164,11 +4168,18 @@ sub process {
+ 		if ($sline =~ /^\+\{\s*$/ &&
+ 		    $prevline =~ /^\+(?:(?:(?:$Storage|$Inline)\s*)*\s*$Type\s*)?($Ident)\(/) {
+ 			$context_function = $1;
++			$context_function_linenum = $realline;
+ 		}
+ 
+ # check if this appears to be the end of function declaration
+ 		if ($sline =~ /^\+\}\s*$/) {
++			if (defined($context_function_linenum) &&
++				($realline - $context_function_linenum) > $max_function_length) {
++					WARN("LONG_FUNCTION",
++						"'$context_function' function definition is " . ($realline - $context_function_linenum) . " lines, perhaps refactor\n" . $herecurr);
++			}
+ 			undef $context_function;
++			undef $context_function_linenum;
+ 		}
+ 
+ # check indentation of any line with a bare else
+@@ -7190,6 +7201,7 @@ sub process {
+ 		    defined $stat &&
+ 		    $stat =~ /^.\s*(?:$Storage\s+)?$Type\s*($Ident)\s*$balanced_parens\s*{/s) {
+ 			$context_function = $1;
++			$context_function_linenum = $realline;
+ 
+ # check for multiline function definition with misplaced open brace
+ 			my $ok = 0;

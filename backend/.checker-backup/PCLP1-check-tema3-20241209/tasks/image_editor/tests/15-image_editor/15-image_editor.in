@@ -1,0 +1,14 @@
+EQUALIZE
+LOAD dummy
+EQUALIZE
+SAVE dummy
+EQUALIZE
+LOAD input/s.ppm
+EQUALIZE
+LOAD input/s.pgm
+LOAD input/s.ppm
+EQUALIZE
+EQUALIZE
+LOAD input/s.pgm
+EQUALIZE
+EXIT

@@ -1,0 +1,37 @@
+LOAD input/s_a.pgm
+SELECT 200 200 400 400
+ROTATE 270
+SAVE output/ss_r270_aa_1a.pgm ascii
+SELECT 0 0 199 199
+ROTATE 270
+SAVE output/ss_r270_aa_2a.pgm ascii
+SELECT 521 401 600 480
+ROTATE 270
+SAVE output/ss_r270_aa_3a.pgm ascii
+LOAD input/s_a.pgm
+SELECT ALL
+ROTATE 270
+SAVE output/ss_r270_aa_4a.pgm ascii
+LOAD input/s_a.pgm
+SELECT 0 0 600 480
+ROTATE 270
+SAVE output/ss_r270_aa_5a.pgm ascii
+LOAD input/s_a.ppm
+SELECT 200 200 400 400
+ROTATE 270
+SAVE output/ss_r270_aa_1a.ppm ascii
+SELECT 0 0 199 199
+ROTATE 270
+SAVE output/ss_r270_aa_2a.ppm ascii
+SELECT 521 401 600 480
+ROTATE 270
+SAVE output/ss_r270_aa_3a.ppm ascii
+LOAD input/s_a.ppm
+SELECT ALL
+ROTATE 270
+SAVE output/ss_r270_aa_4a.ppm ascii
+LOAD input/s_a.ppm
+SELECT 0 0 600 480
+ROTATE 270
+SAVE output/ss_r270_aa_5a.ppm ascii
+EXIT

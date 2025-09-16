@@ -1,0 +1,29 @@
+LOAD input/eq.pgm
+EQUALIZE
+SAVE output/c_e_1.pgm
+SELECT 100 200 600 600
+CROP
+EQUALIZE
+SAVE output/c_e_2.pgm
+LOAD input/eq.pgm
+SELECT 100 200 600 600
+APPLY BLUR
+CROP
+EQUALIZE
+SAVE output/c_e_3.pgm
+LOAD input/eq.pgm
+APPLY BLUR
+EQUALIZE
+SAVE output/c_e_4.pgm
+SELECT 50 50 600 600
+EQUALIZE
+CROP
+SAVE output/c_e_5.pgm
+LOAD input/eq.pgm
+SELECT 1 1 1023 682
+APPLY GAUSSIAN_BLUR
+SELECT 100 100 600 600
+CROP
+EQUALIZE
+SAVE output/c_e_6.pgm
+EXIT

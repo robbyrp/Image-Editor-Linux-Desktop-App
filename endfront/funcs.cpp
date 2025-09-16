@@ -26,7 +26,7 @@ unsigned char* convert_to_display_format(image_t *image)
                 rgba_data[idx + 0] = gray;  // R
                 rgba_data[idx + 1] = gray;  // G
                 rgba_data[idx + 2] = gray;  // B
-                rgba_data[idx + 3] = 255;   // A (alpha)
+                rgba_data[idx + 3] = 255;   // Alpha
             }
         }
     } else if (strcmp(image->format, "P3") == 0 || strcmp(image->format, "P6") == 0) {
@@ -48,15 +48,15 @@ unsigned char* convert_to_display_format(image_t *image)
 void display_image(image_t *image, bool *conversion_needed, unsigned char **display_buffer)
 {
      if (image->loaded && *conversion_needed) {
-                    if (*display_buffer) {
-                        free(*display_buffer);
-                        *display_buffer = nullptr;
-                    }
-                    *display_buffer = convert_to_display_format(image);
-                    if (*display_buffer) {
-                        *conversion_needed = false;
-                    } else {
-                        printf("Image conversion failed\n");
-                    }
-                }
+        if (*display_buffer) {
+            free(*display_buffer);
+            *display_buffer = nullptr;
+        }
+        *display_buffer = convert_to_display_format(image);
+        if (*display_buffer) {
+            *conversion_needed = false;
+        } else {
+            printf("Image conversion failed\n");
+        }
+    }
 }

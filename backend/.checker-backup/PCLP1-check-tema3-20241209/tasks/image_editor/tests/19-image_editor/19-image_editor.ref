@@ -1,0 +1,44 @@
+Loaded input/b.ppm
+Selected 0 0 100 100
+Black and white image needed
+Selected 50 50 150 150
+Black and white image needed
+Selected 0 0 1000 1000
+Image cropped
+Selected ALL
+Black and white image needed
+Image cropped
+Saved output/c_1_1.ppm
+Black and white image needed
+Saved output/c_1_2.ppm
+Loaded output/c_1_2.ppm
+Black and white image needed
+Selected 0 0 1 1
+Black and white image needed
+Saved output/c_1_3.ppm
+Selected 200 200 1000 1000
+Image cropped
+Selected 0 0 800 800
+Image cropped
+Saved output/c_1_4a.ppm
+Saved output/c_1_4.ppm
+Loaded input/b.pgm
+Selected 0 0 100 100
+Equalize done
+Selected 50 50 150 150
+Equalize done
+Selected 0 0 1000 1000
+Image cropped
+Selected ALL
+Equalize done
+Image cropped
+Saved output/c_1_5.pgm
+Equalize done
+Saved output/c_1_6.pgm
+Loaded output/c_1_6.pgm
+Selected 200 200 1000 1000
+Image cropped
+Selected 0 0 800 800
+Image cropped
+Saved output/c_1_7a.pgm
+Saved output/c_1_7.pgm

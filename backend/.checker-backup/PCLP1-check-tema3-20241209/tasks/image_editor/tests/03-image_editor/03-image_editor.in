@@ -1,0 +1,35 @@
+LOAD input/s.pgm
+SELECT 50 100 150 300
+CROP
+SAVE output/ss_c_bb_1.pgm
+LOAD input/s.pgm
+SELECT 0 0 272 271
+CROP
+SAVE output/ss_c_bb_2.pgm
+LOAD input/s.pgm
+SELECT 300 300 600 480
+CROP
+CROP
+SELECT ALL
+CROP
+SELECT 0 0 300 180
+CROP
+SAVE output/ss_c_bb_3.pgm
+LOAD input/s.ppm
+SELECT 50 100 150 300
+CROP
+SAVE output/ss_c_bb_1.ppm
+LOAD input/s.ppm
+SELECT 0 0 272 271
+CROP
+SAVE output/ss_c_bb_2.ppm
+LOAD input/s.ppm
+SELECT 300 300 600 480
+CROP
+CROP
+SELECT ALL
+CROP
+SELECT 0 0 300 180
+CROP
+SAVE output/ss_c_bb_3.ppm
+EXIT

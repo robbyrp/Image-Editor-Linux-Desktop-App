@@ -1,1 +1,0 @@
-# Necessary utilitaries : zenity/kdialog

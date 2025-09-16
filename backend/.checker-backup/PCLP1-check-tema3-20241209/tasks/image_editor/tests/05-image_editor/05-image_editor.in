@@ -1,0 +1,19 @@
+LOAD input/s_a.ppm
+SELECT 50 100 150 300
+APPLY SHARPEN
+SAVE output/ss_g_ab_1.ppm
+SELECT 0 0 49 99
+A SHARPEN
+SAVE output/ss_g_ab_2.ppm
+SELECT 151 301 600 480
+APPLY SHARPEN
+SAVE output/ss_g_ab_3.ppm
+LOAD input/s_a.ppm
+SELECT ALL
+APPLY SHARPEN
+SAVE output/ss_g_ab_4.ppm
+LOAD input/s_a.ppm
+SELECT 0 0 600 480
+APPLY SHARPEN
+SAVE output/ss_g_ab_5.ppm
+EXIT

@@ -1,0 +1,63 @@
+#!/usr/bin/python3
+# Copyright 2020 Darius Neatu (neatudarius@gmail.com)
+
+import inspect
+import os
+import subprocess
+
+import pathlib
+import sys
+
+current_dir = os.path.dirname(os.path.abspath(
+    inspect.getfile(inspect.currentframe())))
+root_dir = pathlib.Path(current_dir).parent.parent
+sys.path.insert(0, str(root_dir))
+
+from check_utils.grader import Grader
+
+
+def cmp_img(test_id):
+    cmd = './image_check tests.json {}'.format(test_id)
+    child = subprocess.run(cmd, shell=True,
+                           stdin=subprocess.DEVNULL,
+                           stdout=subprocess.DEVNULL,
+                           stderr=subprocess.PIPE,
+                           )
+
+    return child.returncode == 0
+
+
+class ImageEditorGrader(Grader):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def grade_test(self):
+        _, out, ref = self.read()
+
+        err = []
+        cmd = 'diff -w -B {} {} 2>&1 1>/dev/null'.format(self.ref_path, self.output_path)
+        child = subprocess.run(cmd, shell=True,
+                               stdin=subprocess.DEVNULL,
+                               stdout=subprocess.DEVNULL,
+                               stderr=subprocess.DEVNULL,
+                               )
+        if child.returncode != 0:
+            err = 'ref != out (run: diff -w -y image_editor.ref image_editor.out)'
+            self.exit(code=(0 if self.grade > 0 else -1),
+                      err=(err if len(err) > 0 else None))
+
+        if not cmp_img(self.env_path):
+            err = 'image_editor.ref == image_editor.out, but WA generated image files'
+            self.exit(code=(0 if self.grade > 0 else -1),
+                      err=(err if len(err) > 0 else None))
+
+        # automatically exists with 0 and write grade if get here
+        # nothing to do here
+        self.grade = self.max_points
+        self.exit(code=(0 if self.grade > 0 else -1),
+                  err=(err if len(err) > 0 else None))
+
+
+if __name__ == '__main__':
+    assert len(sys.argv) == 6, sys.argv
+    ImageEditorGrader(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5]).run()

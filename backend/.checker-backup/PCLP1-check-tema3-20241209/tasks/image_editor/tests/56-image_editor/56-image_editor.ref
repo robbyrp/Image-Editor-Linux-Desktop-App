@@ -1,0 +1,36 @@
+Loaded input/s.pgm
+Selected 200 200 400 400
+Rotated 90
+Saved output/ss_r90_bb_1.pgm
+Selected 0 0 199 199
+Rotated 90
+Saved output/ss_r90_bb_2.pgm
+Selected 521 401 600 480
+Rotated 90
+Saved output/ss_r90_bb_3.pgm
+Loaded input/s.pgm
+Selected ALL
+Rotated 90
+Saved output/ss_r90_bb_4.pgm
+Loaded input/s.pgm
+Selected 0 0 600 480
+Rotated 90
+Saved output/ss_r90_bb_5.pgm
+Loaded input/s.ppm
+Selected 200 200 400 400
+Rotated 90
+Saved output/ss_r90_bb_1.ppm
+Selected 0 0 199 199
+Rotated 90
+Saved output/ss_r90_bb_2.ppm
+Selected 521 401 600 480
+Rotated 90
+Saved output/ss_r90_bb_3.ppm
+Loaded input/s.ppm
+Selected ALL
+Rotated 90
+Saved output/ss_r90_bb_4.ppm
+Loaded input/s.ppm
+Selected 0 0 600 480
+Rotated 90
+Saved output/ss_r90_bb_5.ppm

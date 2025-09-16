@@ -1,0 +1,36 @@
+Loaded input/s_a.pgm
+Selected 200 200 400 400
+Rotated 180
+Saved output/ss_r180_aa_1a.pgm
+Selected 0 0 199 199
+Rotated 180
+Saved output/ss_r180_aa_2a.pgm
+Selected 521 401 600 480
+Rotated 180
+Saved output/ss_r180_aa_3a.pgm
+Loaded input/s_a.pgm
+Selected ALL
+Rotated 180
+Saved output/ss_r180_aa_4a.pgm
+Loaded input/s_a.pgm
+Selected 0 0 600 480
+Rotated 180
+Saved output/ss_r180_aa_5a.pgm
+Loaded input/s_a.ppm
+Selected 200 200 400 400
+Rotated 180
+Saved output/ss_r180_aa_1a.ppm
+Selected 0 0 199 199
+Rotated 180
+Saved output/ss_r180_aa_2a.ppm
+Selected 521 401 600 480
+Rotated 180
+Saved output/ss_r180_aa_3a.ppm
+Loaded input/s_a.ppm
+Selected ALL
+Rotated 180
+Saved output/ss_r180_aa_4a.ppm
+Loaded input/s_a.ppm
+Selected 0 0 600 480
+Rotated 180
+Saved output/ss_r180_aa_5a.ppm

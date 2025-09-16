@@ -1,0 +1,31 @@
+Loaded input/b.ppm
+Invalid set of coordinates
+Black and white image needed
+Selected 1000 500 1500 1000
+Black and white image needed
+Saved output/c_3_1.ppm
+APPLY SHARPEN done
+Selected 1000 500 1600 1100
+APPLY BLUR done
+Saved output/c_3_2.ppm
+Selected 1100 600 1500 1000
+APPLY SHARPEN done
+Saved output/c_3_3a.ppm
+Saved output/c_3_3.ppm
+Loaded input/b_a.ppm
+Invalid set of coordinates
+Black and white image needed
+Selected 1000 500 1500 1000
+Black and white image needed
+Saved output/c_3_4.ppm
+APPLY SHARPEN done
+Selected 1000 500 1600 1100
+APPLY GAUSSIAN_BLUR done
+Saved output/c_3_5.ppm
+Selected 1100 600 1500 1000
+APPLY SHARPEN done
+Saved output/c_3_6a.ppm
+Saved output/c_3_6.ppm
+Loaded input/b.pgm
+Loaded input/b_a.pgm
+Loaded input/b_a.pgm

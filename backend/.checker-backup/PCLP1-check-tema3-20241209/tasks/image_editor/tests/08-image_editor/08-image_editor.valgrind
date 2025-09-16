@@ -1,0 +1,15 @@
+==113919== Memcheck, a memory error detector
+==113919== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==113919== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==113919== Command: /home/robert/dev/cli-image-editor/backend/PCLP1-check-tema3-20241209/image_editor
+==113919== Parent PID: 113918
+==113919== 
+==113919== 
+==113919== HEAP SUMMARY:
+==113919==     in use at exit: 0 bytes in 0 blocks
+==113919==   total heap usage: 3,872 allocs, 3,872 frees, 7,001,160 bytes allocated
+==113919== 
+==113919== All heap blocks were freed -- no leaks are possible
+==113919== 
+==113919== For lists of detected and suppressed errors, rerun with: -s
+==113919== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

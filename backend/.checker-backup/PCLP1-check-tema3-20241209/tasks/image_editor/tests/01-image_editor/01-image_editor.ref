@@ -1,0 +1,34 @@
+Loaded input/s_a.pgm
+Selected 50 100 150 300
+Image cropped
+Saved output/ss_c_ab_1.pgm
+Loaded input/s_a.pgm
+Selected 0 0 272 271
+Image cropped
+Saved output/ss_c_ab_2.pgm
+Loaded input/s_a.pgm
+Selected 300 300 600 480
+Image cropped
+Image cropped
+Selected ALL
+Image cropped
+Selected 0 0 300 180
+Image cropped
+Saved output/ss_c_ab_3.pgm
+Loaded input/s_a.ppm
+Selected 50 100 150 300
+Image cropped
+Saved output/ss_c_ab_1.ppm
+Loaded input/s_a.ppm
+Selected 0 0 272 271
+Image cropped
+Saved output/ss_c_ab_2.ppm
+Loaded input/s_a.ppm
+Selected 300 300 600 480
+Image cropped
+Image cropped
+Selected ALL
+Image cropped
+Selected 0 0 300 180
+Image cropped
+Saved output/ss_c_ab_3.ppm

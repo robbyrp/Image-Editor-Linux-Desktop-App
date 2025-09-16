@@ -1,106 +1,18 @@
-# Exclude ImGui example and build files from endfront/imgui
-endfront/imgui/*.o
-endfront/imgui/imgui_demo.cpp
-endfront/imgui/imgui_demo.o
-endfront/imgui/imgui_draw.cpp
-endfront/imgui/imgui_draw.o
-endfront/imgui/imgui_tables.cpp
-endfront/imgui/imgui_tables.o
-endfront/imgui/imgui_widgets.cpp
-endfront/imgui/imgui_widgets.o
-endfront/imgui/imgui.cpp
-endfront/imgui/imgui.o
-endfront/imgui/backends/*.o
-endfront/imgui/backends/imgui_impl_glfw.cpp
-endfront/imgui/backends/imgui_impl_glfw.o
-endfront/imgui/backends/imgui_impl_opengl3.cpp
-endfront/imgui/backends/imgui_impl_opengl3.o
-
-# Compiled binaries
-image_editor
-image_editor_gui
-
-# Checker files
-**/PCLP1-check-tema3-*
-.checker/
-.checker-backup/
-
-# Prerequisites
-*.d
-
-# Object files
 *.o
-*.ko
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
 *.exe
 *.out
 *.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-# Debug information files
-*.dwo
-
-# Test files
-input.txt
-output.txt
-errput.txt
-valgrind.txt
-checker.txt
-
-# VS Code settings (optional - remove if you want to share them)
-.vscode/
-
-# Temporary files
-*~
+*.so
+*.dll
+*.dylib
+*.a
+*.lib
 *.tmp
-*.temp
-
-# OS generated files
+*.log
+*.swp
+*.bak
+editor
+.vscode/
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db

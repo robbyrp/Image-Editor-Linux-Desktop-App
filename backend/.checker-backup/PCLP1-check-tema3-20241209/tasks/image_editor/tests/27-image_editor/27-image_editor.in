@@ -1,0 +1,9 @@
+LOAD input/s.pgm
+HISTOGRAM 64 64
+LOAD input/b_a.pgm
+HISTOGRAM 100 128
+SAVE output/s_h_1.pgm
+LOAD input/s.ppm
+HISTOGRAM 100 256
+HISTOGRAM
+EXIT

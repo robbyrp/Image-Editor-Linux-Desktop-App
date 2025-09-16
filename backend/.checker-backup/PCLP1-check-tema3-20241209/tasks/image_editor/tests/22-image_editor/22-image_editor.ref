@@ -1,0 +1,75 @@
+Loaded input/no_ext_g
+Failed to load input/dummy
+No image loaded
+No image loaded
+Loaded input/no_ext_g
+Selected 760 400 1160 800
+Equalize done
+Saved output/ci_1_1.pgm
+Loaded output/ci_1_1.pgm
+Selected ALL
+Equalize done
+Saved output/ci_1_2.pgm
+Loaded output/ci_1_2.pgm
+Selected 90 90 1830 1110
+Failed to load input/dummy
+No image loaded
+Loaded output/ci_1_2.pgm
+Selected 90 90 1830 1110
+Image cropped
+Saved output/ci_1_3.pgm
+Loaded output/ci_1_3.pgm
+Selected 10 10 1730 1010
+Image cropped
+Saved output/ci_1_4.pgm
+Loaded output/ci_1_4.pgm
+Selected 635 275 1085 725
+Image cropped
+Saved output/ci_1_5a.pgm
+Saved output/ci_1_5.pgm
+Loaded input/no_ext_p
+Selected 100 100 860 500
+APPLY SHARPEN done
+Saved output/ci_1_6.ppm
+Loaded output/ci_1_6.ppm
+Selected 1060 700 1820 1100
+APPLY BLUR done
+Saved output/ci_1_7.ppm
+Loaded output/ci_1_7.ppm
+Selected 100 700 860 1100
+APPLY GAUSSIAN_BLUR done
+Selected 1060 100 1820 500
+APPLY GAUSSIAN_BLUR done
+Saved output/ci_1_8.ppm
+Loaded output/ci_1_8.ppm
+Selected 760 400 1160 800
+Black and white image needed
+Saved output/ci_1_9.ppm
+Loaded output/ci_1_9.ppm
+Selected ALL
+Black and white image needed
+Saved output/ci_1_10.ppm
+Loaded output/ci_1_10.ppm
+Selected 90 90 1830 1110
+Image cropped
+Saved output/ci_1_10.ppm
+Loaded output/ci_1_10.ppm
+Selected 10 10 1730 1010
+Image cropped
+Saved output/ci_1_11.ppm
+Loaded output/ci_1_11.ppm
+Selected 635 275 1085 725
+Image cropped
+Saved output/ci_1_12a.ppm
+Saved output/ci_1_12.ppm
+Loaded input/no_ext_p
+APPLY SHARPEN done
+Saved output/ci_1_gray.ppm
+APPLY SHARPEN done
+APPLY BLUR done
+APPLY GAUSSIAN_BLUR done
+Selected 0 0 100 100
+Saved output/ci_1_9.ppm
+Failed to load input/dummy
+No image loaded
+No image loaded

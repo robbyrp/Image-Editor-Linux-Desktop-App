@@ -1,0 +1,66 @@
+Loaded input/b.pgm
+Selected 0 0 1000 1000
+Invalid set of coordinates
+Image cropped
+Selected 0 0 900 900
+Invalid set of coordinates
+Image cropped
+Selected 0 0 800 800
+Image cropped
+Selected 0 0 800 800
+Selected 0 0 400 400
+Invalid set of coordinates
+Selected 400 0 800 400
+Invalid set of coordinates
+Selected 0 400 400 800
+Saved output/ci_2_1a.pgm
+Saved output/ci_2_1.pgm
+Failed to load input/dummy
+No image loaded
+Loaded output/ci_2_1a.pgm
+Selected 0 400 400 800
+Equalize done
+Selected 400 400 800 800
+Equalize done
+Selected 300 300 500 500
+Equalize done
+Selected ALL
+Equalize done
+Selected 0 0 800 800
+Saved output/ci_2_2a.pgm
+Saved output/ci_2_2.pgm
+Loaded input/b.ppm
+Selected 0 0 1000 1000
+Invalid set of coordinates
+Image cropped
+Selected 0 0 900 900
+Invalid set of coordinates
+Image cropped
+Selected 0 0 800 800
+Image cropped
+Selected 0 0 800 800
+Selected 0 0 400 400
+Invalid set of coordinates
+Black and white image needed
+Selected 400 0 800 400
+Invalid set of coordinates
+Black and white image needed
+Selected 0 400 400 800
+Saved output/ci_2_3a.ppm
+Saved output/ci_2_3.ppm
+Black and white image needed
+Failed to load input/dummy
+No image loaded
+Loaded output/ci_2_3a.ppm
+Selected 0 400 400 800
+Black and white image needed
+Selected 400 400 800 800
+Black and white image needed
+Selected 300 300 500 500
+Black and white image needed
+Selected ALL
+Black and white image needed
+Selected 0 0 800 800
+Black and white image needed
+Saved output/ci_2_4a.ppm
+Saved output/ci_2_4.ppm

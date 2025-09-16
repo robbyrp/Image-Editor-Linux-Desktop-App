@@ -1,0 +1,15 @@
+LOAD input/dummy
+SAVE output/dummy
+LOAD input/s.pgm
+LOAD input/dummy
+SAVE output/dummy
+LOAD input/s_a.pgm
+LOAD input/dummy
+SAVE output/dummy
+LOAD input/s.ppm
+LOAD input/dummy
+SAVE output/dummy
+LOAD input/s_a.ppm
+LOAD input/dummy
+SAVE output/dummy
+EXIT
