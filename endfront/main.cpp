@@ -85,6 +85,11 @@ int main(int, char**)
     static bool conversion_needed = true;
     static unsigned char *display_buffer = nullptr;
     static GLuint texture_id = 0;
+    static bool generate_new_texture = true;
+    
+    static char input_file_path[512] = "../backend/";  // Default input path
+    static char output_file_path[512] = "../backend/";  // Default output path
+            
 
     while (!glfwWindowShouldClose(window))
     {
@@ -102,10 +107,6 @@ int main(int, char**)
 
         {
             // Top toolbar
-            static char input_file_path[512] = "../backend/";  // Default input path
-            static char output_file_path[512] = "../backend/";  // Default output path
-            
-
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20)); // Main menu bar
             ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20));  // Buttons
             ImGui::BeginMainMenuBar();
@@ -126,14 +127,17 @@ int main(int, char**)
                             loading_file_path[strcspn(loading_file_path, "\n")] = 0;
                             if (strlen(loading_file_path) > 0) {
                                 strcpy(input_file_path, loading_file_path);
-                                load_gui(&image, &selected_region, input_file_path);
                                 image.loaded = true;
                                 conversion_needed = true;
+                                generate_new_texture = true;
+                                load_gui(&image, &selected_region, input_file_path);
                             }
                         }
                         pclose(fp);
                         // Display the image
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
+                        // Set flag to true because function automatically sets it to false
+                        generate_new_texture = true;
 
                     }
                 } else {
@@ -236,10 +240,11 @@ int main(int, char**)
                 ImGui::Text("Dimensions: %d x %d", image.cols, image.rows);
                 ImGui::Separator();
 
-                // Create OpenGL texture from buffer
-                if (texture_id == 0) {
+                // Create OpenGL texture only when image is changed
+                if (generate_new_texture) {
+                    if (texture_id == 0) {
                     glGenTextures(1, &texture_id);
-                }
+                    }
                     glBindTexture(GL_TEXTURE_2D, texture_id);
 
                     // Set texture parameters
@@ -251,25 +256,34 @@ int main(int, char**)
                     // Upload texture data
                     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.cols, image.rows, 0, GL_RGBA, GL_UNSIGNED_BYTE, display_buffer);
                 
-                // Scale the image with regards to the available space
-                ImVec2 content_region = ImGui::GetContentRegionAvail();
+                    // Reset the flag
+                    generate_new_texture = false;
+                }
+                
+                // Always display the image if texture is available
+            
+                if (texture_id) {
+                    // Scale the image with regards to the available space
+                    ImVec2 content_region = ImGui::GetContentRegionAvail();
 
-                // Calculate a scale factor
-                float scale_x = content_region.x / (float)image.cols;
-                float scale_y = content_region.y / (float)image.rows;
-                // Use the smaller scale
-                float scale = (scale_x < scale_y) ? scale_x : scale_y;
+                    // Calculate a scale factor
+                    float scale_x = content_region.x / (float)image.cols;
+                    float scale_y = content_region.y / (float)image.rows;
+                    // Use the smaller scale
+                    float scale = (scale_x < scale_y) ? scale_x : scale_y;
 
-                if (scale < 0.1f) scale = 0.1f;
-                if (scale > 2.0f) scale = 2.0f;
+                    if (scale < 0.1f) scale = 0.1f;
+                    if (scale > 2.0f) scale = 2.0f;
 
-                // Calculate new scaled dimensions
-                ImVec2 scaled_size;
-                scaled_size.x = (float)image.cols * scale;
-                scaled_size.y = (float)image.rows * scale;
+                    // Calculate new scaled dimensions
+                    ImVec2 scaled_size;
+                    scaled_size.x = (float)image.cols * scale;
+                    scaled_size.y = (float)image.rows * scale;
 
-                // Display image
-                ImGui::Image((void *)(intptr_t)texture_id, scaled_size);
+                    // Display image
+                    ImGui::Image((void *)(intptr_t)texture_id, scaled_size);
+                }
+
                 ImGui::End();
             }
 
@@ -378,7 +392,8 @@ int main(int, char**)
                 if (ImGui::Button("Crop", ImVec2(-1, 40))) {
                     crop_region(&image, &selected_region);
                     conversion_needed = true;
-                    display_image(&image, &conversion_needed, &display_buffer);
+                    generate_new_texture = true;
+                    display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                 }
                 if (ImGui::Button("Rotate left", ImVec2(-1, 40))) {
                     if (selected_region.x_end - selected_region.x_start != selected_region.y_end - selected_region.y_start) {
@@ -386,7 +401,8 @@ int main(int, char**)
                     } else {
                         rotate_square(&image, &selected_region, 90);
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                 }
                 if (ImGui::Button("Rotate right", ImVec2(-1, 40))) {
@@ -395,7 +411,8 @@ int main(int, char**)
                     } else {
                         rotate_square(&image, &selected_region, -90);
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                 }
                 // Popup for square selection error
@@ -416,7 +433,8 @@ int main(int, char**)
                     if (ImGui::Button("Equalize", ImVec2(-1, 40))) {
                         equalize_greyscale(&image);
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                 }
 
@@ -425,26 +443,30 @@ int main(int, char**)
                     if (ImGui::Button("Sharpen", ImVec2(-1, 40))) {
                         apply_sharpen(&image, &selected_region);
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                     if (ImGui::Button("Edge detect", ImVec2(-1, 40))) {
                         apply_edge(&image, &selected_region);
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                     if (ImGui::Button("Box blur", ImVec2(-1, 40))) {
                         for (int i = 0; i < 4; i++) {
                             apply_blur(&image, &selected_region);
                         }
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
                     if (ImGui::Button("Gaussian blur", ImVec2(-1, 40))) {
                         for (int i = 0; i < 4; i++) {
                             apply_gaussian_blur(&image, &selected_region);
                         }
                         conversion_needed = true;
-                        display_image(&image, &conversion_needed, &display_buffer);
+                        generate_new_texture = true;
+                        display_image(&image, &conversion_needed, &display_buffer, &generate_new_texture);
                     }
 
                 }

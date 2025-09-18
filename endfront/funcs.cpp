@@ -45,7 +45,7 @@ unsigned char* convert_to_display_format(image_t *image)
     return rgba_data;
 }
 
-void display_image(image_t *image, bool *conversion_needed, unsigned char **display_buffer)
+void display_image(image_t *image, bool *conversion_needed, unsigned char **display_buffer, bool *generate_new_texture)
 {
      if (image->loaded && *conversion_needed) {
         if (*display_buffer) {
