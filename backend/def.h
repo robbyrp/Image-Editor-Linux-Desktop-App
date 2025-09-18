@@ -38,15 +38,7 @@ extern "C" {
 		bool is_valid;						// if the selection is valid
 	} selection_t;
 
-	// In order not to call function with 7 parameters, I created this struct
-	typedef struct {
-		image_t *image;						
-		selection_t *selected_region;
-		bool *conversion_needed;
-		unsigned char **display_buffer;
-		char *input_file_path;
-		char *output_file_path;
-	} image_editor_t;
+	
 	void load_cli(image_t *image, selection_t *select);
 	void load_gui(image_t *image, selection_t *select, const char *filename);
 
