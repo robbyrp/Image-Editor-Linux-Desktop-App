@@ -13,6 +13,7 @@ make && ./editor
 
 **Notes:** 
 Make sure `zenity` is installed on your system for proper functionality.
+
 Make sure that the `GLFW package` is installed:
   On Ubuntu/Debian: sudo apt-get install libglfw3-dev
   On Fedora: sudo dnf install glfw-devel
