@@ -5,7 +5,7 @@ CXX = g++
 EXE = editor
 END_FRONT = endfront
 IMGUI_DIR = $(END_FRONT)/imgui
-SOURCES = $(END_FRONT)/main.cpp $(END_FRONT)/funcs.cpp
+SOURCES = $(END_FRONT)/main.cpp $(END_FRONT)/window_funcs.cpp $(END_FRONT)/button_funcs.cpp
 SOURCES += $(wildcard $(IMGUI_DIR)/*.cpp)
 SOURCES += $(IMGUI_DIR)/backends/imgui_impl_glfw.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
 # Backend
@@ -17,7 +17,7 @@ LINUX_GL_LIBS = -lGL
 
 CXXFLAGS = -std=c++11 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
 CXXFLAGS += -g -Wall -Wformat
-LIBS =
+
 
 ##---------------------------------------------------------------------
 ## OPENGL ES

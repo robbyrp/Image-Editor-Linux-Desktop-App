@@ -1,0 +1,269 @@
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+#include <stdio.h>
+#include <string.h>
+#include <GLFW/glfw3.h> // Will drag system OpenGL headers
+#include "../backend/def.h"
+#include "funcs.h" // Functions for image display
+
+void load_button_logic(ImageState *img_state, TextureState *t_state)
+{
+	static bool show_zenity_error = false;
+
+	// Load button
+	if (ImGui::Button("Load", ImVec2(120, 40))) {
+		// Use zenity to navigate file system
+		FILE* fp = nullptr;
+		fp = popen("which zenity > /dev/null 2>&1", "r");
+		
+		if (!fp && pclose(fp) != 0) {
+			show_zenity_error = true;
+			ImGui::OpenPopup("Zenity Not Found");
+			return;
+		}
+
+		fp = popen("zenity --file-selection --file-filter='PPM/PGM Images | *.ppm *.pgm' --title='Select Image'", "r");
+		
+		if (!fp && pclose(fp) != 0) {
+			show_zenity_error = true;
+			ImGui::OpenPopup("Zenity Not Found");
+			return;
+			
+		}
+		// Free the previous image and the buffer
+		if (img_state->image->loaded) {
+			free_greyscale(img_state->image);
+			free_color(img_state->image);
+			img_state->image->loaded = false;
+		}
+		if (t_state->display_buffer) {
+			free(t_state->display_buffer);
+			t_state->display_buffer = nullptr;
+		}
+		// Popup for zenity error
+		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+		ImVec2 popup_size(400, 180);
+		ImGui::SetNextWindowSize(popup_size, ImGuiCond_Appearing);
+
+		if (ImGui::BeginPopupModal("Zenity Not Found", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+			ImGui::Text("Rotation requires a square selection!");
+			ImGui::Separator();
+			ImGui::Dummy(ImVec2(0.0f, 20.0f));
+
+			ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 120) * 0.5f);
+			ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(220, 30, 30, 255));
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, IM_COL32(255, 60, 60, 255));
+			ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
+			if (ImGui::Button("OK", ImVec2(120, 0))) {
+				ImGui::CloseCurrentPopup();
+				show_zenity_error = false;
+			}
+			ImGui::PopStyleColor(3);
+			ImGui::EndPopup();
+		}
+
+		char loading_file_path[512];
+		// fgets reads the selected_file_path from zenity's stdout
+		if (fgets(loading_file_path, sizeof(loading_file_path), fp)) {
+			// Remove newline from end of path
+			loading_file_path[strcspn(loading_file_path, "\n")] = 0;
+			if (strlen(loading_file_path) > 0) {
+				strcpy(img_state->input_file_path, loading_file_path);
+				img_state->image->loaded = true;
+				t_state->convert = true;
+				t_state->generate_texture = true;
+				// WILL MODIFY THE FUNCTION IN BACKEND TO TAKE 1 ARGUMENT
+				load_gui(img_state->image, img_state->selection, img_state->input_file_path);
+			}
+		}
+		pclose(fp);
+		// Display the image
+		create_buffer(img_state->image, t_state);
+		// Set flag to true because function automatically sets it to false
+		t_state->generate_texture = true;
+
+	}
+}
+
+void save_button_logic(ImageState *img_state, TextureState *t_state)
+{
+	// Save button
+	if (ImGui::Button("Save As", ImVec2(120, 40))) {
+		if (!img_state->image->loaded) {
+			// popup_message("Save Error", "You need to load a file first!");
+			return;
+		}
+		
+		// Use zenity to navigate file system
+		FILE *fp = nullptr;
+		fp = popen("which zenity > /dev/null 2>&1", "r");
+
+		if (!fp && pclose(fp) != 0) {
+			// popup_message("Error", "You need to install zenity first!");
+			return;
+		}
+
+		const char *ext = ".ppm"; // Set a default extension aribitrarily
+		if (is_binary(img_state->image))
+			ext = ".ppm";
+		if (!is_binary(img_state->image))
+			ext = ".pgm";
+
+		// Get the command
+		char zenity_cmd[512];
+		snprintf(zenity_cmd, sizeof(zenity_cmd), 
+		"zenity --file-selection --save --confirm-overwrite --filename='output%s' --title='Save Image As'", ext);
+		fp = popen(zenity_cmd, "r");
+
+		if (!fp) {
+			// popup_message("Error", "Failed to open file selection dialog");
+			return;
+		}
+		// fgets reads the saved_file_path from zenity's stdout
+		char saved_file_path[512];
+		if (fgets(saved_file_path, sizeof(saved_file_path), fp)) {
+			// Remove newline from end of path
+			saved_file_path[strcspn(saved_file_path, "\n")] = 0;
+			if (strlen(saved_file_path) > 0) {
+				strcpy(img_state->output_file_path, saved_file_path);
+				if (is_binary(img_state->image))
+					save_binary_gui(img_state->image, img_state->output_file_path);
+				else
+					save_ascii_gui(img_state->image, img_state->output_file_path);
+			}
+		}
+		pclose(fp);
+	}
+}
+
+void selection_combo_logic(ImageState *img_state)
+{
+	float window_width = ImGui::GetContentRegionAvail().x;
+	ImGui::SetCursorPosX(ImGui::GetCursorPosX() + window_width - 120.0f);
+
+	// Selection combo box
+	ImGui::SetNextItemWidth(300.0f);
+
+	if (ImGui::BeginCombo("#select_combo", "Select", ImGuiComboFlags_None)) {
+		if (ImGui::Selectable("Select All")) {
+			if (img_state->image->loaded) {
+				select_all(img_state->image, img_state->selection);
+				img_state->selection->all = true;
+			}
+		}
+		ImGui::EndCombo();
+	}
+}
+
+void sidebar_menu_operations(ImageState *img_state, TextureState *t_state)
+{
+	// Crop and rotate operations
+	static bool show_square_popup = false;
+
+	if (ImGui::Button("Crop", ImVec2(-1, 40))) {
+		if (check_selection(img_state->image, img_state->selection) == 1) {
+			// popup_message("Error", "Invalid selection!");
+		} else {
+			crop_region(img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+	}
+	if (ImGui::Button("Rotate left", ImVec2(-1, 40))) {
+		if (img_state->selection->x_end - img_state->selection->x_start !=
+			img_state->selection->y_end - img_state->selection->y_start) {
+			show_square_popup = true;
+			ImGui::OpenPopup("Square Selection Error");
+		} else {
+			rotate_square(img_state->image, img_state->selection, 90);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+	}
+	if (ImGui::Button("Rotate right", ImVec2(-1, 40))) {
+		if (img_state->selection->x_end - img_state->selection->x_start !=
+			img_state->selection->y_end - img_state->selection->y_start) {
+			show_square_popup = true;
+			ImGui::OpenPopup("Square Selection Error");
+		} else {
+			rotate_square(img_state->image, img_state->selection, -90);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+	}
+
+	// Popup for square selection error
+	ImVec2 center = ImGui::GetMainViewport()->GetCenter();
+	ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
+	ImVec2 popup_size(400, 180);
+	ImGui::SetNextWindowSize(popup_size, ImGuiCond_Appearing);
+
+	if (ImGui::BeginPopupModal("Square Selection Error", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
+		ImGui::Text("Rotation requires a square selection!");
+		ImGui::Separator();
+		ImGui::Dummy(ImVec2(0.0f, 20.0f)); // Add vertical space
+
+		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 120) * 0.5f);
+		ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(220, 30, 30, 255));
+		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, IM_COL32(255, 60, 60, 255));
+		ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
+		if (ImGui::Button("OK", ImVec2(120, 0))) {
+			ImGui::CloseCurrentPopup();
+			show_square_popup = false;
+		}
+		ImGui::PopStyleColor(3);
+		ImGui::EndPopup();
+	}
+
+	// Equalize operation - only for greyscale images
+	if (img_state->image->greyscale_matrix && !img_state->image->color_matrix) {
+		static double last_equalize_press = 0;
+		double now = ImGui::GetTime();
+
+		if (ImGui::Button("Equalize", ImVec2(-1, 40))) {
+			if (now - last_equalize_press > 2.0) {
+				time_operation(equalize_greyscale, img_state->image);
+				t_state->convert = true;
+				t_state->generate_texture = true;
+				create_buffer(img_state->image, t_state);
+				last_equalize_press = now;
+			}
+
+		}
+	}
+
+	// Kernel operations - only for color images
+	if (!img_state->image->greyscale_matrix && img_state->image->color_matrix) {
+		if (ImGui::Button("Sharpen", ImVec2(-1, 40))) {
+			time_operation(apply_sharpen, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Edge detect", ImVec2(-1, 40))) {
+			time_operation(apply_edge, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Box blur", ImVec2(-1, 40))) {
+			time_operation(apply_blur, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Gaussian blur", ImVec2(-1, 40))) {
+			time_operation(apply_gaussian_blur, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+
+	}
+}
+

@@ -61,17 +61,3 @@ void free_color(image_t *image)
 	}
 }
 
-// Function that exits the program
-
-void exit_program(image_t *image)
-{
-	if (!image->greyscale_matrix && !image->color_matrix) {
-		printf("No image loaded\n");
-	}
-	if (image->color_matrix) {
-		free_color(image);
-	}
-	if (image->greyscale_matrix) {
-		free_greyscale(image);
-	}
-}
