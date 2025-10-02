@@ -261,23 +261,3 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 	ImGui::End();
 	
 }
-
-
-
-// void popup_message(const char *title, const char *message)
-// {
-//     ImGui::OpenPopup(title);
-    
-//     if (ImGui::BeginPopupModal(title, NULL, ImGuiWindowFlags_AlwaysAutoResize)) {
-//         ImGui::Text("%s", message);
-        
-//         ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(1.0f, 0.0f, 0.0f, 1.0f));
-//         if (ImGui::Button("OK", ImVec2(100, 0))) {
-//             ImGui::CloseCurrentPopup();
-//         }
-//         ImGui::PopStyleColor();
-        
-//         ImGui::EndPopup();
-//     }
-// }
-

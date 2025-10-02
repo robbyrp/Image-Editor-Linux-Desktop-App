@@ -28,8 +28,6 @@ int main(int, char**)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 	// Create window with graphics context
-	// #define WINDOW_WIDTH 1280
-	// #define WINDOW_HEIGHT 1080
 
 	float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor(glfwGetPrimaryMonitor()); // Valid on GLFW 3.3+ only
 	const GLFWvidmode* return_struct = glfwGetVideoMode(glfwGetPrimaryMonitor());
