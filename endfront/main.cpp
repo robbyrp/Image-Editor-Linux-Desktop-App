@@ -28,10 +28,17 @@ int main(int, char**)
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 
 	// Create window with graphics context
-	#define WINDOW_WIDTH 1280
-	#define WINDOW_HEIGHT 1080
+	// #define WINDOW_WIDTH 1280
+	// #define WINDOW_HEIGHT 1080
+
 	float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor(glfwGetPrimaryMonitor()); // Valid on GLFW 3.3+ only
-	GLFWwindow* window = glfwCreateWindow((int)(WINDOW_WIDTH * main_scale), (int)(WINDOW_HEIGHT * main_scale), "Image Editor", nullptr, nullptr);
+	const GLFWvidmode* return_struct = glfwGetVideoMode(glfwGetPrimaryMonitor());
+	float window_width = (float)return_struct->width;
+	float window_height = (float)return_struct->height;
+
+	// float window_width = glfwGetMonitor
+	GLFWwindow* window = glfwCreateWindow((int)(window_width * main_scale), (int)(window_height * main_scale), "Image Editor", nullptr, nullptr);
+	glfwMaximizeWindow(window);
 	if (window == nullptr)
 		return 1;
 	glfwMakeContextCurrent(window);
