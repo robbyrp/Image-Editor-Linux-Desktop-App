@@ -5,7 +5,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-	#endif
+#endif
 	#include <stdio.h>
 	#include <stdlib.h>
 	#include <math.h>
@@ -93,7 +93,7 @@ extern "C" {
 	void exit_program(image_t *image);
 
 
-	#ifdef __cplusplus
+#ifdef __cplusplus
 }
 #endif
 
