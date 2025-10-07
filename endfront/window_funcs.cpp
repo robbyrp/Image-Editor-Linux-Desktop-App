@@ -7,8 +7,6 @@
 #include "../backend/def.h"
 #include "funcs.h" // Functions for image display
 
-
-
 // Function to convert image to RGBA for opengl display
 unsigned char* convert_to_display_format(image_t *image) 
 {
@@ -69,37 +67,8 @@ void create_buffer(image_t *image, TextureState *t_state)
 	}
 }
 
-void display_image_window_logic(ImageState *img_state, TextureState *t_state)
+void create_opengl_texture(ImageState *img_state, TextureState *t_state)
 {
-	if (!img_state->image->loaded || !t_state->display_buffer || t_state->convert) {
-		return;
-	}
-	// Calculate position
-	ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
-	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
-
-	// Left side, under taskbar
-	float taskbar_height = 60.0f;
-	ImVec2 window_pos = ImVec2(main_viewport_pos.x, main_viewport_pos.y + taskbar_height);
-
-	// Fixed width, height based on avail space
-	float window_width = 1200.0f;
-	float window_height = main_viewport_size.y - taskbar_height;
-	ImVec2 window_size = ImVec2(window_width, window_height);
-
-	// Set window pos and size(fixed)
-	ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always);
-	ImGui::SetNextWindowSize(window_size, ImGuiCond_Always);
-
-	// Create window
-	ImGui::Begin("Image Display", nullptr, ImGuiWindowFlags_NoResize |
-				ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
-
-	ImGui::Text("Image Info:");
-	ImGui::Text("Format: %s", img_state->image->format);
-	ImGui::Text("Dimensions: %d x %d", img_state->image->cols, img_state->image->rows);
-	ImGui::Separator();
-
 	// Create OpenGL texture only when image is changed
 	if (t_state->generate_texture) {
 		if (t_state->texture_id == 0) {
@@ -142,6 +111,41 @@ void display_image_window_logic(ImageState *img_state, TextureState *t_state)
 		// Display image
 		ImGui::Image((void *)(intptr_t)t_state->texture_id, scaled_size);
 	}
+}
+
+void display_image_window_logic(ImageState *img_state, TextureState *t_state)
+{
+	if (!img_state->image->loaded || !t_state->display_buffer || t_state->convert) {
+		return;
+	}
+	// Calculate position
+	ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
+	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
+
+	// Left side, under taskbar
+	float taskbar_height = 60.0f;
+	ImVec2 window_pos = ImVec2(main_viewport_pos.x, main_viewport_pos.y + taskbar_height);
+
+	// Fixed width, height based on avail space
+	float window_width = 1200.0f;
+	float window_height = main_viewport_size.y - taskbar_height;
+	ImVec2 window_size = ImVec2(window_width, window_height);
+
+	// Set window pos and size(fixed)
+	ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always);
+	ImGui::SetNextWindowSize(window_size, ImGuiCond_Always);
+
+	// Create window
+	ImGui::Begin("Image Display", nullptr, ImGuiWindowFlags_NoResize |
+				ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse);
+
+	ImGui::Text("Image Info:");
+	ImGui::Text("Format: %s", img_state->image->format);
+	ImGui::Text("Dimensions: %d x %d", img_state->image->cols, img_state->image->rows);
+	ImGui::Separator();
+
+	// Create OpenGL texture only when image is changed
+	create_opengl_texture(img_state, t_state);
 
 	ImGui::End();
 }
@@ -149,7 +153,6 @@ void display_image_window_logic(ImageState *img_state, TextureState *t_state)
 void selection_window_logic(ImageState *img_state, TextureState *t_state)
 {
 	if (!img_state->image->loaded || !t_state->display_buffer || t_state->convert) {
-		// popup_message("Error", "Image is not ready to be displayed yet!");
 		return;
 	}
 

@@ -5,7 +5,7 @@
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include "../backend/def.h"
-#include "funcs.h" // Functions for image display
+#include "funcs.h"
 
 void load_button_logic(ImageState *img_state, TextureState *t_state)
 {
@@ -31,6 +31,7 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 			return;
 			
 		}
+		
 		// Free the previous image and the buffer
 		if (img_state->image->loaded) {
 			free_greyscale(img_state->image);
@@ -41,14 +42,14 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 			free(t_state->display_buffer);
 			t_state->display_buffer = nullptr;
 		}
+		
 		// Popup for zenity error
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
 		ImGui::SetNextWindowPos(center, ImGuiCond_Appearing, ImVec2(0.5f, 0.5f));
 		ImVec2 popup_size(400, 180);
 		ImGui::SetNextWindowSize(popup_size, ImGuiCond_Appearing);
-
 		if (ImGui::BeginPopupModal("Zenity Not Found", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
-			ImGui::Text("Rotation requires a square selection!");
+			ImGui::Text("You need to install Zenity first!");
 			ImGui::Separator();
 			ImGui::Dummy(ImVec2(0.0f, 20.0f));
 
@@ -74,7 +75,6 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 				img_state->image->loaded = true;
 				t_state->convert = true;
 				t_state->generate_texture = true;
-				// WILL MODIFY THE FUNCTION IN BACKEND TO TAKE 1 ARGUMENT
 				load_gui(img_state->image, img_state->selection, img_state->input_file_path);
 			}
 		}
@@ -92,7 +92,6 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 	// Save button
 	if (ImGui::Button("Save As", ImVec2(120, 40))) {
 		if (!img_state->image->loaded) {
-			// popup_message("Save Error", "You need to load a file first!");
 			return;
 		}
 		
@@ -101,7 +100,6 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 		fp = popen("which zenity > /dev/null 2>&1", "r");
 
 		if (!fp && pclose(fp) != 0) {
-			// popup_message("Error", "You need to install zenity first!");
 			return;
 		}
 
@@ -118,7 +116,6 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 		fp = popen(zenity_cmd, "r");
 
 		if (!fp) {
-			// popup_message("Error", "Failed to open file selection dialog");
 			return;
 		}
 		// fgets reads the saved_file_path from zenity's stdout
@@ -164,7 +161,7 @@ void sidebar_menu_operations(ImageState *img_state, TextureState *t_state)
 
 	if (ImGui::Button("Crop", ImVec2(-1, 40))) {
 		if (check_selection(img_state->image, img_state->selection) == 1) {
-			// popup_message("Error", "Invalid selection!");
+			return;
 		} else {
 			crop_region(img_state->image, img_state->selection);
 			t_state->convert = true;
@@ -206,7 +203,7 @@ void sidebar_menu_operations(ImageState *img_state, TextureState *t_state)
 	if (ImGui::BeginPopupModal("Square Selection Error", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
 		ImGui::Text("Rotation requires a square selection!");
 		ImGui::Separator();
-		ImGui::Dummy(ImVec2(0.0f, 20.0f)); // Add vertical space
+		ImGui::Dummy(ImVec2(0.0f, 20.0f));
 
 		ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 120) * 0.5f);
 		ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(220, 30, 30, 255));
@@ -263,7 +260,5 @@ void sidebar_menu_operations(ImageState *img_state, TextureState *t_state)
 			t_state->generate_texture = true;
 			create_buffer(img_state->image, t_state);
 		}
-
 	}
 }
-

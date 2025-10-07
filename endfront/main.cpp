@@ -6,13 +6,12 @@
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include "../backend/def.h"
-#include "funcs.h" // Functions for image display
+#include "funcs.h"
 
 static void glfw_error_callback(int error, const char* description)
 {
 	fprintf(stderr, "GLFW Error %d: %s\n", error, description);
 }
-
 
 // Main code
 int main(int, char**)
@@ -34,7 +33,6 @@ int main(int, char**)
 	float window_width = (float)return_struct->width;
 	float window_height = (float)return_struct->height;
 
-	// float window_width = glfwGetMonitor
 	GLFWwindow* window = glfwCreateWindow((int)(window_width * main_scale), (int)(window_height * main_scale), "Image Editor", nullptr, nullptr);
 	glfwMaximizeWindow(window);
 	if (window == nullptr)
@@ -141,7 +139,6 @@ int main(int, char**)
 	ImGui_ImplOpenGL3_Shutdown();
 	ImGui_ImplGlfw_Shutdown();
 	ImGui::DestroyContext();
-
 
 	// Free the state object pointers
 	delete t_state; 
