@@ -1,6 +1,6 @@
 # Image-Editor-Linux-Desktop-App
 --------
-#### An image editor supporting PPM and PGM formats, with functions for different effects, written in C++ using GLFW3 and Dear ImGui for the frontend, and C for the backend
+#### A Linux Desktop App using C++ DearImGui to handle PPM/PGM images. The entire image processing backend is written in C from scratch. 
 --------
 ## Screenshots
 <img width="2859" height="1635" alt="example1" src="https://github.com/user-attachments/assets/f06109a5-12fe-4191-ac8d-a095826bad0b" />
