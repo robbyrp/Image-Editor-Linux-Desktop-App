@@ -18,3 +18,4 @@ editor
 Thumbs.db
 .*
 *.txt
+.ini
