@@ -28,7 +28,7 @@ async def random_breed_list() -> list:
     download_urls = await service.get_download_urls(LIST_LENGTH)
     return download_urls
 
-@app.get("/api/thumbnail}")
+@app.get("/api/thumbnail")
 async def get_thumbnail(download_url: str) -> Response:
     thumbnail = await service._create_thumbnail(download_url)
     return Response(content=thumbnail, media_type="image/x-portable-pixmap")

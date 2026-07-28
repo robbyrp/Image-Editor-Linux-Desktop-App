@@ -41,8 +41,8 @@ extern "C" {
 	
 	void load_cli(image_t *image, selection_t *select);
 	void load_gui(image_t *image, selection_t *select, const char *filename);
-
-
+	void load_memory_binary_gui(image_t *image, selection_t *select, const char* buffer);
+	
 	void load_ascii(image_t *image, const char *filename);
 	void load_binary(image_t *image, const char *filename);
 

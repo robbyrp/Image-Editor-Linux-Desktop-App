@@ -51,6 +51,7 @@ class ImageService:
         
         thumbnail_buffer = BytesIO()
         THUMBNAIL_SIZE = 156
-        image.thumbnail(THUMBNAIL_SIZE, THUMBNAIL_SIZE)
+        image.thumbnail((THUMBNAIL_SIZE, THUMBNAIL_SIZE))
         image.save(thumbnail_buffer, format="PPM")
+        return thumbnail_buffer.getvalue()
         
