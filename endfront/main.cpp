@@ -20,6 +20,11 @@ int main(int, char**)
 	if (!glfwInit())
 		return 1;
 
+	if (network_init() != 0) {
+		fprintf(stderr, "Error initializing network module\n");
+		glfwTerminate();
+		return 1;
+	}
 
 	// GL 3.0 + GLSL 130
 	const char* glsl_version = "#version 130";
@@ -95,30 +100,16 @@ int main(int, char**)
 		ImGui::NewFrame();
 
 		{
-			// Top toolbar
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20)); // Main menu bar
-			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20));  // Buttons
-			ImGui::BeginMainMenuBar();
-			
-			load_button_logic(img_state, t_state);
-			ImGui::SameLine();
-
-			save_button_logic(img_state, t_state);
-			ImGui::SameLine();
-
-			selection_combo_logic(img_state);
-
-			ImGui::PopStyleVar(2);
-			ImGui::EndMainMenuBar();
+			top_toolbar_display(img_state, t_state);
 
 			// Image display window
-			display_image_window_logic(img_state, t_state);
+			image_window_display(img_state, t_state);
 
 			// Selection window
-			selection_window_logic(img_state, t_state);
+			selection_window_display(img_state, t_state);
 
 			// Sidebar menu window
-			sidebar_menu_logic(img_state, t_state);
+			sidebar_menu_display(img_state, t_state);
 
 		}
 
@@ -146,6 +137,8 @@ int main(int, char**)
 
 	glfwDestroyWindow(window);
 	glfwTerminate();
+
+	network_cleanup();
 
 	return 0;
 }

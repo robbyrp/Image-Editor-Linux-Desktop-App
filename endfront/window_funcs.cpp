@@ -113,7 +113,7 @@ void create_opengl_texture(ImageState *img_state, TextureState *t_state)
 	}
 }
 
-void display_image_window_logic(ImageState *img_state, TextureState *t_state)
+void image_window_display(ImageState *img_state, TextureState *t_state)
 {
 	if (!img_state->image->loaded || !t_state->display_buffer || t_state->convert) {
 		return;
@@ -150,7 +150,7 @@ void display_image_window_logic(ImageState *img_state, TextureState *t_state)
 	ImGui::End();
 }
 
-void selection_window_logic(ImageState *img_state, TextureState *t_state)
+void selection_window_display(ImageState *img_state, TextureState *t_state)
 {
 	if (!img_state->image->loaded || !t_state->display_buffer || t_state->convert) {
 		return;
@@ -233,7 +233,28 @@ void selection_window_logic(ImageState *img_state, TextureState *t_state)
 	ImGui::End();
 }
 
-void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
+void top_toolbar_display(ImageState *img_state, TextureState *t_state) {
+	// Top toolbar
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20)); // Main menu bar
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 20));  // Buttons
+	ImGui::BeginMainMenuBar();
+	
+	load_button_logic(img_state, t_state);
+	ImGui::SameLine();
+
+	save_button_logic(img_state, t_state);
+	ImGui::SameLine();
+
+	fetch_dog_button_logic(img_state, t_state);
+	ImGui::SameLine();
+
+	selection_combo_logic(img_state);
+
+	ImGui::PopStyleVar(2);
+	ImGui::EndMainMenuBar();
+}
+
+void sidebar_menu_display(ImageState *img_state, TextureState *t_state)
 {
 	if (!img_state->image->loaded) {
 		return;
@@ -259,7 +280,7 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 	ImGui::Text("Operations:");
 	ImGui::Separator();
 	
-	sidebar_menu_operations(img_state, t_state);
+	sidebar_menu_logic(img_state, t_state);
 
 	ImGui::End();
 	

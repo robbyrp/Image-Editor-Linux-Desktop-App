@@ -135,6 +135,24 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 	}
 }
 
+void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state) {
+	if (ImGui::Button("Fetch dog image", ImVec2(120, 40))) {
+		const char *RANDOM_BREED_URL = "/api/random-breed";
+		memory_struct_t chunk = http_get_request_content(RANDOM_BREED_URL);
+		if (chunk.memory != NULL && chunk.size != 0) {
+			if (!load_memory_binary_gui(img_state->image, img_state->selection, chunk.memory)) {
+				fprintf(stderr, "Could not load the image from the memory buffer into the program's memory\n");
+				return;
+			}
+			img_state->image->loaded = true;
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		free_chunk(&chunk);
+	}
+}
+
 void selection_combo_logic(ImageState *img_state)
 {
 	float window_width = ImGui::GetContentRegionAvail().x;
@@ -154,7 +172,7 @@ void selection_combo_logic(ImageState *img_state)
 	}
 }
 
-void sidebar_menu_operations(ImageState *img_state, TextureState *t_state)
+void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 {
 	// Crop and rotate operations
 	static bool show_square_popup = false;

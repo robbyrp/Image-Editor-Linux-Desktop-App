@@ -1,6 +1,7 @@
 
 CXX = g++
 # CXX = clang++
+CC = gcc
 
 EXE = editor
 END_FRONT = endfront
@@ -15,8 +16,9 @@ OBJS := $(OBJS:.c=.o)
 UNAME_S := $(shell uname -s)
 LINUX_GL_LIBS = -lGL
 
-CXXFLAGS = -std=c++23 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends
-CXXFLAGS += -g -Wall -Wformat
+CFLAGS = -g -Wall -Wformat 
+CXXFLAGS = -std=c++23 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends -g -Wall -Wformat
+LIBS += -lcurl
 
 
 ##---------------------------------------------------------------------
@@ -36,7 +38,7 @@ ifeq ($(UNAME_S), Linux) #LINUX
 	LIBS += $(LINUX_GL_LIBS) `pkg-config --static --libs glfw3`
 
 	CXXFLAGS += `pkg-config --cflags glfw3`
-	CFLAGS = $(CXXFLAGS)
+	CFLAGS += `pkg-config --cflags glfw3`
 endif
 
 
@@ -45,7 +47,7 @@ ifeq ($(OS), Windows_NT)
 	LIBS += -lglfw3 -lgdi32 -lopengl32 -limm32
 
 	CXXFLAGS += `pkg-config --cflags glfw3`
-	CFLAGS = $(CXXFLAGS)
+	CFLAGS += `pkg-config --cflags glfw3`
 endif
 
 ##---------------------------------------------------------------------
@@ -63,7 +65,7 @@ endif
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 %.o:backend/%.c
-	$(CXX) $(CXXFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 
 all: $(EXE)

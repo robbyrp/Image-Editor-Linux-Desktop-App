@@ -2,6 +2,7 @@
 
 #ifndef DEF_H
 #define DEF_H
+#define BACKEND_BASE_URL "http://127.0.0.1:8000"
 
 #ifdef __cplusplus
 extern "C" {
@@ -10,7 +11,13 @@ extern "C" {
 	#include <stdlib.h>
 	#include <math.h>
 	#include <stdbool.h>
-	#include <string.h>
+	#include <string.h> 
+	#include <curl/curl.h>
+ 
+	typedef struct {
+	char *memory;
+	size_t size;
+	} memory_struct_t;
 
 	typedef struct {
 		unsigned char r;
@@ -19,13 +26,15 @@ extern "C" {
 	} pixel_t;
 
 	typedef struct {
-		char format[5];						// P2 P3 P5 P6
+		char format[5];								// P2 P3 P5 P6
 		int cols;
 		int rows;
-		int maxval; 						// 255
-		unsigned char **greyscale_matrix;	// 0-255 value matrix
-		pixel_t **color_matrix;				// rgb matrix
-		bool loaded; 						// if the image is loaded in the gui
+		int maxval; 								// 255
+		unsigned char **greyscale_matrix;			// 0-255 value matrix
+		unsigned char *greyscale_memblock;			// contiguous memory block for greyscale matrix
+		pixel_t **color_matrix;						// rgb matrix
+		pixel_t *color_memblock;					// contiguous memory block for color matrix
+		bool loaded; 								// if the image is loaded in the gui
 	} image_t;
 
 	typedef struct {
@@ -41,7 +50,7 @@ extern "C" {
 	
 	void load_cli(image_t *image, selection_t *select);
 	void load_gui(image_t *image, selection_t *select, const char *filename);
-	void load_memory_binary_gui(image_t *image, selection_t *select, const char* buffer);
+	bool load_memory_binary_gui(image_t *image, selection_t *select, const char* buffer);
 	
 	void load_ascii(image_t *image, const char *filename);
 	void load_binary(image_t *image, const char *filename);
@@ -90,8 +99,13 @@ extern "C" {
 						int ker[3][3], int i, int j, int apply_type);
 	unsigned char clamp_apply(int result);
 
-	void exit_program(image_t *image);
+	int network_init(void);
+	static size_t write_cb(char *contents, size_t size, size_t nmemb, void *userp);
+	memory_struct_t http_get_request_content(const char *route);
+	void free_chunk(memory_struct_t *chunk);
+	void network_cleanup(void);
 
+	void exit_program(image_t *image);
 
 #ifdef __cplusplus
 }

@@ -85,14 +85,16 @@ void create_buffer(image_t *image, TextureState *t_state);
 
 void load_button_logic(ImageState *image, TextureState *t_state);
 void save_button_logic(ImageState *img_state, TextureState *t_state);
-
+void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state);
 void selection_combo_logic(ImageState *img_state);
-void selection_window_logic(ImageState *img_state, TextureState *t_state);
+void selection_window_display(ImageState *img_state, TextureState *t_state);
 
-void display_image_window_logic(ImageState *img_state, TextureState *t_state);
+void top_toolbar_display(ImageState *img_state, TextureState *t_state);
 
+void image_window_display(ImageState *img_state, TextureState *t_state);
+
+void sidebar_menu_display(ImageState *img_state, TextureState *t_state);
 void sidebar_menu_logic(ImageState *img_state, TextureState *t_state);
-void sidebar_menu_operations(ImageState *img_state, TextureState *t_state);
 // void popup_message(const char *title, const char *message);
 
 

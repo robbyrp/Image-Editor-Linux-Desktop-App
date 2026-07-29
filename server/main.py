@@ -10,6 +10,7 @@ service = ImageService()
 async def root() -> dict:
     return {"message": "Hello World"}
 
+# Used for mvp button
 @app.get("/api/random-breed")
 async def all_dogs() -> Response:
     image = await service.get_random_breed_dog_image_ppm()
