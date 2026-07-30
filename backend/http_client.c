@@ -2,7 +2,7 @@
  * https://curl.se/libcurl/c/getinmemory.html
  * Modified for this project.
  */
-#include "def.h"
+#include "network.h"
  
 int network_init(void)
 {

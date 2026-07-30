@@ -1,6 +1,9 @@
 // Functions that crop the image
 
-#include "def.h"
+#include "image_operations.h"
+
+static void alloc_cropped_greyscale(image_t *cropped);
+static void alloc_cropped_color(image_t *cropped);
 
 int check_selection(image_t *image, selection_t *select)
 {
@@ -34,7 +37,64 @@ void select_all(image_t *image, selection_t *select)
 		return;
 }
 
-void alloc_cropped_greyscale(image_t *cropped)
+void crop_region(image_t *image, selection_t *select)
+{
+	if (!image->color_matrix && !image->greyscale_matrix) {
+		printf("No image loaded\n");
+		return;
+	}
+
+	image_t cropped;
+	//SHALLOW COPY OF IMAGE
+	cropped = *image;
+	cropped.color_matrix = NULL; cropped.greyscale_matrix = NULL;
+	cropped.rows = select->y_end - select->y_start;
+	cropped.cols = select->x_end - select->x_start;
+
+	// LOADED GREYSCALE MATRIX
+	if (!image->color_matrix && image->greyscale_matrix) {
+
+		// MALLOC GREYSCALE CROPPED MATRIX
+		alloc_cropped_greyscale(&cropped);
+
+		// ASSIGN VALUES
+		for (int i = 0; i < cropped.rows; i++) {
+			memcpy(cropped.greyscale_matrix[i], &image->greyscale_matrix[select->y_start + i][select->x_start],
+			(size_t)cropped.cols * sizeof(unsigned char));
+		}
+
+		// FREE IMAGE POINTER
+		free_greyscale(image);
+	}
+
+	// LOADED COLOR MATRIX
+	if (image->color_matrix && !image->greyscale_matrix) {
+
+		// MALLOC COLOR CROPPED MATRIX
+		alloc_cropped_color(&cropped);
+
+		// ASSIGN VALUES
+		for (int i = 0; i < cropped.rows; i++) {
+			memcpy(cropped.color_matrix[i], &image->color_matrix[select->y_start + i][select->x_start],
+			(size_t)cropped.cols * sizeof(pixel_t));
+		}
+		
+		// FREE IMAGE POINTER
+		free_color(image);
+	}
+
+	// IMAGE BECOMES CROPPED BY COPYING ALL FIELDS AT ONCE
+	 *image = cropped;
+
+	// SELECTION IS NOW THE ENTIRE NEW IMAGE
+	select->x_start = 0;
+	select->y_start = 0;
+	select->x_end = cropped.cols;
+	select->y_end = cropped.rows;
+	select->all = true;
+}
+
+static void alloc_cropped_greyscale(image_t *cropped)
 {
 	#define UC unsigned char
 	cropped->greyscale_matrix = (UC **)malloc((cropped->rows) * sizeof(UC *));
@@ -53,7 +113,7 @@ void alloc_cropped_greyscale(image_t *cropped)
 	#undef UC
 }
 
-void alloc_cropped_color(image_t *cropped)
+static void alloc_cropped_color(image_t *cropped)
 {
 	cropped->color_matrix =
 	(pixel_t **)malloc(cropped->rows * sizeof(pixel_t *));
@@ -70,72 +130,3 @@ void alloc_cropped_color(image_t *cropped)
 		}
 	}
 }
-
-void crop_region(image_t *image, selection_t *select)
-{
-	if (!image->color_matrix && !image->greyscale_matrix) {
-		printf("No image loaded\n");
-		return;
-	}
-	image_t cropped;
-	//SHALLOW COPY OF IMAGE
-	cropped = *image;
-	cropped.color_matrix = NULL; cropped.greyscale_matrix = NULL;
-	cropped.rows = select->y_end - select->y_start;
-	cropped.cols = select->x_end - select->x_start;
-
-	// LOADED GREYSCALE MATRIX
-	if (!image->color_matrix && image->greyscale_matrix) {
-
-		// MALLOC GREYSCALE CROPPED MATRIX
-		alloc_cropped_greyscale(&cropped);
-
-		// ASSIGN VALUES
-		for (int i = select->y_start; i < select->y_end; i++) {
-			for (int j = select->x_start; j < select->x_end; j++) {
-				// ROWS AND COLS OF CROPPED MATRIX
-				int row = i - select->y_start;
-				int col = j - select->x_start;
-				cropped.greyscale_matrix[row][col] =
-				image->greyscale_matrix[i][j];
-			}
-		}
-		// FREE IMAGE POINTER
-		free_greyscale(image);
-	}
-
-	// LOADED COLOR MATRIX
-	if (image->color_matrix && !image->greyscale_matrix) {
-
-		// MALLOC COLOR CROPPED MATRIX
-		alloc_cropped_color(&cropped);
-
-		// ASSIGN VALUES
-		for (int i = select->y_start; i < select->y_end; i++) {
-			for (int j = select->x_start; j < select->x_end; j++) {
-				// ROWS AND COLS OF CROPPED MATRIX
-				int row = i - select->y_start;
-				int col = j - select->x_start;
-				cropped.color_matrix[row][col].r =
-				image->color_matrix[i][j].r;
-				cropped.color_matrix[row][col].g =
-				image->color_matrix[i][j].g;
-				cropped.color_matrix[row][col].b =
-				image->color_matrix[i][j].b;
-			}
-		}
-		// FREE IMAGE POINTER
-		free_color(image);
-	}
-
-	// IMAGE BECOMES CROPPED BY COPYING ALL FIELDS AT ONCE
-	 *image = cropped;
-
-	// SELECTION IS NOW THE ENTIRE NEW IMAGE
-	select->x_start = 0;
-	select->y_start = 0;
-	select->x_end = cropped.cols;
-	select->y_end = cropped.rows;
-	select->all = true;
-}
-

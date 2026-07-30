@@ -1,6 +1,8 @@
 // Functions that apply the equalize filter
 
-#include "def.h"
+#include "image_operations.h"
+
+static void equalize_greyscale(image_t *image);
 
 void equalize(image_t *image)
 {
@@ -17,40 +19,38 @@ void equalize(image_t *image)
 
 }
 
-unsigned char clamp(double result)
+static void equalize_greyscale(image_t *image)
 {
-	if (result > 255)
-		result = 255;
-	if (result < 0)
-		result = 0;
-	return (unsigned char)(result + 0.5);
-}
+    int hist[256] = {0};
 
-void equalize_greyscale(image_t *image)
-{
-	#define GREY image->greyscale_matrix
-	// FREQUENCE ARRAY
-	int freq[256] = {0};
-	for (int i = 0; i < image->rows; i++) {
-		for (int j = 0; j < image->cols; j++) {
-			freq[GREY[i][j]]++;
-		}
-	}
+    for (int i = 0; i < image->rows; i++) {
+        for (int j = 0; j < image->cols; j++) {
+            hist[image->greyscale_matrix[i][j]]++;
+        }
+    }
 
-	// AREA
-	double area = (double)image->rows * image->cols;
+    int cdf[256];
+    cdf[0] = hist[0];
+    for (int i = 1; i < 256; i++) {
+        cdf[i] = cdf[i - 1] + hist[i];
+    }
 
-	for (int i = 0; i < image->rows; i++) {
-		for (int j = 0; j < image->cols; j++) {
-			// SUM OF PREV FREQUENCIES
-			double sum = 0;
-			int prev_pixel = GREY[i][j];
-			for (int k = 0; k <= prev_pixel; k++) {
-				sum += freq[k];
-			}
-			double result = 255 * (1 / area) * sum;
-			GREY[i][j] = clamp(result);
-		}
-	}
-	#undef GREY
+    int total = image->rows * image->cols;
+    int cdf_min = 0;
+    for (int i = 0; i < 256; i++) {
+        if (cdf[i] != 0) {
+            cdf_min = cdf[i];
+            break;
+        }
+    }
+
+    for (int i = 0; i < image->rows; i++) {
+        for (int j = 0; j < image->cols; j++) {
+            int value = image->greyscale_matrix[i][j];
+            double mapped = (double)(cdf[value] - cdf_min) * 255.0 / (double)(total - cdf_min);
+            if (mapped < 0) mapped = 0;
+            if (mapped > 255) mapped = 255;
+            image->greyscale_matrix[i][j] = (unsigned char)(mapped + 0.5);
+        }
+    }
 }

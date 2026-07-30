@@ -1,12 +1,16 @@
 // Functions that handle the PPM or PGM image
 // By reading pixels from the inputted file and loading them into memory
 
-#include "def.h"
+#include "image.h"
 
-// Big load function handles both ascii and binary, greyscale or color
-// By calling the necessary functions
-// It also allocates memory for the images by calling the alloc functions
+static void load_ascii(image_t *image, const char *filename);
+static void load_binary(image_t *image, const char *filename);
 
+/**
+ * Load function which handles both ascii and binary, greyscale or color
+ * By calling the necessary functions.
+ * It also allocates memory for the images by calling the alloc functions
+ */
 void load_gui(image_t *image, selection_t *select, const char *filename)
 {
 	// OPEN FILE
@@ -74,119 +78,6 @@ void load_gui(image_t *image, selection_t *select, const char *filename)
 	}
 
 }
-// --------------------- CLI AND GUI FUNCTIONS  ---------------------
-void load_ascii(image_t *image, const char *filename)
-{
-	// OPEN FILE
-	FILE *in = fopen(filename, "rt");
-	if (!in) {
-		printf("Failed to load the text file  %s\n", filename);
-		return;
-	}
-
-	// READ FIRST LINE AGAIN
-	char ignore[1024];
-	fscanf(in, "%s", ignore);
-
-	// P2 GREYSCALE FORMAT
-	if (strcmp(image->format, "P2") == 0) {
-		// READ COLLS AND ROWS
-		fscanf(in, "%d %d", &image->cols, &image->rows);
-
-		// READ MAXVAL 255
-		fscanf(in, "%d", &image->maxval);
-
-		alloc_greyscale(image);
-
-		// ASSIGN VALUES
-		for (int i = 0 ; i < image->rows; i++) {
-			for (int j = 0; j < image->cols; j++) {
-				int value;
-				fscanf(in, "%d", &value);
-				// READ INT AND CAST TO UNSIGNED CHAR AFTERWARDS
-				image->greyscale_matrix[i][j] = (unsigned char)value;
-			}
-		}
-
-	}
-	// P3 RGB FORMAT
-	if (strcmp(image->format, "P3") == 0) {
-		// READ COLLS AND ROWS
-		fscanf(in, "%d %d", &image->cols, &image->rows);
-		// READ MAXVAL 255
-		fscanf(in, "%d", &image->maxval);
-
-		alloc_color(image);
-
-		//ASSIGN VALUES
-		for (int i = 0; i < image->rows; i++) {
-			for (int j = 0; j < image->cols; j++) {
-				int r, g, b;
-				fscanf(in, "%d %d %d", &r, &g, &b);
-				// READ INT AND CAST TO UNSIGNED CHAR AFTERWARDS
-				image->color_matrix[i][j].r = (unsigned char)r;
-				image->color_matrix[i][j].g = (unsigned char)g;
-				image->color_matrix[i][j].b = (unsigned char)b;
-			}
-		}
-	}
-	// CLOSE THE FILE
-	fclose(in);
-}
-
-void load_binary(image_t *image, const char *filename)
-{
-	// OPEN FILE
-	FILE *in = fopen(filename, "rb");
-	if (!in) {
-		printf("Failed to load the binary file %s\n", filename);
-		return;
-	}
-
-	// READ FIRST LINE AGAIN
-	char ignore[1024];
-	fscanf(in, "%s", ignore);
-
-	// P5 GREYSCALE FORMAT
-	if (strcmp(image->format, "P5") == 0) {
-		fscanf(in, "%d %d", &image->cols, &image->rows);
-		// READ MAXVAL 255
-		fscanf(in, "%d\n", &image->maxval);
-
-		alloc_greyscale(image);
-
-		// ASSIGN VALUES
-		for (int i = 0 ; i < image->rows; i++) {
-			for (int j = 0; j < image->cols; j++) {
-				fread(&image->greyscale_matrix[i][j],
-					  sizeof(unsigned char), 1, in);
-			}
-		}
-	}
-	// P6 RGB FORMAT
-	if (strcmp(image->format, "P6") == 0) {
-		fscanf(in, "%d %d", &image->cols, &image->rows);
-		// READ MAXVAL 255
-		fscanf(in, "%d\n", &image->maxval);
-
-		alloc_color(image);
-
-		// ASSIGN VALUES
-		for (int i = 0; i < image->rows; i++) {
-			for (int j = 0; j < image->cols; j++) {
-				fread(&image->color_matrix[i][j].r,
-					  sizeof(unsigned char), 1, in);
-				fread(&image->color_matrix[i][j].g,
-					  sizeof(unsigned char), 1, in);
-				fread(&image->color_matrix[i][j].b,
-					  sizeof(unsigned char), 1, in);
-			}
-		}
-	}
-	// CLOSE THE FILE
-	fclose(in);
-}
-// --------------------- LOAD from RAM-------------------------------
 
 /**
  * Builds an image_t object from a buffer.
@@ -259,4 +150,106 @@ bool load_memory_binary_gui(image_t *image, selection_t *select, const char* buf
 	}
 
 	return true;
+}
+
+static void load_ascii(image_t *image, const char *filename)
+{
+	// OPEN FILE
+	FILE *in = fopen(filename, "rt");
+	if (!in) {
+		printf("Failed to load the text file  %s\n", filename);
+		return;
+	}
+
+	// READ FIRST LINE AGAIN
+	char ignore[1024];
+	fscanf(in, "%s", ignore);
+
+	// P2 GREYSCALE FORMAT
+	if (strcmp(image->format, "P2") == 0) {
+		// READ COLLS AND ROWS
+		fscanf(in, "%d %d", &image->cols, &image->rows);
+
+		// READ MAXVAL 255
+		fscanf(in, "%d", &image->maxval);
+
+		alloc_greyscale(image);
+
+		// ASSIGN VALUES
+		for (int i = 0 ; i < image->rows; i++) {
+			for (int j = 0; j < image->cols; j++) {
+				int value;
+				fscanf(in, "%d", &value);
+				// READ INT AND CAST TO UNSIGNED CHAR AFTERWARDS
+				image->greyscale_matrix[i][j] = (unsigned char)value;
+			}
+		}
+
+	}
+	// P3 RGB FORMAT
+	if (strcmp(image->format, "P3") == 0) {
+		// READ COLLS AND ROWS
+		fscanf(in, "%d %d", &image->cols, &image->rows);
+		// READ MAXVAL 255
+		fscanf(in, "%d", &image->maxval);
+
+		alloc_color(image);
+
+		//ASSIGN VALUES
+		for (int i = 0; i < image->rows; i++) {
+			for (int j = 0; j < image->cols; j++) {
+				int r, g, b;
+				fscanf(in, "%d %d %d", &r, &g, &b);
+				// READ INT AND CAST TO UNSIGNED CHAR AFTERWARDS
+				image->color_matrix[i][j].r = (unsigned char)r;
+				image->color_matrix[i][j].g = (unsigned char)g;
+				image->color_matrix[i][j].b = (unsigned char)b;
+			}
+		}
+	}
+	// CLOSE THE FILE
+	fclose(in);
+}
+
+static void load_binary(image_t *image, const char *filename)
+{
+	// OPEN FILE
+	FILE *in = fopen(filename, "rb");
+	if (!in) {
+		printf("Failed to load the binary file %s\n", filename);
+		return;
+	}
+
+	// READ FIRST LINE AGAIN
+	char ignore[1024];
+	fscanf(in, "%s", ignore);
+
+	// P5 GREYSCALE FORMAT
+	if (strcmp(image->format, "P5") == 0) {
+		fscanf(in, "%d %d", &image->cols, &image->rows);
+		// READ MAXVAL 255
+		fscanf(in, "%d\n", &image->maxval);
+
+		alloc_greyscale(image);
+
+		// ASSIGN VALUES BY READING ONE ROW AT A TIME
+		for (int i = 0 ; i < image->rows; i++) {
+			fread(image->greyscale_matrix[i], sizeof(unsigned char), image->cols, in);
+		}
+	}
+	// P6 RGB FORMAT
+	if (strcmp(image->format, "P6") == 0) {
+		fscanf(in, "%d %d", &image->cols, &image->rows);
+		// READ MAXVAL 255
+		fscanf(in, "%d\n", &image->maxval);
+
+		alloc_color(image);
+
+		// ASSIGN VALUES BY READING ONE ROW AT A TIME
+		for (int i = 0; i < image->rows; i++) {
+			fread(image->color_matrix[i], sizeof(pixel_t), image->cols, in);
+		}
+	}
+	// CLOSE THE FILE
+	fclose(in);
 }

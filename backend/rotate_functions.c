@@ -1,6 +1,6 @@
 // Functions that rotate the image 
 
-#include "def.h"
+#include "image_operations.h"
 
 void rotate_square_greyscale_90deg(image_t *image, selection_t *select)
 {
@@ -227,4 +227,3 @@ void rotate_all(image_t *image, selection_t *select, int degrees)
 	printf("Rotated %d\n", degrees);
 
 }
-
