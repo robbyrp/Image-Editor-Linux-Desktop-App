@@ -1,5 +1,8 @@
 #pragma once
-#include "../backend/def.h"
+#include "../backend/image.h"
+#include "../backend/image_operations.h"
+#include "../backend/load_save.h"
+#include "../backend/network.h"
 #include <GL/gl.h>
 #include <ctime>                // For timing operations
 #include <utility>              // For std::forward

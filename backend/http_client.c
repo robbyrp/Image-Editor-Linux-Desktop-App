@@ -3,7 +3,9 @@
  * Modified for this project.
  */
 #include "network.h"
- 
+#include <stdlib.h>
+#include <string.h>
+
 int network_init(void)
 {
     CURLcode result;

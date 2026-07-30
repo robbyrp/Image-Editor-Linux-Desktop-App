@@ -4,7 +4,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
-#include "../backend/def.h"
+#include "../backend/image.h"
+#include "../backend/image_operations.h"
 #include "funcs.h" // Functions for image display
 
 // Function to convert image to RGBA for opengl display

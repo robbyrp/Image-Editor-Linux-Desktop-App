@@ -5,7 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
-#include "../backend/def.h"
+#include "../backend/image.h"
+#include "../backend/network.h"
 #include "funcs.h"
 
 static void glfw_error_callback(int error, const char* description)
