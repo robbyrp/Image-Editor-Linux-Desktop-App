@@ -10,7 +10,7 @@ void equalize(image_t *image)
 		printf("No image loaded\n");
 		return;
 	}
-	if (image->color_matrix && !image->greyscale_matrix) {
+	if (image_is_color(image)) {
 		printf("Black and white image needed\n");
 		return;
 	} else if (!image->color_matrix && image->greyscale_matrix) {

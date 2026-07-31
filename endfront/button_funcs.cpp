@@ -130,7 +130,7 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 }
 
 void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state) {
-	if (ImGui::Button("Fetch dog image", ImVec2(120, 40))) {
+	if (ImGui::Button("Fetch dog", ImVec2(120, 40))) {
 		const char *RANDOM_BREED_URL = "/api/random-breed";
 		memory_struct_t chunk = http_get_request_content(RANDOM_BREED_URL);
 		if (chunk.memory != NULL && chunk.size != 0) {
@@ -264,6 +264,30 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 		}
 		if (ImGui::Button("Gaussian blur", ImVec2(-1, 40))) {
 			time_operation(apply_gaussian_blur, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Edge enhance", ImVec2(-1, 40))) {
+			time_operation(apply_edge_enhance, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Ridge detection", ImVec2(-1, 40))) {
+			time_operation(apply_ridge_detection, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Horizontal detect", ImVec2(-1, 40))) {
+			time_operation(apply_horizontal_prewitt, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Vertical detect", ImVec2(-1, 40))) {
+			time_operation(apply_vertical_prewitt, img_state->image, img_state->selection);
 			t_state->convert = true;
 			t_state->generate_texture = true;
 			create_buffer(img_state->image, t_state);

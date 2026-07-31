@@ -30,6 +30,11 @@ extern "C" {
 	void apply_edge(image_t *image, selection_t *select);
 	void apply_blur(image_t *image, selection_t *select);
 	void apply_gaussian_blur(image_t *image, selection_t *select);
+	void apply_edge_enhance(image_t *image, selection_t *select);
+	void apply_ridge_detection(image_t *image, selection_t *select);
+	void apply_horizontal_prewitt(image_t *image, selection_t *select);
+	void apply_vertical_prewitt(image_t *image, selection_t *select); 
+
 #ifdef __cplusplus
 }
 #endif

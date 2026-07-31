@@ -18,10 +18,10 @@ void load_gui(image_t *image, selection_t *select, const char *filename)
 	if (!in) {
 		printf("Could not load %s\n", filename);
 		// CLEAR CURRENT IMAGE
-		if (image->greyscale_matrix) {
+		if (image_is_greyscale) {
 			free_greyscale(image);
 		}
-		if (image->color_matrix) {
+		if (image_is_color) {
 			free_color(image);
 		}
 		select->all = false;
@@ -37,10 +37,10 @@ void load_gui(image_t *image, selection_t *select, const char *filename)
 		fclose(in);
 		printf("Failed to load %s\n", filename);
 		// CLEAR THE CURRENT IMAGE
-		if (image->greyscale_matrix) {
+		if (image_is_greyscale(image)) {
 			free_greyscale(image);
 		}
-		if (image->color_matrix) {
+		if (image_is_color(image)) {
 			free_color(image);
 		}
 		return;
@@ -48,11 +48,11 @@ void load_gui(image_t *image, selection_t *select, const char *filename)
 	// CLOSE THE FILE
 	fclose(in);
 
-		// FREE IF ALREADY ALLOCATED
-	if (image->greyscale_matrix) {
+	// FREE IF ALREADY ALLOCATED
+	if (image_is_greyscale(image)) {
 		free_greyscale(image);
 	}
-	if (image->color_matrix) {
+	if (image_is_color(image)) {
 		free_color(image);
 	}
 
@@ -123,7 +123,7 @@ bool load_memory_binary_gui(image_t *image, selection_t *select, const char* buf
 	offset += bytes_read + 1;	// +1 for newline
 	bytes_read = 0;
 
-	if (image->color_matrix) {
+	if (image_is_color(image)) {
 		free_color(image);
 	}
 	image->cols = temp_cols;
@@ -141,7 +141,7 @@ bool load_memory_binary_gui(image_t *image, selection_t *select, const char* buf
 		}
 	}
 	
-	if (image->color_matrix) {
+	if (image_is_color(image)) {
 		select->all = true;
 		select->x_start = 0;
 		select->y_start = 0;

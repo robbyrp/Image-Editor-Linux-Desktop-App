@@ -265,10 +265,10 @@ void sidebar_menu_display(ImageState *img_state, TextureState *t_state)
 	ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
 	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
 
+	float sidebar_y = main_viewport_pos.y + 210.0f;
 	float sidebar_width = 200.0f;
-	float sidebar_height = main_viewport_size.y / 2.0f - 10.0f;
+	float sidebar_height = main_viewport_size.y - (sidebar_y - main_viewport_pos.y);
 	float sidebar_x = main_viewport_pos.x + main_viewport_size.x - sidebar_width;
-	float sidebar_y = main_viewport_pos.y + main_viewport_size.y / 2.0f;
 
 	ImGui::SetNextWindowPos(ImVec2(sidebar_x, sidebar_y), ImGuiCond_Always);
 	ImGui::SetNextWindowSize(ImVec2(sidebar_width, sidebar_height), ImGuiCond_Always);

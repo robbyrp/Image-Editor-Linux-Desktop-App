@@ -68,7 +68,7 @@ void crop_region(image_t *image, selection_t *select)
 	}
 
 	// LOADED COLOR MATRIX
-	if (image->color_matrix && !image->greyscale_matrix) {
+	if (image_is_color(image)) {
 
 		// MALLOC COLOR CROPPED MATRIX
 		alloc_cropped_color(&cropped);

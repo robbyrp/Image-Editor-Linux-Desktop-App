@@ -1,4 +1,3 @@
-// This program only works with P2 P3 P5 P6 formatted images!
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"

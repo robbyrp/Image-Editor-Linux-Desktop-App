@@ -48,6 +48,10 @@ extern "C" {
 	void alloc_greyscale(image_t *image);
 	void alloc_color(image_t *image);
 
+	bool image_is_color(image_t *image);
+	bool image_is_greyscale(image_t *image);
+	bool is_binary(image_t *image);
+
 #ifdef __cplusplus
 }
 #endif

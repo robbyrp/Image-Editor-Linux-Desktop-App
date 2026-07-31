@@ -148,3 +148,55 @@ void apply_gaussian_blur(image_t *image, selection_t *select)
 	apply_filter_color(image, select, ker, 16);
 	
 }
+
+void apply_edge_enhance(image_t *image, selection_t *select) 
+{
+    int ker[3][3] = {
+        {0, -1, 0},
+        {-1, 5, -1},
+        {0, -1, 0}
+    };
+    apply_filter_color(image, select, ker, 1);
+}
+
+
+void apply_box_blur(image_t *image, selection_t *select) 
+{
+    int ker[3][3] = {
+        {1,1,1},
+        {1,1,1},
+        {1,1,1}
+    };
+    apply_filter_color(image, select, ker, 9);
+}
+
+void apply_ridge_detection(image_t *image, selection_t *select) 
+{
+    int ker[3][3] = {
+        {-1, -1, -1},
+        {-1, 8, -1},
+        {-1, -1, -1}
+    };
+    apply_filter_color(image, select, ker, 1);
+}
+
+void apply_horizontal_prewitt(image_t *image, selection_t *select) 
+{
+    int ker[3][3] = {
+        {-1, -1, -1},
+        {0, 0, 0},
+        {1, 1, 1}
+    };
+    apply_filter_color(image, select, ker, 3);
+}
+
+void apply_vertical_prewitt(image_t *image, selection_t *select) 
+{
+    int ker[3][3] = {
+        {-1, 0, 1},
+        {-1, 0, 1},
+        {-1, 0, 1}
+    };
+    apply_filter_color(image, select, ker, 3);
+}
+

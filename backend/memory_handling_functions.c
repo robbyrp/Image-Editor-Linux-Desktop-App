@@ -52,3 +52,13 @@ void free_color(image_t *image)
 	image->color_matrix = NULL;
 	image->color_memblock = NULL;
 }
+
+// void clone_image(image_t *image)
+// {
+// 	if (image == NULL) {
+// 		fprintf(stderr, "There needs to be an image in order to clone it.\n");
+// 		return;
+// 	}
+
+	
+// }

@@ -71,7 +71,7 @@ void rotate_square_color_90deg(image_t *image, selection_t *select)
 
 void rotate_square(image_t *image, selection_t *select, int degrees)
 {
-	if (image->greyscale_matrix) {
+	if (image_is_greyscale(image)) {
 		switch (degrees) {
 		case 90:
 			rotate_square_greyscale_90deg(image, select);
@@ -104,7 +104,7 @@ void rotate_square(image_t *image, selection_t *select, int degrees)
 		}
 	}
 
-	else if (image->color_matrix) {
+	else if (image_is_color(image)) {
 		switch (degrees) {
 		case 90:
 			rotate_square_color_90deg(image, select);
@@ -145,7 +145,7 @@ void rotate_all_90deg(image_t *image, selection_t *select)
 	rotated.color_matrix = NULL;
 
 	// GREYSCALE IMAGE
-	if (image->greyscale_matrix) {
+	if (image_is_greyscale(image)) {
 
 		alloc_greyscale(&rotated);
 
@@ -163,7 +163,7 @@ void rotate_all_90deg(image_t *image, selection_t *select)
 	}
 
 	// COLOR
-	if (image->color_matrix) {
+	if (image_is_color(image)) {
 
 		alloc_color(&rotated);
 
