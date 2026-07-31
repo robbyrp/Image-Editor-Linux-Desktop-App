@@ -2,8 +2,10 @@
  * https://curl.se/libcurl/c/getinmemory.html
  * Modified for this project.
  */
-#include "def.h"
- 
+#include "network.h"
+#include <stdlib.h>
+#include <string.h>
+
 int network_init(void)
 {
     CURLcode result;

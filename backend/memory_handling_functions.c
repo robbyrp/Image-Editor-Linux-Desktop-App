@@ -1,63 +1,64 @@
 // Functions that allocate the exact amount of memory on the heap
 // Based on the type of image that was processed
 
-#include "def.h"
+#include "load_save.h"
 
 void alloc_greyscale(image_t *image)
 {
 	#define UC unsigned char
-	image->greyscale_matrix = (UC * *)malloc(image->rows * sizeof(UC *));
-	if (!image->greyscale_matrix) {
+	image->greyscale_matrix = (UC **)malloc((size_t)image->rows * sizeof(UC *));
+	image->greyscale_memblock = (UC *)malloc((size_t)image->rows * (size_t)image->cols * sizeof(image->greyscale_memblock));
+
+	if (!image->greyscale_matrix || !image->greyscale_memblock) {
+		free_greyscale(image);
 		fprintf(stderr, "Malloc() failed for greyscale array\n");
 		return;
 	}
+
 	for (int i = 0; i < image->rows; i++) {
-		image->greyscale_matrix[i] = (UC *)malloc(image->cols * sizeof(UC));
-		if (!image->greyscale_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for greyscale array\n");
-			return;
-		}
+		image->greyscale_matrix[i] = image->greyscale_memblock + (size_t)i * image->cols;
 	}
 	#undef UC
 }
 
 void alloc_color(image_t *image)
 {
-	image->color_matrix = (pixel_t **)malloc(image->rows * sizeof(pixel_t *));
-	if (!image->color_matrix) {
+	image->color_matrix = (pixel_t **)malloc((size_t)image->rows * sizeof(pixel_t *));
+	image->color_memblock = (pixel_t *)malloc((size_t)image->rows * (size_t)image->cols * sizeof(image->color_memblock));
+	if (!image->color_matrix || !image->color_memblock) {
+		free_color(image);
 		fprintf(stderr, "Malloc() failed for color matrix\n");
 		return;
 	}
+
 	for (int i = 0; i < image->rows; i++) {
-		image->color_matrix[i] =
-		(pixel_t *)malloc(image->cols * sizeof(pixel_t));
-		if (!image->color_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for color matrix\n");
-			return;
-		}
+		image->color_matrix[i] = image->color_memblock + (size_t)i * image->cols;
 	}
 }
 
 void free_greyscale(image_t *image)
 {
-	if (image->greyscale_matrix) {
-		for (int i = 0; i < image->rows; i++) {
-			free(image->greyscale_matrix[i]);
-		}
-		free(image->greyscale_matrix);
-		image->greyscale_matrix = NULL;
-	}
+	free(image->greyscale_memblock);
+	free(image->greyscale_matrix);
+	image->greyscale_matrix= NULL;
+	image->greyscale_memblock = NULL;
 
 }
 
 void free_color(image_t *image)
 {
-	if (image->color_matrix) {
-		for (int i = 0; i < image->rows; i++) {
-			free(image->color_matrix[i]);
-		}
-		free(image->color_matrix);
-		image->color_matrix = NULL;
-	}
+	free(image->color_memblock);
+	free(image->color_matrix);
+	image->color_matrix = NULL;
+	image->color_memblock = NULL;
 }
 
+// void clone_image(image_t *image)
+// {
+// 	if (image == NULL) {
+// 		fprintf(stderr, "There needs to be an image in order to clone it.\n");
+// 		return;
+// 	}
+
+	
+// }

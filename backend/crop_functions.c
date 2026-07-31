@@ -1,6 +1,9 @@
 // Functions that crop the image
 
-#include "def.h"
+#include "image_operations.h"
+
+static void alloc_cropped_greyscale(image_t *cropped);
+static void alloc_cropped_color(image_t *cropped);
 
 int check_selection(image_t *image, selection_t *select)
 {
@@ -34,49 +37,13 @@ void select_all(image_t *image, selection_t *select)
 		return;
 }
 
-void alloc_cropped_greyscale(image_t *cropped)
-{
-	#define UC unsigned char
-	cropped->greyscale_matrix = (UC **)malloc((cropped->rows) * sizeof(UC *));
-	if (!cropped->greyscale_matrix) {
-		fprintf(stderr, "Malloc() failed for cropped greyscale\n");
-		return;
-	}
-	for (int i = 0; i < cropped->rows; i++)	{
-		cropped->greyscale_matrix[i] =
-		(UC *)malloc((cropped->cols) * sizeof(UC));
-		if (!cropped->greyscale_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for cropped greyscale\n");
-			return;
-		}
-	}
-	#undef UC
-}
-
-void alloc_cropped_color(image_t *cropped)
-{
-	cropped->color_matrix =
-	(pixel_t **)malloc(cropped->rows * sizeof(pixel_t *));
-	if (!cropped->color_matrix) {
-		fprintf(stderr, "Malloc() failed for cropped color\n");
-		return;
-	}
-	for (int i = 0; i < cropped->rows; i++) {
-		cropped->color_matrix[i] =
-		(pixel_t *)malloc(cropped->cols * sizeof(pixel_t));
-		if (!cropped->color_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for cropped color\n");
-			return;
-		}
-	}
-}
-
 void crop_region(image_t *image, selection_t *select)
 {
 	if (!image->color_matrix && !image->greyscale_matrix) {
 		printf("No image loaded\n");
 		return;
 	}
+
 	image_t cropped;
 	//SHALLOW COPY OF IMAGE
 	cropped = *image;
@@ -91,39 +58,27 @@ void crop_region(image_t *image, selection_t *select)
 		alloc_cropped_greyscale(&cropped);
 
 		// ASSIGN VALUES
-		for (int i = select->y_start; i < select->y_end; i++) {
-			for (int j = select->x_start; j < select->x_end; j++) {
-				// ROWS AND COLS OF CROPPED MATRIX
-				int row = i - select->y_start;
-				int col = j - select->x_start;
-				cropped.greyscale_matrix[row][col] =
-				image->greyscale_matrix[i][j];
-			}
+		for (int i = 0; i < cropped.rows; i++) {
+			memcpy(cropped.greyscale_matrix[i], &image->greyscale_matrix[select->y_start + i][select->x_start],
+			(size_t)cropped.cols * sizeof(unsigned char));
 		}
+
 		// FREE IMAGE POINTER
 		free_greyscale(image);
 	}
 
 	// LOADED COLOR MATRIX
-	if (image->color_matrix && !image->greyscale_matrix) {
+	if (image_is_color(image)) {
 
 		// MALLOC COLOR CROPPED MATRIX
 		alloc_cropped_color(&cropped);
 
 		// ASSIGN VALUES
-		for (int i = select->y_start; i < select->y_end; i++) {
-			for (int j = select->x_start; j < select->x_end; j++) {
-				// ROWS AND COLS OF CROPPED MATRIX
-				int row = i - select->y_start;
-				int col = j - select->x_start;
-				cropped.color_matrix[row][col].r =
-				image->color_matrix[i][j].r;
-				cropped.color_matrix[row][col].g =
-				image->color_matrix[i][j].g;
-				cropped.color_matrix[row][col].b =
-				image->color_matrix[i][j].b;
-			}
+		for (int i = 0; i < cropped.rows; i++) {
+			memcpy(cropped.color_matrix[i], &image->color_matrix[select->y_start + i][select->x_start],
+			(size_t)cropped.cols * sizeof(pixel_t));
 		}
+		
 		// FREE IMAGE POINTER
 		free_color(image);
 	}
@@ -139,3 +94,38 @@ void crop_region(image_t *image, selection_t *select)
 	select->all = true;
 }
 
+static void alloc_cropped_greyscale(image_t *cropped)
+{
+	#define UC unsigned char
+	cropped->greyscale_matrix = (UC **)malloc((size_t)(cropped->rows) * sizeof(UC *));
+	cropped->greyscale_memblock = (UC *)malloc((size_t)cropped->rows * (size_t)cropped->cols * sizeof(cropped->color_memblock));
+
+	if (!cropped->greyscale_matrix || !cropped->greyscale_memblock) {
+		free_greyscale(cropped);
+		fprintf(stderr, "Malloc() failed for cropped greyscale\n");
+		return;
+	}
+
+	for (int i = 0; i < cropped->rows; i++)	{
+		cropped->greyscale_matrix[i] = cropped->greyscale_memblock + (size_t) i * cropped->cols;
+	}
+	#undef UC
+}
+
+static void alloc_cropped_color(image_t *cropped)
+{
+	cropped->color_matrix =
+	(pixel_t **)malloc(cropped->rows * sizeof(pixel_t *));
+	cropped->color_memblock =
+	(pixel_t *)malloc((size_t)cropped->rows * (size_t)cropped->rows * sizeof(cropped->color_memblock));
+	
+	if (!cropped->color_matrix || !cropped->color_memblock) {
+		free_color(cropped);
+		fprintf(stderr, "Malloc() failed for cropped color\n");
+		return;
+	}
+
+	for (int i = 0; i < cropped->rows; i++) {
+		cropped->color_matrix[i] = cropped->color_memblock + (size_t) i * cropped->cols;
+	}
+}

@@ -4,13 +4,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
-#include "../backend/def.h"
 #include "funcs.h"
 
 void load_button_logic(ImageState *img_state, TextureState *t_state)
 {
-	static bool show_zenity_error = false;
-
 	// Load button
 	if (ImGui::Button("Load", ImVec2(120, 40))) {
 		// Use zenity to navigate file system
@@ -18,7 +15,6 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 		fp = popen("which zenity > /dev/null 2>&1", "r");
 		
 		if (!fp && pclose(fp) != 0) {
-			show_zenity_error = true;
 			ImGui::OpenPopup("Zenity Not Found");
 			return;
 		}
@@ -26,7 +22,6 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 		fp = popen("zenity --file-selection --file-filter='PPM/PGM Images | *.ppm *.pgm' --title='Select Image'", "r");
 		
 		if (!fp && pclose(fp) != 0) {
-			show_zenity_error = true;
 			ImGui::OpenPopup("Zenity Not Found");
 			return;
 			
@@ -59,7 +54,6 @@ void load_button_logic(ImageState *img_state, TextureState *t_state)
 			ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
 			if (ImGui::Button("OK", ImVec2(120, 0))) {
 				ImGui::CloseCurrentPopup();
-				show_zenity_error = false;
 			}
 			ImGui::PopStyleColor(3);
 			ImGui::EndPopup();
@@ -136,7 +130,7 @@ void save_button_logic(ImageState *img_state, TextureState *t_state)
 }
 
 void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state) {
-	if (ImGui::Button("Fetch dog image", ImVec2(120, 40))) {
+	if (ImGui::Button("Fetch dog", ImVec2(120, 40))) {
 		const char *RANDOM_BREED_URL = "/api/random-breed";
 		memory_struct_t chunk = http_get_request_content(RANDOM_BREED_URL);
 		if (chunk.memory != NULL && chunk.size != 0) {
@@ -175,7 +169,6 @@ void selection_combo_logic(ImageState *img_state)
 void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 {
 	// Crop and rotate operations
-	static bool show_square_popup = false;
 
 	if (ImGui::Button("Crop", ImVec2(-1, 40))) {
 		if (check_selection(img_state->image, img_state->selection) == 1) {
@@ -190,7 +183,6 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 	if (ImGui::Button("Rotate left", ImVec2(-1, 40))) {
 		if (img_state->selection->x_end - img_state->selection->x_start !=
 			img_state->selection->y_end - img_state->selection->y_start) {
-			show_square_popup = true;
 			ImGui::OpenPopup("Square Selection Error");
 		} else {
 			rotate_square(img_state->image, img_state->selection, 90);
@@ -202,7 +194,6 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 	if (ImGui::Button("Rotate right", ImVec2(-1, 40))) {
 		if (img_state->selection->x_end - img_state->selection->x_start !=
 			img_state->selection->y_end - img_state->selection->y_start) {
-			show_square_popup = true;
 			ImGui::OpenPopup("Square Selection Error");
 		} else {
 			rotate_square(img_state->image, img_state->selection, -90);
@@ -229,7 +220,6 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
 		if (ImGui::Button("OK", ImVec2(120, 0))) {
 			ImGui::CloseCurrentPopup();
-			show_square_popup = false;
 		}
 		ImGui::PopStyleColor(3);
 		ImGui::EndPopup();
@@ -242,7 +232,7 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 
 		if (ImGui::Button("Equalize", ImVec2(-1, 40))) {
 			if (now - last_equalize_press > 2.0) {
-				time_operation(equalize_greyscale, img_state->image);
+				time_operation(equalize, img_state->image);
 				t_state->convert = true;
 				t_state->generate_texture = true;
 				create_buffer(img_state->image, t_state);
@@ -274,6 +264,30 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 		}
 		if (ImGui::Button("Gaussian blur", ImVec2(-1, 40))) {
 			time_operation(apply_gaussian_blur, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Edge enhance", ImVec2(-1, 40))) {
+			time_operation(apply_edge_enhance, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Ridge detection", ImVec2(-1, 40))) {
+			time_operation(apply_ridge_detection, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Horizontal detect", ImVec2(-1, 40))) {
+			time_operation(apply_horizontal_prewitt, img_state->image, img_state->selection);
+			t_state->convert = true;
+			t_state->generate_texture = true;
+			create_buffer(img_state->image, t_state);
+		}
+		if (ImGui::Button("Vertical detect", ImVec2(-1, 40))) {
+			time_operation(apply_vertical_prewitt, img_state->image, img_state->selection);
 			t_state->convert = true;
 			t_state->generate_texture = true;
 			create_buffer(img_state->image, t_state);
