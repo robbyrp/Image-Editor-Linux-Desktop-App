@@ -34,7 +34,9 @@ public:
 class ImageState {
 public:
     image_t *image;
+    image_t *backup_image;
     selection_t *selection;
+    selection_t *backup_selection;
     char *input_file_path;
     char *output_file_path;
 
@@ -44,11 +46,27 @@ public:
         if (image) {
             image->greyscale_matrix = nullptr;
             image->color_matrix = nullptr;
+            image->greyscale_memblock = nullptr;
+            image->color_memblock = nullptr;
             image->loaded = false;
             image->cols = 0;
             image->rows = 0;
             image->maxval = 255;
             strcpy(image->format, "");
+        }
+
+        backup_image = (image_t *)malloc(sizeof(image_t));
+        if (backup_image) {
+            backup_image->greyscale_matrix = nullptr;
+            backup_image->color_matrix = nullptr;
+            backup_image->greyscale_memblock = nullptr;
+            backup_image->color_memblock = nullptr;
+            backup_image->loaded = false;
+            backup_image->cols = 0;
+            backup_image->rows = 0;
+            backup_image->maxval = 255;
+            strcpy(backup_image->format, "");
+            
         }
 
         selection = (selection_t *)malloc(sizeof(selection_t));
@@ -58,6 +76,15 @@ public:
             selection->y_start = 0;
             selection->x_end = 0;
             selection->y_end = 0;
+        }
+
+        backup_selection = (selection_t *)malloc(sizeof(selection_t));
+        if (backup_selection) {
+            backup_selection->all = false;
+            backup_selection->x_start = 0;
+            backup_selection->y_start = 0;
+            backup_selection->x_end = 0;
+            backup_selection->y_end = 0;
         }
 
         input_file_path = (char *)malloc(512 * sizeof(char));
@@ -74,9 +101,19 @@ public:
             free(image);
             image = nullptr;
         }
+        if (backup_image) {
+            free_greyscale(backup_image);
+            free_color(backup_image);
+            free(backup_image);
+            backup_image = nullptr;
+        }
         if (selection) {
             free(selection);
             selection = nullptr;
+        }
+        if (backup_selection) {
+            free(backup_selection);
+            backup_selection = nullptr;
         }
         free(input_file_path);
         free(output_file_path);
@@ -100,6 +137,8 @@ void sidebar_menu_display(ImageState *img_state, TextureState *t_state);
 void sidebar_menu_logic(ImageState *img_state, TextureState *t_state);
 // void popup_message(const char *title, const char *message);
 
+void undo_button_logic(ImageState *img_state, TextureState *t_state);
+void save_state_for_undo(ImageState *img_state);
 
 // Template function has to be defined in the header file
 template <typename Func, typename... Args>

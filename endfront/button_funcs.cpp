@@ -6,6 +6,8 @@
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include "funcs.h"
 
+static void refresh_image_render(ImageState *img_state, TextureState *t_state);
+
 void load_button_logic(ImageState *img_state, TextureState *t_state)
 {
 	// Load button
@@ -139,9 +141,8 @@ void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state) {
 				return;
 			}
 			img_state->image->loaded = true;
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			save_state_for_undo(img_state);
+			refresh_image_render(img_state, t_state);
 		}
 		free_chunk(&chunk);
 	}
@@ -174,10 +175,9 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 		if (check_selection(img_state->image, img_state->selection) == 1) {
 			return;
 		} else {
+			save_state_for_undo(img_state);
 			crop_region(img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 	}
 	if (ImGui::Button("Rotate left", ImVec2(-1, 40))) {
@@ -185,10 +185,9 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 			img_state->selection->y_end - img_state->selection->y_start) {
 			ImGui::OpenPopup("Square Selection Error");
 		} else {
+			save_state_for_undo(img_state);
 			rotate_square(img_state->image, img_state->selection, 90);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 	}
 	if (ImGui::Button("Rotate right", ImVec2(-1, 40))) {
@@ -196,10 +195,9 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 			img_state->selection->y_end - img_state->selection->y_start) {
 			ImGui::OpenPopup("Square Selection Error");
 		} else {
+			save_state_for_undo(img_state);
 			rotate_square(img_state->image, img_state->selection, -90);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 	}
 
@@ -232,65 +230,79 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 
 		if (ImGui::Button("Equalize", ImVec2(-1, 40))) {
 			if (now - last_equalize_press > 2.0) {
+				save_state_for_undo(img_state);
 				time_operation(equalize, img_state->image);
-				t_state->convert = true;
-				t_state->generate_texture = true;
-				create_buffer(img_state->image, t_state);
+				refresh_image_render(img_state, t_state);
 				last_equalize_press = now;
 			}
-
 		}
 	}
 
 	// Kernel operations - only for color images
 	if (!img_state->image->greyscale_matrix && img_state->image->color_matrix) {
 		if (ImGui::Button("Sharpen", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_sharpen, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Edge detect", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_edge, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Box blur", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_blur, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Gaussian blur", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_gaussian_blur, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Edge enhance", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_edge_enhance, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Ridge detection", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_ridge_detection, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Horizontal detect", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_horizontal_prewitt, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 		if (ImGui::Button("Vertical detect", ImVec2(-1, 40))) {
+			save_state_for_undo(img_state);
 			time_operation(apply_vertical_prewitt, img_state->image, img_state->selection);
-			t_state->convert = true;
-			t_state->generate_texture = true;
-			create_buffer(img_state->image, t_state);
+			refresh_image_render(img_state, t_state);
 		}
 	}
+}
+
+void undo_button_logic(ImageState *img_state, TextureState *t_state)
+{
+	if (ImGui::Button("Undo", ImVec2(120, 40))) {
+		if (img_state->backup_image->loaded) {
+			std::swap(img_state->selection, img_state->backup_selection);
+			std::swap(img_state->image, img_state->backup_image);
+			time_operation(refresh_image_render, img_state, t_state);
+		}
+	}
+}
+
+void save_state_for_undo(ImageState *img_state)
+{
+	img_state->backup_image = clone_image(img_state->backup_image, img_state->image);
+	*img_state->backup_selection = *img_state->selection;
+}
+
+static void refresh_image_render(ImageState *img_state, TextureState *t_state)
+{
+	t_state->convert = true;
+	t_state->generate_texture = true;
+	create_buffer(img_state->image, t_state);
 }

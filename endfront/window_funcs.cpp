@@ -249,6 +249,9 @@ void top_toolbar_display(ImageState *img_state, TextureState *t_state) {
 	fetch_dog_button_logic(img_state, t_state);
 	ImGui::SameLine();
 
+	undo_button_logic(img_state, t_state);
+	ImGui::SameLine();
+
 	selection_combo_logic(img_state);
 
 	ImGui::PopStyleVar(2);
