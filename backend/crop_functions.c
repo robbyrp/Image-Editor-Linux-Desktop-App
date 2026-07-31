@@ -97,18 +97,17 @@ void crop_region(image_t *image, selection_t *select)
 static void alloc_cropped_greyscale(image_t *cropped)
 {
 	#define UC unsigned char
-	cropped->greyscale_matrix = (UC **)malloc((cropped->rows) * sizeof(UC *));
-	if (!cropped->greyscale_matrix) {
+	cropped->greyscale_matrix = (UC **)malloc((size_t)(cropped->rows) * sizeof(UC *));
+	cropped->greyscale_memblock = (UC *)malloc((size_t)cropped->rows * (size_t)cropped->cols * sizeof(cropped->color_memblock));
+
+	if (!cropped->greyscale_matrix || !cropped->greyscale_memblock) {
+		free_greyscale(cropped);
 		fprintf(stderr, "Malloc() failed for cropped greyscale\n");
 		return;
 	}
+
 	for (int i = 0; i < cropped->rows; i++)	{
-		cropped->greyscale_matrix[i] =
-		(UC *)malloc((cropped->cols) * sizeof(UC));
-		if (!cropped->greyscale_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for cropped greyscale\n");
-			return;
-		}
+		cropped->greyscale_matrix[i] = cropped->greyscale_memblock + (size_t) i * cropped->cols;
 	}
 	#undef UC
 }
@@ -117,16 +116,16 @@ static void alloc_cropped_color(image_t *cropped)
 {
 	cropped->color_matrix =
 	(pixel_t **)malloc(cropped->rows * sizeof(pixel_t *));
-	if (!cropped->color_matrix) {
+	cropped->color_memblock =
+	(pixel_t *)malloc((size_t)cropped->rows * (size_t)cropped->rows * sizeof(cropped->color_memblock));
+	
+	if (!cropped->color_matrix || !cropped->color_memblock) {
+		free_color(cropped);
 		fprintf(stderr, "Malloc() failed for cropped color\n");
 		return;
 	}
+
 	for (int i = 0; i < cropped->rows; i++) {
-		cropped->color_matrix[i] =
-		(pixel_t *)malloc(cropped->cols * sizeof(pixel_t));
-		if (!cropped->color_matrix[i]) {
-			fprintf(stderr, "Malloc() failed for cropped color\n");
-			return;
-		}
+		cropped->color_matrix[i] = cropped->color_memblock + (size_t) i * cropped->cols;
 	}
 }

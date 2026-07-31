@@ -7,7 +7,7 @@ void alloc_greyscale(image_t *image)
 {
 	#define UC unsigned char
 	image->greyscale_matrix = (UC **)malloc((size_t)image->rows * sizeof(UC *));
-	image->greyscale_memblock = malloc((size_t)image->rows * (size_t)image->cols * sizeof(image->greyscale_memblock));
+	image->greyscale_memblock = (UC *)malloc((size_t)image->rows * (size_t)image->cols * sizeof(image->greyscale_memblock));
 
 	if (!image->greyscale_matrix || !image->greyscale_memblock) {
 		free_greyscale(image);
