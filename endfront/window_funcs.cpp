@@ -8,6 +8,13 @@
 #include "../backend/image_operations.h"
 #include "funcs.h" // Functions for image display
 
+static constexpr float kTaskbarHeight = 60.0f;
+static constexpr float kTopMargin = 10.0f;
+static constexpr float kRightPanelWidth = 200.0f;
+static constexpr float kRightPanelGap = 14.0f;
+static constexpr float kSelectionWindowHeight = 130.0f;
+static constexpr float kSidebarTopOffset = 210.0f;
+
 // Function to convert image to RGBA for opengl display
 unsigned char* convert_to_display_format(image_t *image) 
 {
@@ -109,7 +116,6 @@ void create_opengl_texture(ImageState *img_state, TextureState *t_state)
 		scaled_size.x = (float)img_state->image->cols * scale;
 		scaled_size.y = (float)img_state->image->rows * scale;
 
-		// Display image
 		ImGui::Image((void *)(intptr_t)t_state->texture_id, scaled_size);
 	}
 }
@@ -124,12 +130,12 @@ void image_window_display(ImageState *img_state, TextureState *t_state)
 	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
 
 	// Left side, under taskbar
-	float taskbar_height = 60.0f;
-	ImVec2 window_pos = ImVec2(main_viewport_pos.x, main_viewport_pos.y + taskbar_height);
+	ImVec2 window_pos = ImVec2(main_viewport_pos.x, main_viewport_pos.y + kTaskbarHeight + kTopMargin);
 
 	// Fixed width, height based on avail space
-	float window_width = 1200.0f;
-	float window_height = main_viewport_size.y - taskbar_height;
+	float window_width = main_viewport_size.x - kRightPanelWidth - kRightPanelGap;
+	if (window_width < 400.0f) window_width = 400.0f;
+	float window_height = main_viewport_size.y - kTaskbarHeight - kTopMargin;
 	ImVec2 window_size = ImVec2(window_width, window_height);
 
 	// Set window pos and size(fixed)
@@ -161,12 +167,11 @@ void selection_window_display(ImageState *img_state, TextureState *t_state)
 	ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
 	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
 
-	float taskbar_height = 60.0f;
-	float selection_window_width = 250.0f;
-	float selection_window_x = main_viewport_size.x - selection_window_width;
+	float selection_window_width = kRightPanelWidth; // same as sidebar
+	float selection_window_x = main_viewport_pos.x + main_viewport_size.x - selection_window_width;
 
-	ImVec2 selection_pos = ImVec2(selection_window_x, main_viewport_pos.y + taskbar_height + 10.0f);
-	ImVec2 selection_size = ImVec2(selection_window_width, 130.0f);
+	ImVec2 selection_pos = ImVec2(selection_window_x, main_viewport_pos.y + kTaskbarHeight + kTopMargin);
+	ImVec2 selection_size = ImVec2(selection_window_width, kSelectionWindowHeight);
 	
 	ImGui::SetNextWindowPos(selection_pos, ImGuiCond_Always);
 	ImGui::SetNextWindowSize(selection_size, ImGuiCond_Always);
@@ -177,29 +182,18 @@ void selection_window_display(ImageState *img_state, TextureState *t_state)
 				ImGuiWindowFlags_NoCollapse |
 				ImGuiWindowFlags_NoTitleBar);
 
-	// The defaults
-	static int x_start = 0, x_end = img_state->image->cols;
-	static int y_start = 0, y_end = img_state->image->rows;
-
-	// Auto complete if "Select All button" pressed
-	if (img_state->selection->all) {
-		x_start = 0;
-		x_end = img_state->image->cols;
-		y_start = 0;
-		y_end = img_state->image->rows;
-	}
-
 	ImGui::Text("Selection:");
 	ImGui::Separator();
 	
 	img_state->selection->all = false;
+
 	// X coordinates on same row
 	ImGui::PushItemWidth(80);
-	if (ImGui::InputInt("##x_start", &x_start, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
+	if (ImGui::InputInt("##x_start", &img_state->selection->x_start, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
 		img_state->selection->changed = true;
 	}
 	ImGui::SameLine();
-	if (ImGui::InputInt("##x_end", &x_end, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
+	if (ImGui::InputInt("##x_end", &img_state->selection->x_end, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
 		img_state->selection->changed = true;
 	}
 	ImGui::PopItemWidth();
@@ -207,11 +201,11 @@ void selection_window_display(ImageState *img_state, TextureState *t_state)
 	
 	// Y coordinates on same row
 	ImGui::PushItemWidth(80);
-	if (ImGui::InputInt("##y_start", &y_start, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
+	if (ImGui::InputInt("##y_start", &img_state->selection->y_start, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
 		img_state->selection->changed = true;
 	}
 	ImGui::SameLine();
-	if (ImGui::InputInt("##y_end", &y_end, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
+	if (ImGui::InputInt("##y_end", &img_state->selection->y_end, 0, 0, ImGuiInputTextFlags_CharsDecimal)) {
 		img_state->selection->changed = true;
 	}
 	ImGui::PopItemWidth();
@@ -221,12 +215,7 @@ void selection_window_display(ImageState *img_state, TextureState *t_state)
 	if (img_state->selection->changed && img_state->selection->all) {
 		img_state->selection->all = false;
 	}
-	// Assign inputted values to selection region
-	img_state->selection->x_start = x_start;
-	img_state->selection->x_end = x_end;
-	img_state->selection->y_start = y_start;
-	img_state->selection->y_end = y_end;
-	
+
 	// Check selection
 	if (check_selection(img_state->image, img_state->selection) == 1) {
 		ImGui::TextColored(ImVec4(1,0,0,1), "Invalid selection!");
@@ -268,8 +257,8 @@ void sidebar_menu_display(ImageState *img_state, TextureState *t_state)
 	ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
 	ImVec2 main_viewport_size = ImGui::GetMainViewport()->Size;
 
-	float sidebar_y = main_viewport_pos.y + 210.0f;
-	float sidebar_width = 200.0f;
+	float sidebar_y = main_viewport_pos.y + kSidebarTopOffset;
+	float sidebar_width = kRightPanelWidth;
 	float sidebar_height = main_viewport_size.y - (sidebar_y - main_viewport_pos.y);
 	float sidebar_x = main_viewport_pos.x + main_viewport_size.x - sidebar_width;
 

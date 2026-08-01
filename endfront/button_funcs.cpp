@@ -136,12 +136,12 @@ void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state) {
 		const char *RANDOM_BREED_URL = "/api/random-breed";
 		memory_struct_t chunk = http_get_request_content(RANDOM_BREED_URL);
 		if (chunk.memory != NULL && chunk.size != 0) {
+			save_state_for_undo(img_state);
 			if (!load_memory_binary_gui(img_state->image, img_state->selection, chunk.memory)) {
 				fprintf(stderr, "Could not load the image from the memory buffer into the program's memory\n");
 				return;
 			}
 			img_state->image->loaded = true;
-			save_state_for_undo(img_state);
 			refresh_image_render(img_state, t_state);
 		}
 		free_chunk(&chunk);
@@ -176,6 +176,7 @@ void sidebar_menu_logic(ImageState *img_state, TextureState *t_state)
 			return;
 		} else {
 			save_state_for_undo(img_state);
+			select_all(img_state->backup_image, img_state->backup_selection);
 			crop_region(img_state->image, img_state->selection);
 			refresh_image_render(img_state, t_state);
 		}
