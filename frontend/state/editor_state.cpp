@@ -1,47 +1,22 @@
-#pragma once
-#include "../backend/image.h"
-#include "../backend/image_operations.h"
-#include "../backend/load_save.h"
-#include "../backend/network.h"
-#include <GL/gl.h>
-#include <ctime>                // For timing operations
-#include <utility>              // For std::forward
+#include "editor_state.h"
+#include <stdlib.h>
+#include <string.h>
 
-class TextureState {
-public:
-    GLuint texture_id;
-    unsigned char *display_buffer;
-    bool convert;
-    bool generate_texture;
-
-    // Constructor
-    TextureState() {
+    TextureState::TextureState() {
         texture_id = 0;
         display_buffer = nullptr;       
         convert = true;                 // if conversion to rgba is needed
         generate_texture = true;
     }
 
-    // Destructor
-    ~TextureState() {
+    TextureState::~TextureState() {
         if (display_buffer) {
             free(display_buffer);
             display_buffer = nullptr;
         }
     }
-};
 
-class ImageState {
-public:
-    image_t *image;
-    image_t *backup_image;
-    selection_t *selection;
-    selection_t *backup_selection;
-    char *input_file_path;
-    char *output_file_path;
-
-    // Constructor
-    ImageState() {
+    ImageState::ImageState() {
         image = (image_t *)malloc(sizeof(image_t));
         if (image) {
             image->greyscale_matrix = nullptr;
@@ -93,8 +68,7 @@ public:
         strcpy(output_file_path, "../backend");
     }
 
-    // Destructor
-    ~ImageState() {
+    ImageState::~ImageState() {
         if (image) {
             free_greyscale(image);
             free_color(image);
@@ -118,36 +92,4 @@ public:
         free(input_file_path);
         free(output_file_path);
     }
-};
-
-unsigned char* convert_to_display_format(image_t *image);
-void create_buffer(image_t *image, TextureState *t_state);
-
-void load_button_logic(ImageState *image, TextureState *t_state);
-void save_button_logic(ImageState *img_state, TextureState *t_state);
-void fetch_dog_button_logic(ImageState *img_state, TextureState *t_state);
-void selection_combo_logic(ImageState *img_state);
-void selection_window_display(ImageState *img_state, TextureState *t_state);
-
-void top_toolbar_display(ImageState *img_state, TextureState *t_state);
-
-void image_window_display(ImageState *img_state, TextureState *t_state);
-
-void sidebar_menu_display(ImageState *img_state, TextureState *t_state);
-void sidebar_menu_logic(ImageState *img_state, TextureState *t_state);
-// void popup_message(const char *title, const char *message);
-
-void undo_button_logic(ImageState *img_state, TextureState *t_state);
-void save_state_for_undo(ImageState *img_state);
-
-// Template function has to be defined in the header file
-template <typename Func, typename... Args>
-void time_operation(Func&& func, Args&&... args)
-{
-    clock_t start = clock();
-    std::forward<Func>(func)(std::forward<Args>(args)...);
-    clock_t end = clock();
-    double duration_ms = 1000.0 * (end - start) / CLOCKS_PER_SEC;
-
-    printf("Operation took %.2f ms\n", duration_ms);
-}
+    
