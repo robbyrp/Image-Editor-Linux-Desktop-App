@@ -126,10 +126,4 @@ static void write_p3_row(FILE *file, const pixel_t *row, int cols)
     free(buffer);
 }
 
-bool is_binary(image_t *image)
-{
-    if (strcmp(image->format, "P6") == 0 || strcmp(image->format, "P5") == 0) {
-		return true;
-	}
-	return false;
-}
+

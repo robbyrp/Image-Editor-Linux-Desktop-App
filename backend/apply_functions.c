@@ -159,17 +159,6 @@ void apply_edge_enhance(image_t *image, selection_t *select)
     apply_filter_color(image, select, ker, 1);
 }
 
-
-void apply_box_blur(image_t *image, selection_t *select) 
-{
-    int ker[3][3] = {
-        {1,1,1},
-        {1,1,1},
-        {1,1,1}
-    };
-    apply_filter_color(image, select, ker, 9);
-}
-
 void apply_ridge_detection(image_t *image, selection_t *select) 
 {
     int ker[3][3] = {

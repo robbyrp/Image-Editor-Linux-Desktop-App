@@ -41,12 +41,13 @@ extern "C" {
 		bool is_valid;						// if the selection is valid
 	} selection_t;
 
-
     void free_greyscale(image_t *image);
 	void free_color(image_t *image);
 
 	void alloc_greyscale(image_t *image);
 	void alloc_color(image_t *image);
+
+	image_t* clone_image(image_t *dest, image_t *source);
 
 	bool image_is_color(image_t *image);
 	bool image_is_greyscale(image_t *image);

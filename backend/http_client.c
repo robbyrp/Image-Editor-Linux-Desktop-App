@@ -76,20 +76,18 @@ memory_struct_t http_get_request_content(const char *route)
 
     /* get it! */
     CURLcode result = curl_easy_perform(curl);
+    /*  
+        * Now, our chunk.memory points to a memory block that is chunk.size
+        * bytes big and contains the remote file.
+        *
+        * Do something nice with it!
+    */
 
     /* check for errors */
     if(result != CURLE_OK) {
         fprintf(stderr, "curl_easy_perform() failed: %s\n",
                 curl_easy_strerror(result));
         free_chunk(&chunk);
-    } else {
-        /*
-        * Now, our chunk.memory points to a memory block that is chunk.size
-        * bytes big and contains the remote file.
-        *
-        * Do something nice with it!
-        */
-        printf("%lu bytes retrieved\n", (unsigned long)chunk.size);
     }
 
     curl_easy_cleanup(curl);

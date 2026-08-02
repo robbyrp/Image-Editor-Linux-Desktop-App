@@ -18,10 +18,10 @@ void load_gui(image_t *image, selection_t *select, const char *filename)
 	if (!in) {
 		printf("Could not load %s\n", filename);
 		// CLEAR CURRENT IMAGE
-		if (image_is_greyscale) {
+		if (image_is_greyscale(image)) {
 			free_greyscale(image);
 		}
-		if (image_is_color) {
+		if (image_is_color(image)) {
 			free_color(image);
 		}
 		select->all = false;

@@ -130,7 +130,6 @@ void rotate_square(image_t *image, selection_t *select, int degrees)
 			break;
 		}
 	}
-	printf("Rotated %d\n", degrees);
 }
 
 void rotate_all_90deg(image_t *image, selection_t *select)
@@ -224,6 +223,4 @@ void rotate_all(image_t *image, selection_t *select, int degrees)
 	default:
 		break;
 	}
-	printf("Rotated %d\n", degrees);
-
 }

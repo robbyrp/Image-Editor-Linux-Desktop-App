@@ -53,12 +53,32 @@ void free_color(image_t *image)
 	image->color_memblock = NULL;
 }
 
-// void clone_image(image_t *image)
-// {
-// 	if (image == NULL) {
-// 		fprintf(stderr, "There needs to be an image in order to clone it.\n");
-// 		return;
-// 	}
+image_t* clone_image(image_t *dest, image_t *source)
+{
+	if (source == NULL) {
+		fprintf(stderr, "There needs to be an image in order to clone it.\n");
+		return NULL;
+	}
 
-	
-// }
+	if (image_is_color(dest)) free_color(dest);
+	if (image_is_greyscale(dest)) free_greyscale(dest);
+	dest->rows = source->rows;
+	dest->cols = source->cols;
+	dest->maxval = source->maxval;
+	dest->loaded = source->loaded;
+	strcpy(dest->format, source->format);
+
+	size_t total_bytes = 0;
+
+	if (image_is_color(source)) {
+		alloc_color(dest);
+		total_bytes = dest->rows * dest->cols * sizeof(pixel_t);
+		memcpy(dest->color_memblock, source->color_memblock, total_bytes);
+	} else if (image_is_greyscale(source)) {
+		alloc_greyscale(dest);
+		total_bytes = dest->rows * dest->cols * sizeof(unsigned char);
+		memcpy(dest->greyscale_memblock, source->greyscale_memblock, total_bytes);
+	}
+
+	return dest;
+}
