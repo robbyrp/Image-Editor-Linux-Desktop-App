@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 from fastapi import Response
-from pydantic import BaseModel
 from image_service import ImageService
 
 app = FastAPI()
@@ -16,20 +15,17 @@ async def all_dogs() -> Response:
     image = await service.get_random_breed_dog_image_ppm()
     return Response(content=image, media_type="image/x-portable-pixmap")
 
-@app.get("/api/{breed}")
-async def breed_random(breed: str) -> Response:
-    image = await service.get_dog_breed_image_ppm(breed)
-    return Response(content=image, media_type="image/x-portable-pixmap")
 
+@app.get("/api/random-breed/best-sized-image-from-list")
+#   Returns the best sized-list image in PPM format from a list of 9 urls
+async def get_best_sized_image_from_list(length: int = 9) -> str:
+    download_urls = await service.get_download_urls(length)
+    best_url = await service.get_best_sized_image_url(download_urls)
+    shm_name_key = await service.map_image_from_url_to_shared_memory(best_url)
+    return shm_name_key
 
-LIST_LENGTH = 9
-@app.get("/api/random-breed/{LIST_LENGTH}")
-#   Returns a list of LIST_LENGTH download url's
-async def random_breed_list() -> list:
-    download_urls = await service.get_download_urls(LIST_LENGTH)
-    return download_urls
-
-@app.get("/api/thumbnail")
-async def get_thumbnail(download_url: str) -> Response:
-    thumbnail = await service._create_thumbnail(download_url)
-    return Response(content=thumbnail, media_type="image/x-portable-pixmap")
+# @app.get("/api/random-breed/image-sizes")
+# async def parse_image_sizes_from_url(url : str) :
+    
+#     (cols, rows) = await service.get_image_size(url)
+#     return (cols, rows)

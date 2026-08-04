@@ -2,15 +2,15 @@ CXX = g++
 CC = gcc
 
 EXE = editor
-END_FRONT = endfront
-IMGUI_DIR = $(END_FRONT)/imgui
+FRONTEND = frontend
+IMGUI_DIR = $(FRONTEND)/imgui
 
-SOURCES = 	$(END_FRONT)/main.cpp \
-          	$(END_FRONT)/application/application.cpp \
-          	$(END_FRONT)/state/editor_state.cpp \
-          	$(END_FRONT)/rendering/rendering_engine.cpp \
-          	$(END_FRONT)/ui/ui_callbacks.cpp \
-          	$(END_FRONT)/ui/ui_windows.cpp
+SOURCES = 	$(FRONTEND)/main.cpp \
+          	$(FRONTEND)/application/application.cpp \
+          	$(FRONTEND)/state/editor_state.cpp \
+          	$(FRONTEND)/rendering/rendering_engine.cpp \
+          	$(FRONTEND)/ui/ui_callbacks.cpp \
+          	$(FRONTEND)/ui/ui_windows.cpp
 
 SOURCES += $(wildcard $(IMGUI_DIR)/*.cpp)
 SOURCES += $(IMGUI_DIR)/backends/imgui_impl_glfw.cpp $(IMGUI_DIR)/backends/imgui_impl_opengl3.cpp
@@ -26,8 +26,8 @@ CFLAGS = -g -Wall -Wformat
 CFLAGS += -fsanitize=address -fno-omit-frame-pointer
 
 CXXFLAGS = -std=c++23 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends \
-           -I$(END_FRONT) -I$(END_FRONT)/application -I$(END_FRONT)/state \
-           -I$(END_FRONT)/rendering -I$(END_FRONT)/ui \
+           -I$(FRONTEND) -I$(FRONTEND)/application -I$(FRONTEND)/state \
+           -I$(FRONTEND)/rendering -I$(FRONTEND)/ui \
            -g -Wall -Wformat
 CXXFLAGS += -fsanitize=address -fno-omit-frame-pointer
 LIBS += -lcurl
