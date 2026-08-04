@@ -17,26 +17,26 @@ namespace Ui {
 		fp = popen("which zenity > /dev/null 2>&1", "r");
 		
 		if (!fp && pclose(fp) != 0) {
-				ImGui::OpenPopup("Zenity Not Found");
-				return;
+			ImGui::OpenPopup("Zenity Not Found");
+			return;
 		}
 
 		fp = popen("zenity --file-selection --file-filter='PPM/PGM Images | *.ppm *.pgm' --title='Select Image'", "r");
 		
 		if (!fp && pclose(fp) != 0) {
-				ImGui::OpenPopup("Zenity Not Found");
-				return;
+			ImGui::OpenPopup("Zenity Not Found");
+			return;
 		}
 		
 		// Free the previous image and the buffer
 		if (ctx->img_state->image->loaded) {
-				free_greyscale(ctx->img_state->image);
-				free_color(ctx->img_state->image);
-				ctx->img_state->image->loaded = false;
+			free_greyscale(ctx->img_state->image);
+			free_color(ctx->img_state->image);
+			ctx->img_state->image->loaded = false;
 		}
 		if (ctx->t_state->display_buffer) {
-				free(ctx->t_state->display_buffer);
-				ctx->t_state->display_buffer = nullptr;
+			free(ctx->t_state->display_buffer);
+			ctx->t_state->display_buffer = nullptr;
 		}
 		
 		// Popup for zenity error
@@ -45,35 +45,38 @@ namespace Ui {
 		ImVec2 popup_size(400, 180);
 		ImGui::SetNextWindowSize(popup_size, ImGuiCond_Appearing);
 		if (ImGui::BeginPopupModal("Zenity Not Found", nullptr, ImGuiWindowFlags_AlwaysAutoResize)) {
-				ImGui::Text("You need to install Zenity first!");
-				ImGui::Separator();
-				ImGui::Dummy(ImVec2(0.0f, 20.0f));
+			ImGui::Text("You need to install Zenity first!");
+			ImGui::Separator();
+			ImGui::Dummy(ImVec2(0.0f, 20.0f));
 
-				ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 120) * 0.5f);
-				ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(220, 30, 30, 255));
-				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, IM_COL32(255, 60, 60, 255));
-				ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
-				if (ImGui::Button("OK", ImVec2(120, 0))) {
-						ImGui::CloseCurrentPopup();
-				}
-				ImGui::PopStyleColor(3);
-				ImGui::EndPopup();
+			ImGui::SetCursorPosX((ImGui::GetWindowSize().x - 120) * 0.5f);
+			ImGui::PushStyleColor(ImGuiCol_Button, IM_COL32(220, 30, 30, 255));
+			ImGui::PushStyleColor(ImGuiCol_ButtonHovered, IM_COL32(255, 60, 60, 255));
+			ImGui::PushStyleColor(ImGuiCol_ButtonActive, IM_COL32(180, 20, 20, 255));
+			if (ImGui::Button("OK", ImVec2(120, 0))) {
+					ImGui::CloseCurrentPopup();
+			}
+			ImGui::PopStyleColor(3);
+			ImGui::EndPopup();
 		}
 
 		char loading_file_path[512];
+		
 		// fgets reads the selected_file_path from zenity's stdout
 		if (fgets(loading_file_path, sizeof(loading_file_path), fp)) {
-				// Remove newline from end of path
-				loading_file_path[strcspn(loading_file_path, "\n")] = 0;
-				if (strlen(loading_file_path) > 0) {
-						strcpy(ctx->img_state->input_file_path, loading_file_path);
-						Ui::save_state_for_undo(ctx);
-						load_image_from_disk(ctx->img_state->image, ctx->img_state->selection, ctx->img_state->input_file_path);
-				}
+			// Remove newline from end of path
+			loading_file_path[strcspn(loading_file_path, "\n")] = 0;
+			if (strlen(loading_file_path) > 0) {
+					strcpy(ctx->img_state->input_file_path, loading_file_path);
+					Ui::save_state_for_undo(ctx);
+					load_image_from_disk(ctx->img_state->image, ctx->img_state->selection, ctx->img_state->input_file_path);
+					ctx->img_state->image->loaded = (image_is_greyscale(ctx->img_state->image) || image_is_color(ctx->img_state->image));
+			}
 		}
+
 		pclose(fp);
-		ctx->img_state->image->loaded = true;
-		Graphics::refresh_image_render(ctx->img_state->image, ctx->t_state);
+		if (ctx->img_state->image->loaded) 
+			Graphics::refresh_image_render(ctx->img_state->image, ctx->t_state);
   }
 
 	void save_button_logic(EditorContext *ctx)
@@ -145,6 +148,8 @@ namespace Ui {
 
 		if (!load_image_from_shm(ctx->img_state->image, ctx->img_state->selection, shm_key)) {
 			fprintf(stderr, "Failed to load image from shared memory\n");
+			ctx->img_state->image->loaded = false;
+			free_chunk(&chunk);
 			return;
 		}
 

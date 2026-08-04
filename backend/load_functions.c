@@ -127,6 +127,10 @@ bool load_binary_image_from_buffer(image_t *image, selection_t *select, const ch
 	if (image_is_color(image)) {
 		free_color(image);
 	}
+	if (image_is_greyscale(image)) {
+		free_greyscale(image);
+	}
+	
 	image->cols = temp_cols;
 	image->rows = temp_rows;
 	alloc_color(image);
