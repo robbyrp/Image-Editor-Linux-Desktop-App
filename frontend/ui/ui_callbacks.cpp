@@ -67,17 +67,13 @@ namespace Ui {
 				loading_file_path[strcspn(loading_file_path, "\n")] = 0;
 				if (strlen(loading_file_path) > 0) {
 						strcpy(ctx->img_state->input_file_path, loading_file_path);
-						ctx->img_state->image->loaded = true;
-						ctx->t_state->convert = true;
-						ctx->t_state->generate_texture = true;
+						Ui::save_state_for_undo(ctx);
 						load_image_from_disk(ctx->img_state->image, ctx->img_state->selection, ctx->img_state->input_file_path);
 				}
 		}
 		pclose(fp);
-		// Display the image
-		Graphics::create_buffer(ctx->img_state->image, ctx->t_state);
-		// Set flag to true because function automatically sets it to false
-		ctx->t_state->generate_texture = true;
+		ctx->img_state->image->loaded = true;
+		Graphics::refresh_image_render(ctx->img_state->image, ctx->t_state);
   }
 
 	void save_button_logic(EditorContext *ctx)
