@@ -14,59 +14,59 @@ static void apply_filter_color(image_t *image,
 
 static unsigned char clamp_apply(int result);
 
+static pixel_t get_pixel_clamped(const image_t *image, int r, int c);
+
+static pixel_t get_pixel_clamped(const image_t *image, int r, int c)
+{
+    int clamped_r = r;
+    int clamped_c = c;
+
+    if (clamped_r < 0) {
+        clamped_r = 0;
+    } else if (clamped_r >= image->rows) {
+        clamped_r = image->rows - 1;
+    }
+
+    if (clamped_c < 0) {
+        clamped_c = 0;
+    } else if (clamped_c >= image->cols) {
+        clamped_c = image->cols - 1;
+    }
+
+    return image->color_matrix[clamped_r][clamped_c];
+}
+
 static pixel_t apply_kernel_pixel(image_t *image,
                                   const int ker[3][3],
                                   int i, int j,
                                   int divisor)
 {
-    if (i == 0 || j == 0 || i == image->rows - 1 || j == image->cols - 1) {
-        return image->color_matrix[i][j];
+    int red_sum = 0;
+    int green_sum = 0;
+    int blue_sum = 0;
+
+    for (int m = -1; m <= 1; m++) {
+        for (int n = -1; n <= 1; n++) {
+            pixel_t neighbor = get_pixel_clamped(image, i + m, j + n);
+            
+            int weight = ker[m + 1][n + 1];
+
+            red_sum   += neighbor.r * weight;
+            green_sum += neighbor.g * weight;
+            blue_sum  += neighbor.b * weight;
+        }
     }
 
-    int red =
-        image->color_matrix[i - 1][j - 1].r * ker[0][0] +
-        image->color_matrix[i - 1][j].r     * ker[0][1] +
-        image->color_matrix[i - 1][j + 1].r * ker[0][2] +
-        image->color_matrix[i][j - 1].r     * ker[1][0] +
-        image->color_matrix[i][j].r         * ker[1][1] +
-        image->color_matrix[i][j + 1].r     * ker[1][2] +
-        image->color_matrix[i + 1][j - 1].r * ker[2][0] +
-        image->color_matrix[i + 1][j].r     * ker[2][1] +
-        image->color_matrix[i + 1][j + 1].r * ker[2][2];
-
-    int green = 
-		image->color_matrix[i - 1][j - 1].g * ker[0][0] +
-        image->color_matrix[i - 1][j].g     * ker[0][1] +
-        image->color_matrix[i - 1][j + 1].g * ker[0][2] +
-        image->color_matrix[i][j - 1].g     * ker[1][0] +
-        image->color_matrix[i][j].g         * ker[1][1] +
-        image->color_matrix[i][j + 1].g     * ker[1][2] +
-        image->color_matrix[i + 1][j - 1].g * ker[2][0] +
-        image->color_matrix[i + 1][j].g     * ker[2][1] +
-        image->color_matrix[i + 1][j + 1].g * ker[2][2];
- 
-    int blue  = 
-		image->color_matrix[i - 1][j - 1].b * ker[0][0] +
-        image->color_matrix[i - 1][j].b     * ker[0][1] +
-        image->color_matrix[i - 1][j + 1].b * ker[0][2] +
-        image->color_matrix[i][j - 1].b     * ker[1][0] +
-        image->color_matrix[i][j].b         * ker[1][1] +
-        image->color_matrix[i][j + 1].b     * ker[1][2] +
-        image->color_matrix[i + 1][j - 1].b * ker[2][0] +
-        image->color_matrix[i + 1][j].b     * ker[2][1] +
-        image->color_matrix[i + 1][j + 1].b * ker[2][2];
-
-
     if (divisor != 1) {
-        red /= divisor;
-        green /= divisor;
-        blue /= divisor;
+        red_sum /= divisor;
+        green_sum /= divisor;
+        blue_sum /= divisor;
     }
 
     pixel_t out;
-    out.r = clamp_apply(red);
-    out.g = clamp_apply(green);
-    out.b = clamp_apply(blue);
+    out.r = clamp_apply(red_sum);
+    out.g = clamp_apply(green_sum);
+    out.b = clamp_apply(blue_sum);
     return out;
 }
 
