@@ -4,7 +4,7 @@
 
 --------
 ## Screenshots
-<img width="2857" height="1707" alt="editor" src="https://github.com/user-attachments/assets/9e163e62-aca6-43bb-8cf7-3a76c48504dc" />
+<img width="2872" height="1702" alt="editor" src="https://github.com/user-attachments/assets/705d99a4-2b7d-4ec2-aa6d-7b27aad88ab4" />
 
 <img width="2874" height="1703" alt="equalize" src="https://github.com/user-attachments/assets/fb05d5cb-59c7-4ca1-b19e-c2f6c9fd77c6" />
 
