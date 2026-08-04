@@ -4,11 +4,10 @@
 
 --------
 ## Screenshots
-<img width="2859" height="1635" alt="example1" src="https://github.com/user-attachments/assets/f06109a5-12fe-4191-ac8d-a095826bad0b" />
+<img width="2857" height="1707" alt="editor" src="https://github.com/user-attachments/assets/9e163e62-aca6-43bb-8cf7-3a76c48504dc" />
 
---------
+<img width="2874" height="1703" alt="equalize" src="https://github.com/user-attachments/assets/fb05d5cb-59c7-4ca1-b19e-c2f6c9fd77c6" />
 
-<img width="2848" height="1645" alt="example2" src="https://github.com/user-attachments/assets/7eb7e49b-bddf-4602-9f16-7c0964725646" />
 
 
 ## Architecture
