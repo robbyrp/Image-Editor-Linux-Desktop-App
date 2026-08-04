@@ -1,7 +1,7 @@
 // Functions that allocate the exact amount of memory on the heap
 // Based on the type of image that was processed
 
-#include "load_save.h"
+#include "load_functions.h"
 
 void alloc_greyscale(image_t *image)
 {

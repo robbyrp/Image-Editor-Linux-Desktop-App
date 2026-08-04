@@ -2,15 +2,16 @@
 // By reading pixels from the inputted file and loading them into memory
 
 #include "image.h"
+#include <sys/mman.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 static void load_ascii_image_from_disk(image_t *image, const char *filename);
 static void load_binary_image_from_disk(image_t *image, const char *filename);
 
 /**
- * Load function which handles both ascii and binary, greyscale or color
- * By calling the necessary functions.
- * It also allocates memory for the images by calling the alloc functions
- */
+ * Loads(and allocates memory for) the image, greyscale or color, in memory, by making the 
+ * neccessary function calls. */
 void load_image_from_disk(image_t *image, selection_t *select, const char *filename)
 {
 	// OPEN FILE
@@ -148,6 +149,37 @@ bool load_binary_image_from_buffer(image_t *image, selection_t *select, const ch
 		select->x_end = image->cols;
 		select->y_end = image->rows;
 	}
+
+	return true;
+}
+
+/**
+ * Accesses the shared memory key and maps the fd received to a pointer using mmap.
+ * Then, the binary image is loaded as if from a buffer.
+ */
+bool load_image_from_shm(image_t *image, selection_t *select, const char *shm_key)
+{
+	int fd = shm_open(shm_key, O_RDONLY, 0);
+	if (fd < 0) {
+		fprintf(stderr, "shm_open() failed\n");
+		return false;      
+	}
+
+	struct stat shm_stat;
+	int rc = fstat(fd, &shm_stat);
+	if (rc == -1) {
+		fprintf(stderr, "fstat() failed\n");
+		return false;
+	}
+
+	size_t shm_size = shm_stat.st_size;
+
+	char *shm_buffer = (char *)mmap(NULL, shm_size, PROT_READ, MAP_SHARED, fd, 0);
+
+	if (!load_binary_image_from_buffer(image, select, shm_buffer)) return false;
+	
+	munmap(shm_buffer, shm_size);
+	shm_unlink(shm_key);
 
 	return true;
 }
