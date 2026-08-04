@@ -70,28 +70,34 @@ static pixel_t apply_kernel_pixel(image_t *image,
     return out;
 }
 
+/**
+ * Uses a multithreading preprocessing directive called
+ *     #pragma omp parallel for
+ */
 static void apply_filter_color(image_t *image, selection_t *select, const int ker[3][3], int divisor)
 {
-    image_t new_image = *image;
-    new_image.color_matrix = NULL;
-    new_image.greyscale_matrix = NULL;
 
-    alloc_color(&new_image);
+    image_t temp_image;
+    temp_image = *image;
+    temp_image.color_matrix = NULL;
+    temp_image.greyscale_matrix = NULL;
 
-    for (int i = 0; i < image->rows; i++) {
-        memcpy(new_image.color_matrix[i],
-               image->color_matrix[i],
-               (size_t)image->cols * sizeof(pixel_t));
-    }
+    alloc_color(&temp_image);
 
+    size_t total_bytes = image->rows * image->cols * sizeof(pixel_t);
+    memcpy(temp_image.color_memblock, image->color_memblock, total_bytes);
+
+    #pragma omp parallel for
     for (int i = select->y_start; i < select->y_end; i++) {
         for (int j = select->x_start; j < select->x_end; j++) {
-            new_image.color_matrix[i][j] = apply_kernel_pixel(image, ker, i, j, divisor);
+            pixel_t result = apply_kernel_pixel(image, ker, i, j, divisor);
+            temp_image.color_matrix[i][j] = result;
         }
     }
 
     free_color(image);
-    *image = new_image;
+    // Copy the temp_image struct from the stack to the heap
+    *image = temp_image;
 }
 
 static unsigned char clamp_apply(int result)

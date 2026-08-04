@@ -22,15 +22,15 @@ OBJS := $(OBJS:.c=.o)
 UNAME_S := $(shell uname -s)
 LINUX_GL_LIBS = -lGL
 
-CFLAGS = -g -Wall -Wformat 
+CFLAGS = -g -Wall -Wformat -fopenmp
 CFLAGS += -fsanitize=address -fno-omit-frame-pointer
 
-CXXFLAGS = -std=c++23 -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends \
+CXXFLAGS = -std=c++23 -fopenmp -fsanitize=address -fno-omit-frame-pointer
+CXXFLAGS += -I$(IMGUI_DIR) -I$(IMGUI_DIR)/backends \
            -I$(FRONTEND) -I$(FRONTEND)/application -I$(FRONTEND)/state \
            -I$(FRONTEND)/rendering -I$(FRONTEND)/ui \
            -g -Wall -Wformat
-CXXFLAGS += -fsanitize=address -fno-omit-frame-pointer
-LIBS += -lcurl
+LIBS += -lcurl -fopenmp
 
 
 ##---------------------------------------------------------------------
