@@ -1,5 +1,4 @@
 #include "ui_windows.h"
-#include "../rendering/rendering_engine.h"
 #include "ui_callbacks.h"
 #include <GLFW/glfw3.h> // Will drag system OpenGL headers
 #include "imgui.h"
@@ -13,7 +12,9 @@ namespace Ui {
 	static void draw_sidebar_operations(EditorContext *cxt);
 	static void draw_square_selection_popup_error(EditorContext *ctx);
 	static void draw_selection_combo(EditorContext *ctx);
-	static bool canDraw(EditorContext *ctx);
+	static bool canDrawImageContainer(EditorContext *ctx);
+	static bool canDrawSelectionContainer(EditorContext *ctx);
+	static bool canDrawImageWidget(EditorContext *ctx);
 
 	/**
 	 * Draws the container window for the image. Displays the image
@@ -21,7 +22,7 @@ namespace Ui {
 	 */
 	void draw_image_container(EditorContext *ctx) 
 	{
-		if (!canDraw(ctx)) return;
+		if (!canDrawImageContainer(ctx)) return;
 
 		// Calculate position
 		ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
@@ -49,8 +50,10 @@ namespace Ui {
 		ImGui::Text("Dimensions: %d x %d", ctx->img_state->image->cols, ctx->img_state->image->rows);
 		ImGui::Separator();
 
-		// Draw the image and create OpenGL texture only when image is changed
-		draw_image_widget(ctx);
+		// Draw only the image widget conditionally; keep container visible.
+		if (canDrawImageWidget(ctx)) {
+			draw_image_widget(ctx);
+		}
 
 		ImGui::End();
 	}
@@ -95,7 +98,7 @@ namespace Ui {
 	 */
 	void draw_selection_container(EditorContext *ctx)
 	{
-		if (!canDraw(ctx)) return;
+		if (!canDrawSelectionContainer(ctx)) return;
 
 		// Calculate position for selection window
 		ImVec2 main_viewport_pos = ImGui::GetMainViewport()->Pos;
@@ -344,10 +347,24 @@ namespace Ui {
 		}
 	}
 
-	static bool canDraw(EditorContext *ctx)
+	static bool canDrawImageContainer(EditorContext *ctx)
 	{
-		if (!ctx->img_state->image->loaded || !ctx->t_state->display_buffer || ctx->t_state->convert)
+		return ctx && ctx->img_state && ctx->img_state->image && ctx->img_state->image->loaded;
+	}
+
+	static bool canDrawSelectionContainer(EditorContext *ctx)
+	{
+		return canDrawImageContainer(ctx);
+	}
+
+	static bool canDrawImageWidget(EditorContext *ctx)
+	{
+		if (!canDrawImageContainer(ctx) || !ctx->t_state)
 			return false;
+
+		if (!ctx->t_state->display_buffer || ctx->t_state->convert)
+			return false;
+
 		return true;
 	}
 }
