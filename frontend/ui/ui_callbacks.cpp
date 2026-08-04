@@ -71,7 +71,7 @@ namespace Ui {
 						ctx->img_state->image->loaded = true;
 						ctx->t_state->convert = true;
 						ctx->t_state->generate_texture = true;
-						load_gui(ctx->img_state->image, ctx->img_state->selection, ctx->img_state->input_file_path);
+						load_image_from_disk(ctx->img_state->image, ctx->img_state->selection, ctx->img_state->input_file_path);
 				}
 		}
 		pclose(fp);
@@ -133,7 +133,7 @@ namespace Ui {
 		memory_struct_t chunk = http_get_request_content(RANDOM_BREED_URL);
 		if (chunk.memory != NULL && chunk.size != 0) {
 			Ui::save_state_for_undo(ctx);
-			if (!load_memory_binary_gui(ctx->img_state->image, ctx->img_state->selection, chunk.memory)) {
+			if (!load_binary_image_from_buffer(ctx->img_state->image, ctx->img_state->selection, chunk.memory)) {
 				fprintf(stderr, "Could not load the image from the memory buffer into the program's memory\n");
 				return;
 			}

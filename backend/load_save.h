@@ -7,8 +7,8 @@
 extern "C" {
 #endif
     void load_cli(image_t *image, selection_t *select);
-	void load_gui(image_t *image, selection_t *select, const char *filename);
-	bool load_memory_binary_gui(image_t *image, selection_t *select, const char* buffer);
+	void load_image_from_disk(image_t *image, selection_t *select, const char *filename);
+	bool load_binary_image_from_buffer(image_t *image, selection_t *select, const char* buffer);
 
     void save_cli(image_t *image);
 	void save_ascii_gui(image_t *image, const char *new_filename);
