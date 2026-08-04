@@ -68,9 +68,6 @@ namespace Ui {
 			ImGui_ImplGlfw_InitForOpenGL(window, true);
 			ImGui_ImplOpenGL3_Init(glsl_version);
 			
-			// Background color
-			ImVec4 clear_color =  ImVec4(0.9647f, 0.9098f, 0.9686f, 0.7f);
-			
 			// Button color
 			ImVec4 button_color = ImVec4(0.9647f, 0.9098f, 0.9686f, 0.05f);
 			ImGuiStyle& button_style = ImGui::GetStyle();

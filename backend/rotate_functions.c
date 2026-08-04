@@ -224,3 +224,9 @@ void rotate_all(image_t *image, selection_t *select, int degrees)
 		break;
 	}
 }
+
+bool check_square_selection(image_t *image, selection_t *select)
+{
+	return select->x_end - select->x_start == select->y_end - select->y_start;
+}
+
