@@ -1,6 +1,6 @@
 # Linux Image Editor with Zero-Copy Shared Memory IPC
 --------
-### A modular desktop image editor built with **C++** and **Dear ImGui** for the interface, backed by an optimized image-processing core written in pure **C**. The application uses a hybrid architecture that offloads network image retrieval and pre-processing to an asynchronous **Python FastAPI microservice**, communicating via a **zero-copy POSIX Shared Memory IPC data plane**.
+### A modular desktop image editor built with **C++** and **Dear ImGui** for the interface, backed by an optimized image-processing core written in pure **C**. The application uses a hybrid architecture: It fetches images from an external API using an asynchronous **Python FastAPI microservice**, communicating with the backend via a **zero-copy POSIX Shared Memory IPC data plane**.
 
 --------
 ## Screenshots
